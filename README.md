@@ -1,28 +1,21 @@
-# Booktrading
+## Synopsis
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
+Manage a Book Trading Club. This is a project for Free Code Camp's Back End Certification.
 
-## Development server
+## More Info
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+User Story:  I can view all books posted by every user.
 
-## Code scaffolding
+User Story: I can add a new book.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+User Story: I can update my settings to store my full name, city, and state.
 
-## Build
+User Story: I can propose a trade and wait for the other user to accept the trade.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
+## View Project
+[View live demo of Manage a Book Trading Club](https://obscure-dusk-43191.herokuapp.com/)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Technologies
+MEAN Stack - MongoDB, Express, Angular (1.6.5), Node.JS
+Also my first project using Bootstrap 4.0.
