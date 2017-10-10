@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row flex-column">
+
+    <h2>All Books</h2>
+    <p class="text-muted">Review all books on Booktraders. <br> Press the "View Details" link to read a book's description and request a trade.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row">
+
+
+
+  <div *ngFor="let book of books"  class="d-md-inline-flex add-border">
+      <div>
+        <div class="no-stretch">
+          <img src={{book.volumeInfo.imageLinks.thumbnail}}>
+        </div>
+        <div class="book-details">
+          <p><strong>Title:</strong> {{book.volumeInfo.title}}</p>
+          <p><strong>Author:</strong> {{book.volumeInfo.authors}}</p>
+          <p><strong>Owner:</strong> Booktraders User Name</p>
+          <p>View Details</p>
+      </div>
+    </div>
+  </div>
+
+
+</div><!--close row -->
+
+</div><!--close container -->
