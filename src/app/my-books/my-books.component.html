@@ -1,3 +1,42 @@
-<p>
-  my-books works!
-</p>
+
+<div class="container" style="margin-top: 50px">
+  <div class="row flex-column">
+    <div class="flex-column">
+      <h4>New Book</h4>
+      <p class="text-muted">Press the "Add Book" button to find a new book using Google Books API and add it to your Library.</p>
+      <label>Search for A New Book</label>
+      <input type="text" class="form-control"  placeholder="Enter book title, author, or topic" aria-describedby="enterbook" style="max-width: 560px; margin-bottom: 12px;">
+      <div><button type="button" (click)="addBook()" class="btn btn-default">Search for book!</button></div>
+    </div>
+  </div>
+  
+
+
+  <div class="row  flex-column" style="margin-top: 100px;">
+    <h4>My Library</h4>
+    <p class="text-muted">Press the "View Details" link to read a book's description.</p>
+  </div>
+
+  <div class="row">
+
+    <div *ngFor="let book of books" class="d-md-inline-flex add-border">
+      <div>
+        <div class="no-stretch">
+          <img src={{book.volumeInfo.imageLinks.thumbnail}}>
+        </div>
+        <div class="book-details">
+          <p>
+            <strong>Title:</strong> {{book.volumeInfo.title}}</p>
+          <p>
+            <strong>Author:</strong> {{book.volumeInfo.authors}}</p>
+          <p>
+            <strong>Owner:</strong> Booktraders User Name</p>
+          <p>View Details</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!--close row -->
+</div>
+<!--close container -->

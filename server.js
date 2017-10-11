@@ -9,19 +9,25 @@ const api = require('./server/routes/api');
 
 const app = express();
 
+//setup mongoose/mongodb
+var mongoose = require('mongoose');
+var db = require('./config/db');
+mongoose.connect(db.url);
+
+
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Point static path to dist
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
 app.use('/api', api);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 /**

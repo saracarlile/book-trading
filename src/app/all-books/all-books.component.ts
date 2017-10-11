@@ -11,6 +11,15 @@ export class AllBooksComponent implements OnInit {
 
   books: any[];
 
+  userinfo = [];
+
+  addBook() {
+    this.bookService.addBook().subscribe(result => {   
+      this.userinfo= result,
+      console.log(this.userinfo);
+    });
+  }
+
   constructor(
     private bookService: BooksService) { }
 

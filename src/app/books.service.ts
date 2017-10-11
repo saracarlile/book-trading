@@ -32,6 +32,20 @@ export class BooksService {
     .catch(this.handleError);
   }
 
+  // Get all posts from the API
+
+  addBook(): Observable<any[]> {
+    return this.http
+    .get('/api/add-book')
+    .map(response => {
+      const resp = response.json();
+      console.log(resp);
+      return resp;
+    })
+    .catch(this.handleError);
+  }
+
+
 
   private handleError (error: Response | any) {
     console.error('BooksService::handleError', error);
