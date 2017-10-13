@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { HttpModule }    from '@angular/http';
 import 'rxjs/Rx';
@@ -13,7 +14,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 
-import { BooksService } from './books.service'
+import { BooksService } from './books.service';
+
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -38,8 +40,9 @@ const appRoutes: Routes = [
     HomeComponent
   ],
   imports: [
+    FormsModule,
     RouterModule.forRoot(
-      appRoutes
+      appRoutes, 
     //  { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,

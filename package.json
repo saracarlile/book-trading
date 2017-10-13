@@ -24,6 +24,7 @@
     "express": "^4.16.2",
     "jquery": "^3.2.1",
     "mongoose": "^4.12.1",
+    "ng2-opd-popup": "^1.1.21",
     "popper": "^1.0.0",
     "popper.js": "^1.12.5",
     "rxjs": "^5.4.1",

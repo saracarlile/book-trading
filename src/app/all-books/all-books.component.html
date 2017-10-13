@@ -3,10 +3,16 @@
 
     <h4>All Books</h4>
     <p class="text-muted">Review all books on Booktraders. <br> Press the "View Details" link to read a book's description and request a trade.</p>
+    <input [(ngModel)]="search" placeholder="search for author, topic or title" style="max-width: 500px; margin-top: 50px;">
+    {{search}}<br>
+    {{message}}
+    <button (click)="LookupUserInfoAddBook()" style="margin-bottom: 100px; max-width: 300px;">Lookup Book</button>
   </div>
 </div>
 
 <div class="container">
+
+  
 
   <div class="row">
   <div *ngFor="let book of books"  class="d-md-inline-flex add-border">

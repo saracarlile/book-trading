@@ -13,13 +13,20 @@ export class MyBooksComponent implements OnInit {
   
     userinfo = [];
   
-    addBook() {
-      this.bookService.addBook().subscribe(result => {   
+    searchForBook() {
+      this.bookService.searchForBook().subscribe(result => {   
         this.userinfo= result,
         console.log(this.userinfo);
       });
     }
-  
+
+    modalStyle = false;
+    
+    updatemodalStyle() { 
+      this.modalStyle = !this.modalStyle;
+      console.log(this.modalStyle);
+    }
+
     constructor(
       private bookService: BooksService) { }
   

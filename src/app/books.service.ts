@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import 'rxjs/add/observable/forkJoin';
+
 
 
 import { User } from './user';
@@ -34,9 +36,32 @@ export class BooksService {
 
   // Get all posts from the API
 
-  addBook(): Observable<any[]> {
+  searchForBook(): Observable<any[]> {
     return this.http
     .get('/api/add-book')
+    .map(response => {
+      const resp = response.json();
+      console.log(resp);
+      return resp;
+    })
+    .catch(this.handleError);
+  }
+
+  
+  searchForUser(): Observable<any[]> {
+    return this.http
+    .get('/api/add-book')
+    .map(response => {
+      const resp = response.json();
+      console.log(resp);
+      return resp;
+    })
+    .catch(this.handleError);
+  }
+
+  searchGoogleBooks(url): Observable<any[]> {
+    return this.http
+    .get(url)
     .map(response => {
       const resp = response.json();
       console.log(resp);
