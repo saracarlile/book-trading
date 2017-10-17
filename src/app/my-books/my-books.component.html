@@ -5,8 +5,10 @@
       <h4>New Book</h4>
       <p class="text-muted">Press the "Add Book" button to find a new book using Google Books API and add it to your Library.</p>
       <label style="margin-top: 30px">Search for A New Book</label>
-      <input type="text" class="form-control"  placeholder="Enter book title, author, or topic" aria-describedby="enterbook" style="max-width: 560px; margin-bottom: 12px;">
-      <div><button type="button" (click)="searchForBook(); updatemodalStyle()" class="btn btn-default">Search for book!</button></div>
+      <input [(ngModel)]="search" type="text" class="form-control"  placeholder="Enter book title, author, or topic" aria-describedby="enterbook" style="max-width: 560px; margin-bottom: 12px;">
+      <div>{{search}}<br></div>      
+      <div>{{message}}</div>
+      <div><button type="button" (click)="LookupUserInfoAddBook(); updatemodalStyle()" class="btn btn-default">Search for book!</button></div>
     </div>
   </div>
 
@@ -16,9 +18,19 @@
   
       <!-- Modal content -->
       <div class="modal-content">
-        <p>Some text in the Modal..</p>
-        <button (click)="updatemodalStyle()" style="max-width: 300px">Close Modal</button>
-      </div>
+        <div class="row justify-content-center">
+          <div *ngFor="let search of bookSearch" class="flex-column fix-width-modal-content">
+            <img src="{{search.volumeInfo.imageLinks.smallThumbnail}}">   
+            <p>Title: {{search.volumeInfo.title}}</p>
+            <p>Author: <span  *ngFor="let author of search.volumeInfo.authors"> {{author}} </span></p>
+            
+          </div>
+          
+        </div><!-- close div row -->
+        <div class="row justify-content-center">
+          <button (click)="updatemodalStyle()" style="max-width: 300px">Close Modal</button>
+        </div>
+      </div><!-- close Modal content -->
   
     </div>
   
@@ -34,7 +46,7 @@
     <div *ngFor="let book of books" class="d-md-inline-flex add-border">
       <div>
         <div class="no-stretch">
-          <img src={{book.volumeInfo.imageLinks.thumbnail}}>
+            <img src={{book.volumeInfo.imageLinks.thumbnail}}>
         </div>
         <div class="book-details">
           <p>
