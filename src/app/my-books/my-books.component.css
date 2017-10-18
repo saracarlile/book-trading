@@ -63,8 +63,7 @@ img {
   }
 
   .fix-width-modal-content {
-      width: 300px!important;
-      height: 300px!important;
+      width: 400px!important;
       padding: 10px;
       background-color: #EBEAEA;
       margin: 0px 10px 10px 0px;

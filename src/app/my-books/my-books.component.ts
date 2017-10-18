@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
 import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
 
+
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 
@@ -14,19 +15,25 @@ import { Observable } from 'rxjs/Observable';
 })
 export class MyBooksComponent implements OnInit {
 
-  books: any[];
-  userinfo = [];
-  search = '';
-  user = new Observable<any>();
-  bookResult = new Observable<any>();
-  bookInfo = '';
-  results = {
+  private books: any[];
+  private userinfo = [];
+  private bookSearch = [];
+  private bookInfo = '';
+  private search = '';  //input box search variable
+  private user = new Observable<any>();  //user from DB observable
+  private bookResult = new Observable<any>(); //google books reslt api observable
+  private results = {  //combined user results from DB and google books API object
     dbUserInfo: [],
     gbBookInfo: []
   }
-  message = '';
-  encodedSearch = '';
-  bookSearch = [];
+  private message = '';  //error message variable
+  private encodedSearch = '';  //url encoded search
+  private modalStyle = false;  // set the 'search' modal to not display onload
+  private showShortDescription = true; //show short description of books by default
+
+
+
+
  
   searchForBookk() {
     this.bookService.searchForBook().subscribe(result => {   
@@ -66,16 +73,23 @@ export class MyBooksComponent implements OnInit {
       });
     }
 
-    modalStyle = false;
+    addToMyBooks() {
+      console.log("ADD to my books");
+    }
+
+    
     
     updatemodalStyle() { 
       this.message = '';
       if(this.search === ''){
         this.message = 'You must enter a search term';
         return;
-      }
-      this.modalStyle = !this.modalStyle;
-      console.log(this.modalStyle);
+      } 
+      this.modalStyle = !this.modalStyle;  //toggle modal display block and none
+    }
+
+    showFullDescription() {
+      this.showShortDescription = !this.showShortDescription;
     }
 
     constructor(
