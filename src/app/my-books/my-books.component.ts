@@ -8,24 +8,30 @@ import { Observable } from 'rxjs/Observable';
 
 
 
+
 @Component({
   selector: 'app-my-books',
   templateUrl: './my-books.component.html',
   styleUrls: ['./my-books.component.css']
 })
 export class MyBooksComponent implements OnInit {
+  
+  constructor(
+    private bookService: BooksService) { }
+
 
   private books: any[];
   private userinfo = [];
   private bookSearch = [];
   private bookInfo = '';
   private search = '';  //input box search variable
-  private user = new Observable<any>();  //user from DB observable
-  private bookResult = new Observable<any>(); //google books reslt api observable
+  //private user = new Observable<any>();  //user from DB observable
+//  private bookResult = new Observable<any>(); //google books reslt api observable
   private results = {  //combined user results from DB and google books API object
     dbUserInfo: [],
     gbBookInfo: []
   }
+  private forkJoinStream = [];
   private message = '';  //error message variable
   private encodedSearch = '';  //url encoded search
   private modalStyle = false;  // set the 'search' modal to not display onload
@@ -34,14 +40,6 @@ export class MyBooksComponent implements OnInit {
 
 
 
- 
-  searchForBookk() {
-    this.bookService.searchForBook().subscribe(result => {   
-      this.userinfo= result,
-      console.log(this.userinfo);
-    });
-  }
-
   LookupUserInfoAddBook() {
     this.message = '';
     if(this.search === ''){
@@ -49,32 +47,26 @@ export class MyBooksComponent implements OnInit {
       return;
     }
     this.encodedSearch = encodeURIComponent(this.search);
-    this.user = this.bookService.searchForUser();
-    console.log(this.user + " USER INFO");
-    this.bookResult = this.bookService.searchGoogleBooks('https://www.googleapis.com/books/v1/volumes?q=' + this.encodedSearch);
-    console.log(this.bookResult + " BOOK RESULT");
+    
+    let user = this.bookService.searchForUser();  // returns an observable
+    let bookResult = this.bookService.searchGoogleBooks('https://www.googleapis.com/books/v1/volumes?q=' + this.encodedSearch);  //returns an observable
+    
+    console.log(bookResult + " BOOK RESULT");
+    console.log(user + " USER INFO");
 
-    Observable.forkJoin([this.user, this.bookResult]).subscribe(results => {
-      // results[0] is our character
-      // results[1] is our character homeworld
-      results[0].dbUserInfo = results[0];
-      results[1].gbBookInfo = results[1];
-      console.log(results + " RESULTS");
-      console.log(results[1]["items"]);
-      this.bookSearch = results[1]["items"];
+    Observable.forkJoin([user, bookResult]).subscribe(res => {
+      this.forkJoinStream = res;
+      console.log(this.forkJoinStream);
     });
+    
   }
 
 
-    searchForBook() {
-      this.bookService.searchForBook().subscribe(result => {   
-        this.userinfo= result,
-        console.log(this.userinfo);
-      });
-    }
-
-    addToMyBooks() {
+    addToMyBooks(i) {
       console.log("ADD to my books");
+      console.log(this.results);
+      console.log(this.bookSearch[i].title);
+      console.log(this.bookSearch[i].description);
     }
 
     
@@ -92,9 +84,7 @@ export class MyBooksComponent implements OnInit {
       this.showShortDescription = !this.showShortDescription;
     }
 
-    constructor(
-      private bookService: BooksService) { }
-  
+    
   
     ngOnInit(): void {
   

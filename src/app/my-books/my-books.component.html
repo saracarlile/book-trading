@@ -14,29 +14,28 @@
 
 
     <!-- The Modal -->
-    <div id="myModal" class="modal" [style.display]="modalStyle ? 'block' : 'none'">
-  
+  <div id="myModal" class="modal" [style.display]="modalStyle ? 'block' : 'none'">
       <!-- Modal content -->
-      <div class="modal-content">
-        <div class="row justify-content-center">
-          <div *ngFor="let search of bookSearch; let i = index" class="flex-column fix-width-modal-content">
-            <img src="{{search.volumeInfo.imageLinks.smallThumbnail}}">   
-            <p><span class="h6">Title:</span> {{search.volumeInfo.title}}</p>
-            <p><span class="h6">Author:</span> <span  *ngFor="let author of search.volumeInfo.authors"> {{author}}  </span></p>
-            <p *ngIf="showShortDescription && search.volumeInfo.description"><span class="h6" >Description:</span> {{ search.volumeInfo.description.substr(0,100)}}...</p>
-            <p *ngIf="!showShortDescription && search.volumeInfo.description"><span class="h6">Description: </span> {{ search.volumeInfo.description}}</p>
-            <p (click)="showFullDescription()" style="color: blue; cursor: pointer;"  *ngIf="search.volumeInfo.description" class="text-muted">Show/Hide Full Description</p>
-            <button class="btn btn-primary" (click)="addToMyBooks()" style="max-width: 300px">Add To My Books</button>
-            
-          </div>
-          
-        </div><!-- close div row -->
-        <div class="row justify-content-center">
-          <button class="btn btn-default" (click)="updatemodalStyle()" style="max-width: 300px">Close Modal</button>
-        </div>
-      </div><!-- close Modal content -->
-  
-    </div>
+    <div class="modal-content">
+      <div *ngIf="forkJoinStream && forkJoinStream.length > 0">
+          <div class="row justify-content-center">
+              <div  *ngFor="let search of forkJoinStream[1].items; let i = index" class="flex-column fix-width-modal-content">
+                <img src="{{search.volumeInfo.imageLinks.smallThumbnail}}">   
+                <p><span class="h6">Title:</span> {{search.volumeInfo.title}}</p>
+                <p><span class="h6">Author:</span> <span  *ngFor="let author of search.volumeInfo.authors"> {{author}}  </span></p>
+                <p *ngIf="showShortDescription && search.volumeInfo.description"><span class="h6" >Description:</span> {{ search.volumeInfo.description.substr(0,100)}}...</p>
+                <p *ngIf="!showShortDescription && search.volumeInfo.description"><span class="h6">Description: </span> {{ search.volumeInfo.description}}</p>
+                <p (click)="showFullDescription()" style="cursor: pointer;"  *ngIf="search.volumeInfo.description" class="text-muted">Show/Hide Full Description</p>
+                <button class="btn btn-primary" (click)="addToMyBooks(i)" style="max-width: 300px">Add To My Books</button>    
+            </div>       
+          </div><!-- close div row -->      
+      </div><!-- close div *ngIf -->
+      <div class="row justify-content-center">
+        <button class="btn btn-default" (click)="updatemodalStyle()" style="max-width: 300px">Close Modal</button>
+      </div>
+    </div><!-- close Modal content -->
+    
+  </div><!-- close Modal -->
   
 
 

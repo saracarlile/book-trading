@@ -23,7 +23,7 @@ export class BooksService {
   books = [{ author: "Sam", title: "first book" }, { author: "cindy", title: "second book" }];  
   //example JSON not used
 
-  getAllBooks(): Observable<any[]> {
+  public getAllBooks(): Observable<any[]> {
     return this.http
     .get(this.GoogleBooksAPIUrl)
     .map(response => {
@@ -36,7 +36,13 @@ export class BooksService {
 
   // Get all posts from the API
 
-  searchForBook(): Observable<any[]> {
+  public addToMyBooks(bookInfo) {
+    const body = bookInfo;
+    const req = this.http.post('/api/add-to-my-books', body);
+    req.subscribe();
+  }
+
+  public searchForBook(): Observable<any[]> {
     return this.http
     .get('/api/add-book')
     .map(response => {
@@ -48,7 +54,7 @@ export class BooksService {
   }
 
   
-  searchForUser(): Observable<any[]> {
+  public searchForUser(): Observable<any[]> {
     return this.http
     .get('/api/add-book')
     .map(response => {
@@ -59,7 +65,7 @@ export class BooksService {
     .catch(this.handleError);
   }
 
-  searchGoogleBooks(url): Observable<any[]> {
+  public searchGoogleBooks(url): Observable<any[]> {
     return this.http
     .get(url)
     .map(response => {

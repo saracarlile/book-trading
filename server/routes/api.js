@@ -27,6 +27,10 @@ router.get('/add-book', (req, res) => {    //John will be test user
   });
 });
 
+router.post('/add-to-my-books', (req, res) => {    //John will be test user
+  res.send("ok");
+});
+
 
 
 
