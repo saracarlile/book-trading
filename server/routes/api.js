@@ -36,10 +36,11 @@ router.post('/add-to-my-books', (req, res) => {    //John will be test user
     bookImages: req.body.bookImages,
     bookDescription: req.body.bookDescription
   }
-  User.findOne({'name': user}).exec(function(err, user){
-    user.books.push(newBook);
-    res.send(user + " OK ADDED BOOK");
+  User.findOneAndUpdate({'name': user}, { $push: { 'books': newBook } }).exec(function(err, result){
+    res.send(result + " OK ADDED BOOK");
   });
+
+
 });
 
 

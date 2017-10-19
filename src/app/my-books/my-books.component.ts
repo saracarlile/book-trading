@@ -58,22 +58,21 @@ export class MyBooksComponent implements OnInit {
       bookImages: this.forkJoinStream[1].items[i].volumeInfo.imageLinks,
       bookDescription: this.forkJoinStream[1].items[i].volumeInfo.description
     }
+   
     
-    //map userBooks to an array that only includes book IDs
-    //then use includes to determine if book ID already exists
-    //then send to bookService
 
-    var a = [1, 2, 3];
-    a.includes(2); // true 
-    a.includes(4); // false
+    let idsOfUserBooks= this.forkJoinStream[0].books.map(function(item) { return item["id"]; });
+    console.log(idsOfUserBooks);
 
+    if(idsOfUserBooks.includes(this.forkJoinStream[1].items[i].id)) {
+      this.message = this.forkJoinStream[1].items[i].volumeInfo.title + " is already in your library!";
+      this.modalStyle = false;
+      return;
+    }
 
     this.bookService.addToMyBooks(bookInfo);
     
     this.modalStyle = false; // close modal 
-    }
-
-    
   }
 
     
