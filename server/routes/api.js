@@ -28,7 +28,18 @@ router.get('/add-book', (req, res) => {    //John will be test user
 });
 
 router.post('/add-to-my-books', (req, res) => {    //John will be test user
-  res.send("ok");
+  let user = req.body.userName;
+  let newBook = {
+    id: req.body.bookId,
+    bookTitle: req.body.bookTitle,
+    bookAuthors: req.body.bookAuthors,
+    bookImages: req.body.bookImages,
+    bookDescription: req.body.bookDescription
+  }
+  User.findOne({'name': user}).exec(function(err, user){
+    user.books.push(newBook);
+    res.send(user + " OK ADDED BOOK");
+  });
 });
 
 

@@ -39,7 +39,7 @@ export class BooksService {
   public addToMyBooks(bookInfo) {
     const body = bookInfo;
     const req = this.http.post('/api/add-to-my-books', body);
-    req.subscribe();
+    req.subscribe(getResponse => console.log(getResponse));
   }
 
   public searchForBook(): Observable<any[]> {
