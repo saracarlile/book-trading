@@ -27,7 +27,9 @@ export class MyBooksComponent implements OnInit {
   private message = '';  //error message variable
   private encodedSearch = '';  //url encoded search
   private modalStyle = false;  // set the 'search' modal to not display onload
+  private modalDetailStyle = false; // modal for 'View Details' of my books
   private showShortDescription = true; //show short description of books by default
+  private modalDetailBook = {}; //object to hold book in detail modal view
 
 
   private LookupUserInfoAddBook() {  //obtain book search and user info in one combined result
@@ -73,6 +75,17 @@ export class MyBooksComponent implements OnInit {
     this.bookService.addToMyBooks(bookInfo);
     
     this.modalStyle = false; // close modal 
+
+    this.bookService  //get my books call (update with book added)
+    .getMyBooks()
+    .subscribe(
+      (books) => {
+        this.myBooks = books[0];
+        console.log(this.myBooks);
+        console.log((<any>this).myBooks.books);
+
+      }
+    );
   }
 
     
@@ -88,6 +101,20 @@ export class MyBooksComponent implements OnInit {
 
   private showFullDescription() {  //show full description of book in Modal
     this.showShortDescription = !this.showShortDescription;
+  }
+
+
+
+  private modalDetailView(i) {
+    this.modalDetailStyle = !this.modalDetailStyle;
+
+    if(this.modalDetailStyle == true){
+
+      this.modalDetailBook = (<any>this).myBooks.books[i];
+      console.log(this.modalDetailBook);
+
+
+    }
   }
 
     

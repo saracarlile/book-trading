@@ -418,7 +418,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/my-books/my-books.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container\" style=\"margin-top: 50px\">\n  <div class=\"row flex-column\">\n    <div class=\"flex-column\">\n      <h4>New Book</h4>\n      <p class=\"text-muted\">Press the \"Add Book\" button to find a new book using Google Books API and add it to your Library.</p>\n      <label style=\"margin-top: 30px\">Search for A New Book</label>\n      <input [(ngModel)]=\"search\" type=\"text\" class=\"form-control\"  placeholder=\"Enter book title, author, or topic\" aria-describedby=\"enterbook\" style=\"max-width: 560px; margin-bottom: 12px;\">\n      <div style=\"font-size: 18px; color: red;\">{{message}}</div>\n      <div style=\"margin-top: 5px\"><button type=\"button\" (click)=\"LookupUserInfoAddBook(); updatemodalStyle()\" class=\"btn btn-default\">Search for book!</button></div>\n    </div>\n  </div>\n\n\n    <!-- The Modal -->\n  <div id=\"myModal\" class=\"modal\" [style.display]=\"modalStyle ? 'block' : 'none'\">\n      <!-- Modal content -->\n    <div class=\"modal-content\">\n      <div *ngIf=\"forkJoinStream && forkJoinStream.length > 0\">\n          <div class=\"row justify-content-center\">\n              <div  *ngFor=\"let search of forkJoinStream[1].items; let i = index\" class=\"flex-column fix-width-modal-content\">\n                <img src=\"{{search.volumeInfo.imageLinks.smallThumbnail}}\">   \n                <p><span class=\"h6\">Title:</span> {{search.volumeInfo.title}}</p>\n                <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of search.volumeInfo.authors\"> {{author}}  </span></p>\n                <p *ngIf=\"showShortDescription && search.volumeInfo.description\"><span class=\"h6\" >Description:</span> {{ search.volumeInfo.description.substr(0,100)}}...</p>\n                <p *ngIf=\"!showShortDescription && search.volumeInfo.description\"><span class=\"h6\">Description: </span> {{ search.volumeInfo.description}}</p>\n                <p (click)=\"showFullDescription()\" style=\"cursor: pointer;\"  *ngIf=\"search.volumeInfo.description\" class=\"text-muted\">Show/Hide Full Description</p>\n                <button class=\"btn btn-primary\" (click)=\"addToMyBooks(i)\" style=\"max-width: 300px\">Add To My Books</button>    \n            </div>       \n          </div><!-- close div row -->      \n      </div><!-- close div *ngIf -->\n      <div class=\"row justify-content-center\">\n        <button class=\"btn btn-default\" (click)=\"updatemodalStyle()\" style=\"max-width: 300px\">Close Modal</button>\n      </div>\n    </div><!-- close Modal content -->\n    \n  </div><!-- close Modal -->\n  \n\n\n  <div class=\"row  flex-column\" style=\"margin-top: 100px;\">\n    <h4>My Library</h4>\n    <p class=\"text-muted\">Press the \"View Details\" link to read a book's description.</p>\n  </div>\n\n  <div class=\"row\">\n    <div *ngIf=\"myBooks && myBooks.books.length > 0\">\n      <div *ngFor=\"let book of myBooks.books\" class=\"d-md-inline-flex add-border\">\n          <div>\n            <div class=\"no-stretch\">\n              <div *ngIf=\"book.bookImages.thumbnail\">\n                <img src={{book.bookImages.thumbnail}}>\n              </div>\n            </div>\n            <div class=\"book-details\">\n              <p><span class=\"h6\">Title:</span> {{book.bookTitle}}</p>\n              <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of book.bookAuthors\"> {{author}} </span></p>\n              <p>View Details</p>\n            </div>\n          </div>\n        </div>\n      </div>\n  </div>\n  <!--close row -->\n</div>\n<!--close container -->"
+module.exports = "\n<div class=\"container\" style=\"margin-top: 50px\">\n  <div class=\"row flex-column\">\n    <div class=\"flex-column\">\n      <h4>New Book</h4>\n      <p class=\"text-muted\">Press the \"Add Book\" button to find a new book using Google Books API and add it to your Library.</p>\n      <label style=\"margin-top: 30px\">Search for A New Book</label>\n      <input [(ngModel)]=\"search\" type=\"text\" class=\"form-control\"  placeholder=\"Enter book title, author, or topic\" aria-describedby=\"enterbook\" style=\"max-width: 560px; margin-bottom: 12px;\">\n      <div style=\"font-size: 18px; color: red;\">{{message}}</div>\n      <div style=\"margin-top: 5px\"><button type=\"button\" (click)=\"LookupUserInfoAddBook(); updatemodalStyle()\" class=\"btn btn-default\">Search for book!</button></div>\n    </div>\n  </div>\n\n\n    <!-- The Modal -->\n  <div id=\"myModal\" class=\"modal\" [style.display]=\"modalStyle ? 'block' : 'none'\">\n      <!-- Modal content -->\n    <div class=\"modal-content\">\n      <div *ngIf=\"forkJoinStream && forkJoinStream.length > 0\">\n          <div class=\"row justify-content-center\">\n              <div  *ngFor=\"let search of forkJoinStream[1].items; let i = index\" class=\"flex-column fix-width-modal-content\">\n                <img src=\"{{search.volumeInfo.imageLinks.smallThumbnail}}\">   \n                <p><span class=\"h6\">Title:</span> {{search.volumeInfo.title}}</p>\n                <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of search.volumeInfo.authors\"> {{author}}  </span></p>\n                <p *ngIf=\"showShortDescription && search.volumeInfo.description\"><span class=\"h6\" >Description:</span> {{ search.volumeInfo.description.substr(0,100)}}...</p>\n                <p *ngIf=\"!showShortDescription && search.volumeInfo.description\"><span class=\"h6\">Description: </span> {{ search.volumeInfo.description}}</p>\n                <p (click)=\"showFullDescription()\" style=\"cursor: pointer;\"  *ngIf=\"search.volumeInfo.description\" class=\"text-muted\">Show/Hide Full Description</p>\n                <button class=\"btn btn-primary\" (click)=\"addToMyBooks(i)\" style=\"max-width: 150px\">Add To My Books</button>    \n            </div>       \n          </div><!-- close div row -->      \n      </div><!-- close div *ngIf -->\n      <div class=\"row justify-content-center\">\n        <button class=\"btn btn-default\" (click)=\"updatemodalStyle()\" style=\"max-width: 150px\">Close Modal</button>\n      </div>\n    </div><!-- close Modal content -->\n    \n  </div><!-- close Modal -->\n  \n\n\n  <div class=\"row  flex-column\" style=\"margin-top: 100px;\">\n    <h4>My Library</h4>\n    <p class=\"text-muted\">Press the \"View Details\" link to read a book's description.</p>\n  </div>\n\n  <div class=\"row\">\n    <div *ngIf=\"myBooks && myBooks.books.length > 0\">\n      <div *ngFor=\"let book of myBooks.books; let i = index\" class=\"d-md-inline-flex add-border\">\n          <div>\n            <div class=\"no-stretch\">\n              <div *ngIf=\"book.bookImages.thumbnail\">\n                <img src={{book.bookImages.thumbnail}}>\n              </div>\n            </div>\n            <div class=\"book-details\">\n              <p><span class=\"h6\">Title:</span> {{book.bookTitle}}</p>\n              <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of book.bookAuthors\"> {{author}} </span></p>\n              <button class=\"btn btn-primary\" (click)=\"modalDetailView(i)\" style=\"max-width: 150px\">View Book Details</button>\n            </div>\n          </div>\n        </div>\n      </div>\n  </div>\n  <!--close row -->\n</div>\n<!--close container -->\n\n <!-- The View Details Modal -->\n <div id=\"myDetailModal\" class=\"modal\" [style.display]=\"modalDetailStyle ? 'block' : 'none'\">\n    <!-- Modal content -->\n  <div class=\"modal-content\">\n      <div *ngIf=\"modalDetailBook\">\n            <div class=\"no-stretch\">\n               <div *ngIf=\"modalDetailBook.bookImages != undefined\">\n                  <img  src={{modalDetailBook.bookImages.thumbnail}}>\n                </div> \n            </div>\n            <div class=\"book-details\">\n                <p><span class=\"h6\">Title:</span> {{modalDetailBook.bookTitle}}</p>\n                <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of  modalDetailBook.bookAuthors\"> {{author}} </span></p>\n                <p><span class=\"h6\">Description: </span> {{ modalDetailBook.bookDescription}}</p>\n            </div>\n            <button class=\"btn btn-default\" (click)=\"modalDetailView()\" style=\"max-width: 200px\">Close Book Detail View</button>\n      </div>\n  </div><!-- close Modal content -->\n  \n</div><!-- close Modal -->"
 
 /***/ }),
 
@@ -457,7 +457,9 @@ var MyBooksComponent = (function () {
         this.message = ''; //error message variable
         this.encodedSearch = ''; //url encoded search
         this.modalStyle = false; // set the 'search' modal to not display onload
+        this.modalDetailStyle = false; // modal for 'View Details' of my books
         this.showShortDescription = true; //show short description of books by default
+        this.modalDetailBook = {}; //object to hold book in detail modal view
     }
     MyBooksComponent.prototype.LookupUserInfoAddBook = function () {
         var _this = this;
@@ -475,6 +477,7 @@ var MyBooksComponent = (function () {
         });
     };
     MyBooksComponent.prototype.addToMyBooks = function (i) {
+        var _this = this;
         var bookInfo = {
             userName: this.forkJoinStream[0].name,
             userBooks: this.forkJoinStream[0].books,
@@ -493,6 +496,13 @@ var MyBooksComponent = (function () {
         }
         this.bookService.addToMyBooks(bookInfo);
         this.modalStyle = false; // close modal 
+        this.bookService //get my books call (update with book added)
+            .getMyBooks()
+            .subscribe(function (books) {
+            _this.myBooks = books[0];
+            console.log(_this.myBooks);
+            console.log(_this.myBooks.books);
+        });
     };
     MyBooksComponent.prototype.updatemodalStyle = function () {
         this.message = ''; //input/search cannot be blank
@@ -504,6 +514,13 @@ var MyBooksComponent = (function () {
     };
     MyBooksComponent.prototype.showFullDescription = function () {
         this.showShortDescription = !this.showShortDescription;
+    };
+    MyBooksComponent.prototype.modalDetailView = function (i) {
+        this.modalDetailStyle = !this.modalDetailStyle;
+        if (this.modalDetailStyle == true) {
+            this.modalDetailBook = this.myBooks.books[i];
+            console.log(this.modalDetailBook);
+        }
     };
     MyBooksComponent.prototype.ngOnInit = function () {
         var _this = this;
