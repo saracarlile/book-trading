@@ -17,6 +17,12 @@ router.get('/allusers', (req, res) => {
   });
 });
 
+router.get('/my-books', (req, res) => {
+  User.find({'name': 'John'}).exec(function(err,collection){  // John will be test user
+    res.send(collection);
+  });
+});
+
 
 router.get('/add-book', (req, res) => {    //John will be test user
   User.findOne({'name': 'John'}).exec(function(err, user){

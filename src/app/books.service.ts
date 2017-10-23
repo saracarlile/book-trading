@@ -65,12 +65,23 @@ export class BooksService {
     .catch(this.handleError);
   }
 
+  public getMyBooks(): Observable<any[]> {
+    return this.http
+    .get('/api/my-books')
+    .map(response => {
+      const resp = response.json();
+      console.log(resp);
+      return resp;
+    })
+    .catch(this.handleError);
+  }
+
+
   public searchGoogleBooks(url): Observable<any[]> {
     return this.http
     .get(url)
     .map(response => {
       const resp = response.json();
-      console.log(resp);
       return resp;
     })
     .catch(this.handleError);

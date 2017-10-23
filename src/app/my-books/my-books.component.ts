@@ -18,7 +18,7 @@ export class MyBooksComponent implements OnInit {
   constructor(
     private bookService: BooksService) { }
 
-  private books: any[];
+  private myBooks: {};
   private userinfo = [];
   private bookSearch = [];
   private bookInfo = '';
@@ -95,10 +95,13 @@ export class MyBooksComponent implements OnInit {
   ngOnInit(): void {
 
     this.bookService
-      .getAllBooks()
+      .getMyBooks()
       .subscribe(
         (books) => {
-          this.books = books;
+          this.myBooks = books[0];
+          console.log(this.myBooks);
+          console.log((<any>this).myBooks.books);
+
         }
       );
   }

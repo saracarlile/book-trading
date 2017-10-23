@@ -44,24 +44,22 @@
   </div>
 
   <div class="row">
-<!--
-    <div *ngFor="let book of books" class="d-md-inline-flex add-border">
-      <div>
-        <div class="no-stretch">
-            <img src={{book.volumeInfo.imageLinks.thumbnail}}>
-        </div>
-        <div class="book-details">
-          <p>
-            <strong>Title:</strong> {{book.volumeInfo.title}}</p>
-          <p>
-            <strong>Author:</strong> {{book.volumeInfo.authors}}</p>
-          <p>
-            <strong>Owner:</strong> Booktraders User Name</p>
-          <p>View Details</p>
+    <div *ngIf="myBooks && myBooks.books.length > 0">
+      <div *ngFor="let book of myBooks.books" class="d-md-inline-flex add-border">
+          <div>
+            <div class="no-stretch">
+              <div *ngIf="book.bookImages.thumbnail">
+                <img src={{book.bookImages.thumbnail}}>
+              </div>
+            </div>
+            <div class="book-details">
+              <p><span class="h6">Title:</span> {{book.bookTitle}}</p>
+              <p><span class="h6">Author:</span> <span  *ngFor="let author of book.bookAuthors"> {{author}} </span></p>
+              <p>View Details</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div> -->
-
   </div>
   <!--close row -->
 </div>
