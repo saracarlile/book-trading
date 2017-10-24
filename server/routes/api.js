@@ -25,7 +25,17 @@ router.get('/my-books', (req, res) => {
 
 
 router.get('/add-book', (req, res) => {    //John will be test user
-  User.findOne({'name': 'John'}).exec(function(err, user){
+  User.findOne({'name': 'John'}).exec(function(err, user){  
+    if(!user) { // this code is added for testing ... users need to be created upon login
+      let john = new User({ name: 'John' });
+      john.save(function (err) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('saved');
+        }
+      });
+    }  // this code has been added for testing...users need to be created upon login
     if(user.books.length <= 0){
       user.books = [{"title": "Slaughterhouse-Five", "authoer": "Kurt Vonneget"}];
     }
