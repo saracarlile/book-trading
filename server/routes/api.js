@@ -3,6 +3,7 @@ const router = express.Router();
 var mongoose = require('mongoose');
 var user = require('../../models/usermodel.js');
 var User = mongoose.model('User');
+mongoose.Promise = global.Promise;
 
 /* GET api listing. */
 // all routes at api/route name
@@ -36,9 +37,6 @@ router.get('/add-book', (req, res) => {    //John will be test user
         }
       });
     }  // this code has been added for testing...users need to be created upon login
-    if(user.books.length <= 0){
-      user.books = [{"title": "Slaughterhouse-Five", "authoer": "Kurt Vonneget"}];
-    }
     res.send(user);
   });
 });
