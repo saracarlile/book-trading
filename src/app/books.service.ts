@@ -46,9 +46,12 @@ export class BooksService {
     return this.http
     .get('/api/add-book')
     .map(response => {
-      const resp = response.json();
-      console.log(resp);
-      return resp;
+      if(response !== null){  // this code is added for testing purposes if user doesn't exist
+        const resp = response.json();
+        console.log(resp);
+        return resp;
+      }
+      return response;  /// this code is added for testing purposes if user doesn't exist
     })
     .catch(this.handleError);
   }

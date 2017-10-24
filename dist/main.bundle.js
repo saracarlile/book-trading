@@ -285,9 +285,12 @@ var BooksService = (function () {
         return this.http
             .get('/api/add-book')
             .map(function (response) {
-            var resp = response.json();
-            console.log(resp);
-            return resp;
+            if (response !== null) {
+                var resp = response.json();
+                console.log(resp);
+                return resp;
+            }
+            return response; /// this code is added for testing purposes if user doesn't exist
         })
             .catch(this.handleError);
     };
@@ -527,6 +530,9 @@ var MyBooksComponent = (function () {
         this.bookService
             .getMyBooks()
             .subscribe(function (books) {
+            if (books.length === 0) {
+                return;
+            }
             _this.myBooks = books[0];
             console.log(_this.myBooks);
             console.log(_this.myBooks.books);

@@ -125,6 +125,9 @@ export class MyBooksComponent implements OnInit {
       .getMyBooks()
       .subscribe(
         (books) => {
+          if(books.length === 0){  // if user has no books in library return
+            return;
+          }
           this.myBooks = books[0];
           console.log(this.myBooks);
           console.log((<any>this).myBooks.books);

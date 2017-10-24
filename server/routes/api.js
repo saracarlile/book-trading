@@ -37,6 +37,7 @@ router.get('/add-book', (req, res) => {    //John will be test user
         }
       });
     }  // this code has been added for testing...users need to be created upon login
+    console.log(user);
     res.send(user);
   });
 });
