@@ -54,10 +54,17 @@ router.post('/add-to-my-books', (req, res) => {    //John will be test user
   User.findOneAndUpdate({'name': user}, { $push: { 'books': newBook } }).exec(function(err, result){
     res.send(result + " OK ADDED BOOK");
   });
-
-
 });
 
+router.post('/delete-from-my-books', (req, res) => {    //John will be test user
+  let user = req.body.userName;
+  console.log(req.body.bookId);
+  console.log(req.body.userName);
+  User.update({'name': user}, { '$pull': { 'books': {'id': req.body.bookId} }}, { safe: true, multi:true }).exec(function(err, result){
+    res.send(result + " OK BOOK REMOVED");
+  });
+
+});
 
 
 

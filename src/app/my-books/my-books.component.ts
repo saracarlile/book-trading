@@ -30,6 +30,7 @@ export class MyBooksComponent implements OnInit {
   private modalDetailStyle = false; // modal for 'View Details' of my books
   private showShortDescription = true; //show short description of books by default
   private modalDetailBook = {}; //object to hold book in detail modal view
+  private myLibraryUser = '';  //tracks the user for My Library
 
 
   private LookupUserInfoAddBook() {  //obtain book search and user info in one combined result
@@ -61,8 +62,6 @@ export class MyBooksComponent implements OnInit {
       bookDescription: this.forkJoinStream[1].items[i].volumeInfo.description
     }
    
-    
-
     let idsOfUserBooks= this.forkJoinStream[0].books.map(function(item) { return item["id"]; });
     console.log(idsOfUserBooks);
 
@@ -88,6 +87,37 @@ export class MyBooksComponent implements OnInit {
     );
   }
 
+  private removeFromLibrary() {
+    //build an object to send as response body
+
+    console.log("MODALDETAIL " + (<any>this).modalDetailBook.bookId);
+    console.log("MODALDETAIL " + (<any>this).modalDetailBook.bookId);
+    let bookInfo = {
+      userName: this.myLibraryUser,
+      userBooks: (<any>this).modalDetailBook.userBooks,
+      bookId: (<any>this).modalDetailBook.id,
+      bookTitle: (<any>this).modalDetailBook.bookTitle,
+      bookAuthors: (<any>this).modalDetailBook.bookAuthors,
+      bookImages: (<any>this).modalDetailBook.bookImages,
+      bookDescription: (<any>this).modalDetailBook.bookDescription
+    }
+
+    this.bookService.deleteFromMyBooks(bookInfo);
+
+    this.bookService  //get my books call (update with book deleted)
+    .getMyBooks()
+    .subscribe(
+      (books) => {
+        this.myBooks = books[0];
+        console.log(this.myBooks);
+        console.log((<any>this).myBooks.books);
+
+      }
+    );
+
+
+  }
+
     
     
   private updatemodalStyle() { 
@@ -110,7 +140,8 @@ export class MyBooksComponent implements OnInit {
 
     if(this.modalDetailStyle == true){
 
-      this.modalDetailBook = (<any>this).myBooks.books[i];
+      this.modalDetailBook = (<any>this).myBooks.books[i];  //username not included in myBooks
+      this.myLibraryUser = (<any>this).myBooks.name;
       console.log(this.modalDetailBook);
 
 

@@ -42,6 +42,12 @@ export class BooksService {
     req.subscribe(getResponse => console.log(getResponse));
   }
 
+  public deleteFromMyBooks(bookInfo) {  //delete book from library
+    const body = bookInfo;
+    const req = this.http.post('/api/delete-from-my-books', body);
+    req.subscribe(getResponse => console.log(getResponse));
+  }
+
   public searchForBook(): Observable<any[]> {
     return this.http
     .get('/api/add-book')
@@ -68,7 +74,7 @@ export class BooksService {
     .catch(this.handleError);
   }
 
-  public getMyBooks(): Observable<any[]> {
+  public getMyBooks(): Observable<any[]> {  //get all books in my library
     return this.http
     .get('/api/my-books')
     .map(response => {
