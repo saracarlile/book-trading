@@ -10,7 +10,8 @@ body {
     color: #fff;
     text-decoration: none;
     font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    background: #b1cb36; /* Old browsers */
+    background: #b1cb36;
+    
 }
 
 .green:after {
@@ -43,10 +44,10 @@ body {
     padding: 10px;
     margin-right: 10px;
     display: inline-block;
- /*   border-right: 1px solid #b1cb36;  */
-    background: #3c4043;; /* Old browsers */
+    background: #3c4043;; 
     letter-spacing: 2px;
     border-radius: 3px;
+    font-size: 13px;
  }
 
  /*https://jsfiddle.net/ProLoser/TxBdP/ nifty 2-tone CSS Button*/

@@ -17,5 +17,5 @@ User Story: I can propose a trade and wait for the other user to accept the trad
 [View live demo of Manage a Book Trading Club](https://obscure-dusk-43191.herokuapp.com/)
 
 ## Technologies
-MEAN Stack - MongoDB, Express, Angular (1.6.5), Node.JS
+MEAN Stack - MongoDB, Express, Angular 4, Node.JS
 Also my first project using Bootstrap 4.0.

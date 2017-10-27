@@ -7,7 +7,9 @@
       <label style="margin-top: 30px">Search for A New Book</label>
       <input [(ngModel)]="search" type="text" class="form-control" (keydown.enter)="LookupUserInfoAddBook(); updatemodalStyle();" placeholder="Enter book title, author, or topic" aria-describedby="enterbook" style="max-width: 560px; margin-bottom: 12px;">
       <div style="font-size: 18px; color: red;">{{message}}</div>
-      <div style="margin-top: 5px"><button type="btn btn-success" (click)="LookupUserInfoAddBook(); updatemodalStyle();" class="button">Search <i class="fa fa-search" aria-hidden="true"></i></button></div>
+      <div style="margin-top: 5px">
+          <a class="green" (click)="LookupUserInfoAddBook(); updatemodalStyle();"><span class="button-span">SEARCH NOW</span></a> <!--button -->    
+      </div>
     </div>
   </div>
 
