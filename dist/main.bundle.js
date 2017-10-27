@@ -600,7 +600,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* The Modal (background) */\r\n.modal {\r\n  /*   display: none; Hidden by default */\r\n    position: fixed; /* Stay in place */\r\n    z-index: 1; /* Sit on top */\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%; /* Full width */\r\n    height: 100%; /* Full height */\r\n    overflow: auto; /* Enable scroll if needed */\r\n    background-color: rgb(0,0,0); /* Fallback color */\r\n    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n}\r\n\r\n/* Modal Content/Box */\r\n.modal-content {\r\n    background-color: #fefefe;\r\n    margin: 15% auto; /* 15% from the top and centered */\r\n    padding: 20px;\r\n    border: 1px solid #888;\r\n    width: 80%; /* Could be more or less, depending on screen size */\r\n}\r\n\r\n/* The Close Button */\r\n.close {\r\n    color: #aaa;\r\n    float: right;\r\n    font-size: 28px;\r\n    font-weight: bold;\r\n}\r\n\r\n.close:hover,\r\n.close:focus {\r\n    color: black;\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n}", ""]);
+exports.push([module.i, "body {\r\n    margin: 10px;   \r\n}\r\n\r\n.green {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    border-radius: 3px;\r\n    display: inline-block;\r\n    padding-right: 10px;\r\n    color: #fff;\r\n    text-decoration: none;\r\n    font-family: \"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif;\r\n    background: #b1cb36; /* Old browsers */\r\n}\r\n\r\n.green:after {\r\n    font-family: FontAwesome;\r\n    content: '\\F002';\r\n    color: white;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n }\r\n\r\n .green:hover {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .green:hover span {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .green:active {\r\n    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n }\r\n\r\n\r\n .button-span {\r\n    color: #b1cb36;\r\n    padding: 10px;\r\n    margin-right: 10px;\r\n    display: inline-block;\r\n /*   border-right: 1px solid #b1cb36;  */\r\n    background: #3c4043;; /* Old browsers */\r\n    letter-spacing: 2px;\r\n    border-radius: 3px;\r\n }\r\n\r\n /*https://jsfiddle.net/ProLoser/TxBdP/ nifty 2-tone CSS Button*/\r\n\r\n /* https://stackoverflow.com/questions/20782368/use-font-awesome-icon-as-css-content */", ""]);
 
 // exports
 
@@ -613,7 +613,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/my-profile/my-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1 [style.color]=\"titleStyle ? 'green' : 'pink'\">\n    {{title}}\n  </h1>\n\n  <p>\n    my-profile works!\n  </p>\n\n  <!-- Trigger/Open The Modal -->\n  <button (click)=\"updatetitleStyle()\">Open Modal</button>\n\n  <!-- The Modal -->\n  <div id=\"myModal\" class=\"modal\" [style.display]=\"titleStyle ? 'none' : 'block'\">\n\n    <!-- Modal content -->\n    <div class=\"modal-content\">\n      <span class=\"close\">&times;</span>\n      <p>Some text in the Modal..</p>\n      <button (click)=\"updatetitleStyle()\">Close Modal</button>\n    </div>\n\n  </div>\n\n</div>"
+module.exports = "<div class=\"container\">\n    <a (click)=\"consoleThis();\"><span>Invite your friends</span></a>\n    <br>\n    <br>\n\n    <a class=\"green\" (click)=\"consoleThis();\"><span class=\"button-span\">SEARCH NOW</span></a>\n\n</div>"
 
 /***/ }),
 
@@ -635,12 +635,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MyProfileComponent = (function () {
     function MyProfileComponent() {
-        this.title = 'My Profile Title';
-        this.titleStyle = false;
     }
-    MyProfileComponent.prototype.updatetitleStyle = function () {
-        this.titleStyle = !this.titleStyle;
-        console.log(this.titleStyle);
+    MyProfileComponent.prototype.consoleThis = function () {
+        console.log("test");
     };
     MyProfileComponent.prototype.ngOnInit = function () {
     };

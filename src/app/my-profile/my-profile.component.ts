@@ -14,14 +14,10 @@ export class MyProfileComponent implements OnInit {
   constructor() {
    }
 
-  title = 'My Profile Title';
+   private consoleThis() {
+     console.log("test");
+   }
 
-  titleStyle = false;
-
-  updatetitleStyle() { 
-    this.titleStyle = !this.titleStyle;
-    console.log(this.titleStyle);
-  }
 
   ngOnInit() {
     

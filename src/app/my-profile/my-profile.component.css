@@ -1,37 +1,54 @@
-/* The Modal (background) */
-.modal {
-  /*   display: none; Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+body {
+    margin: 10px;   
 }
 
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
+.green {
+    display: flex;
+    border-radius: 3px;
+    display: inline-block;
+    padding-right: 10px;
+    color: #fff;
     text-decoration: none;
-    cursor: pointer;
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background: #b1cb36; /* Old browsers */
 }
+
+.green:after {
+    font-family: FontAwesome;
+    content: '\f002';
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+ }
+
+ .green:hover {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .green:hover span {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .green:active {
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+ }
+
+
+ .button-span {
+    color: #b1cb36;
+    padding: 10px;
+    margin-right: 10px;
+    display: inline-block;
+ /*   border-right: 1px solid #b1cb36;  */
+    background: #3c4043;; /* Old browsers */
+    letter-spacing: 2px;
+    border-radius: 3px;
+ }
+
+ /*https://jsfiddle.net/ProLoser/TxBdP/ nifty 2-tone CSS Button*/
+
+ /* https://stackoverflow.com/questions/20782368/use-font-awesome-icon-as-css-content */
