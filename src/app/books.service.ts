@@ -16,27 +16,21 @@ import { User } from './user';
 @Injectable()
 export class BooksService {
 
-  private GoogleBooksAPIUrl = 'https://www.googleapis.com/books/v1/volumes?q=quilting';  // URL to web api
-
   constructor(private http: Http) { } // this will work now without any error
 
-  books = [{ author: "Sam", title: "first book" }, { author: "cindy", title: "second book" }];  
-  //example JSON not used
-
-  public getAllBooks(): Observable<any[]> {
+  public getAllBooks(): Observable<any[]> {  //get all books for all users
     return this.http
-    .get(this.GoogleBooksAPIUrl)
+    .get('/api/all-books')
     .map(response => {
       const resp = response.json();
-      console.log(resp.items);
-      return resp.items;
+      console.log(resp);
+      return resp;
     })
     .catch(this.handleError);
   }
 
-  // Get all posts from the API
 
-  public addToMyBooks(bookInfo) {
+  public addToMyBooks(bookInfo) {  //add book to my library
     const body = bookInfo;
     const req = this.http.post('/api/add-to-my-books', body);
     req.subscribe(getResponse => console.log(getResponse));

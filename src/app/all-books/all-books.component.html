@@ -9,19 +9,21 @@
 <div class="container">
   
   <div class="row">
-  <div *ngFor="let book of books"  class="d-md-inline-flex add-border">
+ <div *ngFor="let book of allBooks"  class="d-md-inline-flex">
       <div>
         <div class="no-stretch">
-          <img src={{book.volumeInfo.imageLinks.thumbnail}}>
+            <div *ngIf="book.bookImages != undefined"  style="margin-right: 20px; margin-bottom: 20px;">
+                <img src={{book.bookImages.thumbnail}}>
+            </div> 
         </div>
         <div class="book-details">
-          <p><strong>Title:</strong> {{book.volumeInfo.title}}</p>
-          <p><strong>Author:</strong> {{book.volumeInfo.authors}}</p>
-          <p><strong>Owner:</strong> Booktraders User Name</p>
-          <p>View Details</p>
+          <p><span class="h6">Title:</span> {{book.bookTitle}}</p>    
+          <p><span class="h6">Author:</span> <span  *ngFor="let author of book.bookAuthors"> {{author}} </span></p>
+          <p><span class="h6">Owner:</span> {{book.name}}</p>
+          <button class="btn btn-success">View <i class="fa fa-book" aria-hidden="true"></i></button>
       </div>
     </div>
-  </div>
+  </div>  
 
 
 </div><!--close row -->

@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   res.send('api works');
   });
 
-router.get('/allusers', (req, res) => {
+router.get('/all-books', (req, res) => {
   User.find({}).exec(function(err,collection){
     res.send(collection);
   });

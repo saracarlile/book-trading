@@ -15,7 +15,8 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AllBooksComponent implements OnInit {
 
-  books: any[];
+  private results = <any>[];
+  private allBooks = [];
 
   constructor(
     private bookService: BooksService) { }
@@ -27,8 +28,19 @@ export class AllBooksComponent implements OnInit {
     this.bookService
       .getAllBooks()
       .subscribe(
-      (books) => {
-        this.books = books;
+      (result) => {
+        console.log(result);
+      
+        this.results = result;
+        for(let i = 0; i < this.results.length; i++ ){  
+          for(let j = 0; j < (<any>this).results[i].books.length; j++){
+            console.log((<any>this).results[i].books[j]);
+            let currentBookObject = (<any>this).results[i].books[j];
+            console.log((<any>this).results[i].name);
+            currentBookObject.name = (<any>this).results[i].name;
+            this.allBooks.push(currentBookObject);
+          }
+        }
       }
       );
   }

@@ -45,23 +45,21 @@
     <p class="text-muted">Press the "View Details" link to read a book's description.</p>
   </div>
 
-  <div class="row">
-    <div *ngIf="myBooks && myBooks.books.length > 0">
-      <div *ngFor="let book of myBooks.books; let i = index" class="d-md-inline-flex" style="height: 350px">
+  <div class="row" *ngIf="myBooks && myBooks.books.length > 0">
+      <div *ngFor="let book of myBooks.books; let i = index" class="d-md-inline-flex">
           <div>
             <div class="no-stretch">
-              <div *ngIf="book.bookImages != undefined">
-                <img class="img-myBooks img-fluid" src={{book.bookImages.thumbnail}} style="max-height: 200px">
+              <div *ngIf="book.bookImages != undefined" style="margin-right: 20px; margin-bottom: 20px;">
+                <img class="img-myBooks" src={{book.bookImages.thumbnail}}>
               </div>
             </div>
             <div class="book-details">
               <p><span class="h6">Title:</span> {{book.bookTitle}}</p>
               <p><span class="h6">Author:</span> <span  *ngFor="let author of book.bookAuthors"> {{author}} </span></p>
-              <button class="btn btn-success" (click)="modalDetailView(i)"  style="max-width: 110px;">View <i class="fa fa-book" aria-hidden="true"></i> </button>
+              <button class="btn btn-success" (click)="modalDetailView(i)">View <i class="fa fa-book" aria-hidden="true"></i> </button>
             </div>
           </div>
         </div>
-      </div>
   </div>
   <!--close row -->
 </div>
@@ -79,7 +77,6 @@
                 <div style="display: flex; flex-direction: column;">
                   <p><span class="h6">Title:</span> {{modalDetailBook.bookTitle}}</p>
                   <p><span class="h6">Author:</span> <span  *ngFor="let author of  modalDetailBook.bookAuthors"> {{author}} </span></p>
-                  <p><span class="h6">ID:</span> {{modalDetailBook.id}}</p>
                 </div>
               </div>
             <div>           
