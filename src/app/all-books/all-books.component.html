@@ -10,7 +10,7 @@
   
   <div class="row">
  <div *ngFor="let book of allBooks"  class="d-md-inline-flex">
-      <div>
+      <div style="border: 1px solid grey;">
         <div class="no-stretch">
             <div *ngIf="book.bookImages != undefined"  style="margin-right: 20px; margin-bottom: 20px;">
                 <img src={{book.bookImages.thumbnail}}>

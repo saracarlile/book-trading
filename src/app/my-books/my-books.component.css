@@ -43,10 +43,10 @@
   
   /* Modal Content/Box */
   .modal-content {
-      background-color: #fefefe;
+      background-color: #ffffff;
       margin: 15% auto; /* 15% from the top and centered */
       padding: 20px;
-      border: 1px solid #888;
+      border: 1px solid grey;
       width: 80%; /* Could be more or less, depending on screen size */
   }
   
@@ -66,7 +66,6 @@
   }
 
   .fix-width-modal-content {
-      width: 400px!important;
       padding: 10px;
       background-color: #EBEAEA;
       margin: 0px 10px 10px 0px;
@@ -166,3 +165,204 @@
         border-radius: 3px;
         font-size: 13px;
     }
+
+/* green-book button css */
+
+ .green-book {
+    display: flex;
+    border-radius: 3px;
+    display: inline-block;
+    padding-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background: #b1cb36;
+    
+}
+
+.green-book:after {
+    font-family: FontAwesome;
+    content: '\f02d';
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+ }
+
+ .green-book:hover {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .green-book:hover span {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .green-book:active {
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+ }
+
+
+ .button-span-green-book {
+    color: #b1cb36;
+    padding: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    background: #3c4043;; 
+    letter-spacing: 2px;
+    border-radius: 3px;
+    font-size: 13px;
+ }
+
+ /* green close button css */
+
+ .green-close {
+    display: flex;
+    border-radius: 3px;
+    display: inline-block;
+    padding-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background: #b1cb36;
+    
+}
+
+.green-close:after {
+    font-family: FontAwesome;
+    content: '\f2d3';
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+ }
+
+ .green-close:hover {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .green-close:hover span {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .green-close:active {
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+ }
+
+
+ .button-span-green-close {
+    color: #b1cb36;
+    padding: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    background: #3c4043;; 
+    letter-spacing: 2px;
+    border-radius: 3px;
+    font-size: 13px;
+ }
+
+ /* red trash button css */
+
+ .red {
+    display: flex;
+    border-radius: 3px;
+    display: inline-block;
+    padding-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background: #f25c43;
+    
+}
+
+.red:after {
+    font-family: FontAwesome;
+    content: '\f068';
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+ }
+
+ .red:hover {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .red:hover span {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .red:active {
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+ }
+
+
+ .button-span-red {
+    color: #f25c43;
+    padding: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    background: #3c4043;; 
+    letter-spacing: 2px;
+    border-radius: 3px;
+    font-size: 13px;
+ }
+
+
+ /* orange button css */
+
+ .orange {
+    display: flex;
+    border-radius: 3px;
+    display: inline-block;
+    padding-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background: #fba93d;
+    
+}
+
+.orange:after {
+    font-family: FontAwesome;
+    content: '\f2d3';
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+ }
+
+ .orange:hover {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .orange:hover span {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .orange:active {
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+ }
+
+
+ .button-span-orange {
+    color: #fba93d;
+    padding: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    background: #3c4043;; 
+    letter-spacing: 2px;
+    border-radius: 3px;
+    font-size: 13px;
+ }

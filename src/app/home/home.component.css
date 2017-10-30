@@ -47,3 +47,54 @@
     border-radius: 3px;
     font-size: 13px;
  }
+
+
+ /* orange button css */
+
+ .orange {
+    display: flex;
+    border-radius: 3px;
+    display: inline-block;
+    padding-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background: #fba93d;
+    
+}
+
+.orange:after {
+    font-family: FontAwesome;
+    content: '\f061';
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+ }
+
+ .orange:hover {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .orange:hover span {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .orange:active {
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+ }
+
+
+ .button-span-orange {
+    color: #fba93d;
+    padding: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    background: #3c4043;; 
+    letter-spacing: 2px;
+    border-radius: 3px;
+    font-size: 13px;
+ }
