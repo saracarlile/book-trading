@@ -36,7 +36,7 @@ exports.i(__webpack_require__("../../../../css-loader/index.js?{\"sourceMap\":fa
 exports.i(__webpack_require__("../../../../css-loader/index.js?{\"sourceMap\":false,\"importLoaders\":1}!../../../../postcss-loader/index.js?{\"ident\":\"postcss\"}!../../../../font-awesome/css/font-awesome.css"), "");
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n.footer {\n    margin-top: 100px;\n}", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n.footer {\n    margin-top: 100px;\n}\n\n@media only screen and (max-width: 500px) {\n    .container {\n        padding: 5px;\n    }\n}", ""]);
 
 // exports
 
