@@ -1,8 +1,36 @@
 <div class="container">
-    <a (click)="consoleThis();"><span>Invite your friends</span></a>
-    <br>
-    <br>
+    <div class="row flex-column">
 
-    <a class="green" (click)="consoleThis();"><span class="button-span">SEARCH NOW</span></a>
+        <h4>My Profile</h4>
+        <p class="text-muted">Fill out your City and Sate in your profile to help facilitate meeting up for book exchanges.
+        </p>
+    </div>
+</div>
 
+<div class="container">
+
+    <div class="row flex-column col-6-profile">
+            <label for="basic-url">Name:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" aria-describedby="user-name" value="{{user.name}}" disabled >
+            </div>
+            <br>
+            <label for="basic-url">City:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" aria-describedby="user-city" value="{{user.city}}" [disabled]="isDisabled()">
+            </div>
+            <br>
+            <label for="basic-url">State:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" aria-describedby="user-state" value="{{user.state}}" [disabled]="isDisabled()" >
+            </div>
+            <br>
+            <div *ngIf="is_disabled === true">
+                <a class="orange"><span class="button-span-orange" (click)="editUserInfo()">Edit Profile Info</span></a>
+            </div>
+            <div *ngIf="is_disabled === false">
+                    <a class="blue"><span class="button-span-blue" (click)="saveEdit()">Save Profile Info</span></a>
+                    <a class="green"><span class="button-span-green" (click)="cancelEdit()">Cancel</span></a>
+            </div>
+    </div>
 </div>

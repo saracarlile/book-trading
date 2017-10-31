@@ -90,6 +90,16 @@ export class BooksService {
     .catch(this.handleError);
   }
 
+  public getUserInfo(): Observable<any[]> {
+    return this.http
+    .get('/api/get-user')
+    .map(response => {
+      const resp = response.json();
+      return resp;
+    })
+    .catch(this.handleError);
+  }
+
 
 
   private handleError (error: Response | any) {

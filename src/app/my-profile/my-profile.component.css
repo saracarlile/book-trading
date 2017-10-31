@@ -1,6 +1,110 @@
-body {
-    margin: 10px;   
+.col-6-profile {
+    max-width: 600px;
 }
+
+/* orange button css */
+
+.orange {
+    display: flex;
+    border-radius: 3px;
+    display: inline-block;
+    padding-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background: #fba93d;
+    
+}
+
+.orange:after {
+    font-family: FontAwesome;
+    content: '\f14b';
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+ }
+
+ .orange:hover {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .orange:hover span {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .orange:active {
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+ }
+
+
+ .button-span-orange {
+    color: #fba93d;
+    padding: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    background: #3c4043;; 
+    letter-spacing: 2px;
+    border-radius: 3px 0px 0px 3px;
+    font-size: 13px;
+ }
+
+
+ /* blue button css */
+
+.blue {
+    display: flex;
+    border-radius: 3px;
+    display: inline-block;
+    padding-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background: #00adef;
+    
+}
+
+.blue:after {
+    font-family: FontAwesome;
+    content: '\f0c7';
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+ }
+
+ .blue:hover {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .blue:hover span {
+    color: #fff;
+    cursor: pointer;
+ }
+
+ .blue:active {
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);
+ }
+
+
+ .button-span-blue {
+    color: #00adef;
+    padding: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    background: #3c4043;; 
+    letter-spacing: 2px;
+    border-radius: 3px 0px 0px 3px;
+    font-size: 13px;
+ }
+
+
+ /* green button css */
 
 .green {
     display: flex;
@@ -16,7 +120,7 @@ body {
 
 .green:after {
     font-family: FontAwesome;
-    content: '\f002';
+    content: '\f05e';
     color: white;
     display: inline-block;
     vertical-align: middle;
@@ -39,16 +143,19 @@ body {
  }
 
 
- .button-span {
+ .button-span-green {
     color: #b1cb36;
     padding: 10px;
     margin-right: 10px;
     display: inline-block;
     background: #3c4043;; 
     letter-spacing: 2px;
-    border-radius: 3px;
+    border-radius: 3px 0px 0px 3px;
     font-size: 13px;
  }
+
+
+
 
  /*https://jsfiddle.net/ProLoser/TxBdP/ nifty 2-tone CSS Button*/
 
