@@ -71,6 +71,12 @@
       margin: 0px 10px 10px 0px;
   }
 
+  .modal-content-view-details {
+    padding: 10px;
+    background-color: #EBEAEA;
+    margin: 0px 0px 10px 0px;
+  }
+
     .button {
         border-top: 1px solid #403d40;
         background: #0da100;
@@ -162,7 +168,7 @@
         display: inline-block;
         background: #3c4043;
         letter-spacing: 2px;
-        border-radius: 3px;
+        border-radius: 3px 0px 0px 3px;
         font-size: 13px;
     }
 
@@ -212,7 +218,7 @@
     display: inline-block;
     background: #3c4043;; 
     letter-spacing: 2px;
-    border-radius: 3px;
+    border-radius: 3px 0px 0px 3px;
     font-size: 13px;
  }
 
@@ -262,7 +268,7 @@
     display: inline-block;
     background: #3c4043;; 
     letter-spacing: 2px;
-    border-radius: 3px;
+    border-radius: 3px 0px 0px 3px;
     font-size: 13px;
  }
 
@@ -312,7 +318,7 @@
     display: inline-block;
     background: #3c4043;; 
     letter-spacing: 2px;
-    border-radius: 3px;
+    border-radius: 3px 0px 0px 3px;
     font-size: 13px;
  }
 
@@ -363,6 +369,6 @@
     display: inline-block;
     background: #3c4043;; 
     letter-spacing: 2px;
-    border-radius: 3px;
+    border-radius: 3px 0px 0px 3px;
     font-size: 13px;
  }
