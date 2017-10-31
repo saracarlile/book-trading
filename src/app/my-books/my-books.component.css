@@ -49,6 +49,14 @@
       border: 1px solid grey;
       width: 80%; /* Could be more or less, depending on screen size */
   }
+
+  .modal-content-box {
+    background-color: #ffffff;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid grey;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
   
   /* The Close Button */
   .close {
@@ -372,3 +380,10 @@
     border-radius: 3px 0px 0px 3px;
     font-size: 13px;
  }
+
+
+ @media only screen and (max-width: 500px) {
+    .modal-content-box {
+        padding: 5px;
+    }
+}
