@@ -17,12 +17,12 @@
             <br>
             <label for="basic-url">City:</label>
             <div class="input-group">
-                <input type="text" class="form-control" aria-describedby="user-city" value="{{user.city}}" [disabled]="isDisabled()">
+                <input type="text" class="form-control" aria-describedby="user-city" value="{{user.city}}"  [(ngModel)]="user.city" [disabled]="isDisabled()">
             </div>
             <br>
             <label for="basic-url">State:</label>
             <div class="input-group">
-                <input type="text" class="form-control" aria-describedby="user-state" value="{{user.state}}" [disabled]="isDisabled()" >
+                <input type="text" class="form-control" aria-describedby="user-state" value="{{user.state}}" [(ngModel)]="user.state" [disabled]="isDisabled()" >
             </div>
             <br>
             <div *ngIf="is_disabled === true">
@@ -30,7 +30,6 @@
             </div>
             <div *ngIf="is_disabled === false">
                     <a class="blue"><span class="button-span-blue" (click)="saveEdit()">Save Profile Info</span></a>
-                    <a class="green"><span class="button-span-green" (click)="cancelEdit()">Cancel</span></a>
             </div>
     </div>
 </div>

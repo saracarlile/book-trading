@@ -31,6 +31,7 @@ export class MyProfileComponent implements OnInit {
 
   private saveEdit() {
     this.is_disabled = true;
+    console.log(this.user.city);
   }
 
   private cancelEdit(){

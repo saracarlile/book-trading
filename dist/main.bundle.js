@@ -622,7 +622,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/my-profile/my-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row flex-column\">\n\n        <h4>My Profile</h4>\n        <p class=\"text-muted\">Fill out your City and Sate in your profile to help facilitate meeting up for book exchanges.\n        </p>\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <div class=\"row flex-column col-6-profile\">\n            <label for=\"basic-url\">Name:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-name\" value=\"{{user.name}}\" disabled >\n            </div>\n            <br>\n            <label for=\"basic-url\">City:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-city\" value=\"{{user.city}}\" [disabled]=\"isDisabled()\">\n            </div>\n            <br>\n            <label for=\"basic-url\">State:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-state\" value=\"{{user.state}}\" [disabled]=\"isDisabled()\" >\n            </div>\n            <br>\n            <div *ngIf=\"is_disabled === true\">\n                <a class=\"orange\"><span class=\"button-span-orange\" (click)=\"editUserInfo()\">Edit Profile Info</span></a>\n            </div>\n            <div *ngIf=\"is_disabled === false\">\n                    <a class=\"blue\"><span class=\"button-span-blue\" (click)=\"saveEdit()\">Save Profile Info</span></a>\n                    <a class=\"green\"><span class=\"button-span-green\" (click)=\"cancelEdit()\">Cancel</span></a>\n            </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row flex-column\">\n\n        <h4>My Profile</h4>\n        <p class=\"text-muted\">Fill out your City and Sate in your profile to help facilitate meeting up for book exchanges.\n        </p>\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <div class=\"row flex-column col-6-profile\">\n            <label for=\"basic-url\">Name:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-name\" value=\"{{user.name}}\" disabled >\n            </div>\n            <br>\n            <label for=\"basic-url\">City:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-city\" value=\"{{user.city}}\"  [(ngModel)]=\"user.city\" [disabled]=\"isDisabled()\">\n            </div>\n            <br>\n            <label for=\"basic-url\">State:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-state\" value=\"{{user.state}}\" [(ngModel)]=\"user.state\" [disabled]=\"isDisabled()\" >\n            </div>\n            <br>\n            <div *ngIf=\"is_disabled === true\">\n                <a class=\"orange\"><span class=\"button-span-orange\" (click)=\"editUserInfo()\">Edit Profile Info</span></a>\n            </div>\n            <div *ngIf=\"is_disabled === false\">\n                    <a class=\"blue\"><span class=\"button-span-blue\" (click)=\"saveEdit()\">Save Profile Info</span></a>\n            </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -645,6 +645,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MyProfileComponent = (function () {
+    /*
+  
+    edit(value){
+      this.preValue = value;  // Store original value in case the form is cancelled
+      this.editing = true;
+    }
+  
+    */
     function MyProfileComponent(bookService) {
         this.bookService = bookService;
         this.user = {
@@ -663,6 +671,7 @@ var MyProfileComponent = (function () {
     };
     MyProfileComponent.prototype.saveEdit = function () {
         this.is_disabled = true;
+        console.log(this.user.city);
     };
     MyProfileComponent.prototype.cancelEdit = function () {
         this.is_disabled = true;
