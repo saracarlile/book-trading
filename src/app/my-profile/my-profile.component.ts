@@ -12,47 +12,38 @@ import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
 })
 export class MyProfileComponent implements OnInit {
 
-  user = {
-    name: "Dave", 
-    city: "Dallas",
-    state: "Texas"
-  }
+  constructor(
+    private bookService: BooksService) { }
 
-  is_disabled = true;
+ 
+  
+  private user = {};
+
+  private is_disabled = true;
 
   private isDisabled() : boolean{
     return this.is_disabled;
   }
 
   private editUserInfo() {
-    console.log("Test edit");
     this.is_disabled = false;
   }
 
   private saveEdit() {
     this.is_disabled = true;
-    console.log(this.user.city);
+
+    let userUpdate = {
+      name: (<any>this).user.name,
+      state: (<any>this).user.state,
+      city: (<any>this).user.city
+    }
+
+    this.bookService.updateUserProfile(userUpdate);
   }
 
   private cancelEdit(){
     this.is_disabled = true;
   }
-
-  /*
-
-  edit(value){
-    this.preValue = value;  // Store original value in case the form is cancelled
-    this.editing = true;
-  }
-
-  */
- 
-
-
-
-  constructor(
-    private bookService: BooksService) { }
-
    
 
 
@@ -63,7 +54,9 @@ export class MyProfileComponent implements OnInit {
     .subscribe(
       (results) => {
         console.log(results);
-        this.user.name = results["name"];
+        (<any>this).user.name = results["name"];
+        (<any>this).user.city = results["city"];
+        (<any>this).user.state = results["state"];
       }
     );
     

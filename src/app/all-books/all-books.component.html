@@ -9,18 +9,18 @@
 <div class="container">
   
   <div class="row">
- <div *ngFor="let book of allBooks"  class="d-md-inline-flex">
+ <div *ngFor="let book of allBooks; let i = index;"  class="d-md-inline-flex">
       <div style="border: 1px solid grey;">
         <div class="no-stretch">
             <div *ngIf="book.bookImages != undefined"  style="margin-right: 20px; margin-bottom: 20px;">
-                <img src={{book.bookImages.thumbnail}}>
+                <img class="img-set-width" src={{book.bookImages.thumbnail}}>
             </div> 
         </div>
         <div class="book-details">
           <p><span class="h6">Title:</span> {{book.bookTitle}}</p>    
           <p><span class="h6">Author:</span> <span  *ngFor="let author of book.bookAuthors"> {{author}} </span></p>
           <p><span class="h6">Owner:</span> {{book.name}}</p>
-          <button class="btn btn-success">View <i class="fa fa-book" aria-hidden="true"></i></button>
+          <p><a class="green"><span class="button-span-green" (click)="viewBook(i)">View Book</span></a></p>
       </div>
     </div>
   </div>  
@@ -29,3 +29,30 @@
 </div><!--close row -->
 
 </div><!--close container -->
+
+
+ <!-- The Modal -->
+ <div id="myModal" class="modal" [style.display]="modalStyle ? 'block' : 'none'">
+  <!-- Modal content -->
+<div class="modal-content">
+  <div>
+      <div>
+          <div style="border: 1px solid grey; max-width: 1050px;" class="fix-width-modal-content">
+            <div style="display: flex; flex-wrap: wrap; align-items: flex-start;"> 
+               <div *ngIf="modalBook.bookImages != undefined">
+                <img class="modal-book-view" src="{{modalBook.bookImages.thumbnail}}"> 
+               </div>
+                <div style="display: flex; flex-direction: column;">
+                  <p><span class="h6">Title:</span> {{modalBook.bookTitle}}</p>
+                  <p><span class="h6">Author:</span> <span  *ngFor="let author of modalBook.bookAuthors"> {{author}}  </span></p> 
+                  <p  style="max-width: 550px"><span class="h6">Description: </span> {{ modalBook.bookDescription}}</p>
+                  <p><span class="h6">Book Owner:</span>  {{modalBook.name}} </p>
+                </div>
+            </div>    
+        </div>       
+      </div><!-- close div row -->      
+  </div><!-- close div *ngIf -->
+  <p class="btn-move"><a class="green"><span class="button-span-green" (click)="closeModal()">Close</span></a></p>   
+</div><!-- close Modal content -->
+
+</div><!-- close Modal -->

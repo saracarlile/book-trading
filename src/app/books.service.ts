@@ -100,6 +100,12 @@ export class BooksService {
     .catch(this.handleError);
   }
 
+  public updateUserProfile(userInfo) {  //add book to my library
+    const body = userInfo;
+    const req = this.http.post('/api/update-user-info', body);
+    req.subscribe(getResponse => console.log(getResponse));
+  }
+
 
 
   private handleError (error: Response | any) {

@@ -17,9 +17,25 @@ export class AllBooksComponent implements OnInit {
 
   private results = <any>[];
   private allBooks = [];
+  private modalStyle = false;  //modal style set to 'display: none' on page load
+  private modalBook = {};
+
 
   constructor(
     private bookService: BooksService) { }
+
+
+   private viewBook(index) {
+     console.log(this.allBooks[index]);
+     this.modalStyle = true;
+     this.modalBook = this.allBooks[index];
+     console.log((<any>this).modalBook.bookImages.thumbnail);
+   } 
+
+   private closeModal() {
+    this.modalStyle = false;
+    console.log("clicked closeMOdal!!");
+   }
 
 
   ngOnInit(): void {
@@ -34,11 +50,9 @@ export class AllBooksComponent implements OnInit {
         this.results = result;
         for(let i = 0; i < this.results.length; i++ ){  
           for(let j = 0; j < (<any>this).results[i].books.length; j++){
-            console.log((<any>this).results[i].books[j]);
             let currentBookObject = (<any>this).results[i].books[j];
-            console.log((<any>this).results[i].name);
-            currentBookObject.name = (<any>this).results[i].name;
-            this.allBooks.push(currentBookObject);
+            currentBookObject.name = (<any>this).results[i].name;  //build one object for DOM that contains book and user name
+            this.allBooks.push(currentBookObject);   //add each book plus user name to allBooks array, which is used to build all books view
           }
         }
       }

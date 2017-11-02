@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 
 import { BooksService } from './books.service';
+import { MyTradesComponent } from './my-trades/my-trades.component';
 
 
 const appRoutes: Routes = [
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   { path: 'all-books',      component: AllBooksComponent },
   {path: 'profile', component: MyProfileComponent},
   {path: 'my-books', component: MyBooksComponent},
+  {path: 'my-trades', component: MyTradesComponent},
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
     MyBooksComponent,
     MyProfileComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    MyTradesComponent
   ],
   imports: [
     FormsModule,

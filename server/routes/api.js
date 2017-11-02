@@ -83,6 +83,18 @@ router.get('/get-user', (req, res) => {    //John will be test user
   });
 });
 
+router.post('/update-user-info', (req, res) => {    //John will be test user
+  let user = req.body.name;
+  let userInfo = {
+    name: req.body.name,
+    city: req.body.city,
+    state: req.body.state
+  }
+  User.findOneAndUpdate({'name': user}, { '$set': { 'state': userInfo.state, 'city': userInfo.city} }).exec(function(err, result){
+    res.send(result + " OK UPDATED USER INFO");
+  });
+});
+
 
 
 module.exports = router;

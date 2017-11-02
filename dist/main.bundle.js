@@ -21,7 +21,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".d-md-inline-flex {\r\n    padding: 20px 20px 20px 0px;   \r\n}\r\n\r\n.d-md-inline-flex div {\r\n    background-color:#E0E0E0;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    padding: 5px;\r\n    max-width: 350px;\r\n}\r\n\r\n.no-stretch {\r\n    width: 140px;\r\n}\r\n\r\nimg {\r\n    width: 128px;\r\n    \r\n}\r\n\r\n.book-details {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n        -ms-flex-direction: column;\r\n            flex-direction: column;\r\n    margin-left: 5px;\r\n}", ""]);
+exports.push([module.i, ".d-md-inline-flex {\r\n    padding: 20px 20px 20px 0px;   \r\n}\r\n\r\n.d-md-inline-flex div {\r\n    background-color:#E0E0E0;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    padding: 5px;\r\n    max-width: 350px;\r\n}\r\n\r\n.no-stretch {\r\n    width: 140px;\r\n}\r\n\r\n.img-set-width {\r\n    width: 128px;  \r\n}\r\n\r\n.modal-book-view {\r\n    margin-right: 20px; \r\n    margin-bottom: 20px;\r\n    margin: 5px 20px 20px 20px;\r\n    border: 1px solid grey;\r\n}\r\n\r\n.book-details {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n        -ms-flex-direction: column;\r\n            flex-direction: column;\r\n    margin-left: 5px;\r\n}\r\n\r\n/* green button css */\r\n\r\n.green {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    border-radius: 3px;\r\n    display: inline-block;\r\n    padding-right: 10px;\r\n    color: #fff;\r\n    text-decoration: none;\r\n    font-family: \"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif;\r\n    background: #b1cb36;\r\n    \r\n}\r\n\r\n.green:after {\r\n    font-family: FontAwesome;\r\n    content: '\\F02D';\r\n    color: white;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n }\r\n\r\n .green:hover {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .green:hover span {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .green:active {\r\n    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n }\r\n\r\n\r\n .button-span-green {\r\n    color: #b1cb36;\r\n    padding: 10px;\r\n    margin-right: 10px;\r\n    display: inline-block;\r\n    background: #3c4043;; \r\n    letter-spacing: 2px;\r\n    border-radius: 3px 0px 0px 3px;\r\n    font-size: 13px;\r\n }\r\n\r\n .btn-move {\r\n     margin-top: 20px;\r\n }\r\n\r\n /* The Modal (background) */\r\n.modal {\r\n    /*   display: none; Hidden by default */\r\n      position: fixed; /* Stay in place */\r\n      z-index: 1; /* Sit on top */\r\n      left: 0;\r\n      top: 0;\r\n      width: 100%; /* Full width */\r\n      height: 100%; /* Full height */\r\n      overflow: auto; /* Enable scroll if needed */\r\n      background-color: rgb(0,0,0); /* Fallback color */\r\n      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n  }\r\n\r\n  .no-stretch {\r\n    width: 140px;\r\n}\r\n  \r\n  /* Modal Content/Box */\r\n  .modal-content {\r\n      background-color: #ffffff;\r\n      margin: 15% auto; /* 15% from the top and centered */\r\n      padding: 20px;\r\n      border: 1px solid grey;\r\n      width: 80%; /* Could be more or less, depending on screen size */\r\n  }\r\n\r\n  .modal-content-box {\r\n    background-color: #ffffff;\r\n    margin: 15% auto; /* 15% from the top and centered */\r\n    padding: 20px;\r\n    border: 1px solid grey;\r\n    width: 80%; /* Could be more or less, depending on screen size */\r\n}\r\n  ", ""]);
 
 // exports
 
@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/all-books/all-books.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row flex-column\">\n\n    <h4>All Books</h4>\n    <p class=\"text-muted\">Review all books on Booktraders. <br> Press the \"View Details\" link to read a book's description and request a trade.</p>\n  </div>\n</div>\n\n<div class=\"container\">\n  \n  <div class=\"row\">\n <div *ngFor=\"let book of allBooks\"  class=\"d-md-inline-flex\">\n      <div style=\"border: 1px solid grey;\">\n        <div class=\"no-stretch\">\n            <div *ngIf=\"book.bookImages != undefined\"  style=\"margin-right: 20px; margin-bottom: 20px;\">\n                <img src={{book.bookImages.thumbnail}}>\n            </div> \n        </div>\n        <div class=\"book-details\">\n          <p><span class=\"h6\">Title:</span> {{book.bookTitle}}</p>    \n          <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of book.bookAuthors\"> {{author}} </span></p>\n          <p><span class=\"h6\">Owner:</span> {{book.name}}</p>\n          <button class=\"btn btn-success\">View <i class=\"fa fa-book\" aria-hidden=\"true\"></i></button>\n      </div>\n    </div>\n  </div>  \n\n\n</div><!--close row -->\n\n</div><!--close container -->"
+module.exports = "<div class=\"container\">\n  <div class=\"row flex-column\">\n\n    <h4>All Books</h4>\n    <p class=\"text-muted\">Review all books on Booktraders. <br> Press the \"View Details\" link to read a book's description and request a trade.</p>\n  </div>\n</div>\n\n<div class=\"container\">\n  \n  <div class=\"row\">\n <div *ngFor=\"let book of allBooks; let i = index;\"  class=\"d-md-inline-flex\">\n      <div style=\"border: 1px solid grey;\">\n        <div class=\"no-stretch\">\n            <div *ngIf=\"book.bookImages != undefined\"  style=\"margin-right: 20px; margin-bottom: 20px;\">\n                <img class=\"img-set-width\" src={{book.bookImages.thumbnail}}>\n            </div> \n        </div>\n        <div class=\"book-details\">\n          <p><span class=\"h6\">Title:</span> {{book.bookTitle}}</p>    \n          <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of book.bookAuthors\"> {{author}} </span></p>\n          <p><span class=\"h6\">Owner:</span> {{book.name}}</p>\n          <p><a class=\"green\"><span class=\"button-span-green\" (click)=\"viewBook(i)\">View Book</span></a></p>\n      </div>\n    </div>\n  </div>  \n\n\n</div><!--close row -->\n\n</div><!--close container -->\n\n\n <!-- The Modal -->\n <div id=\"myModal\" class=\"modal\" [style.display]=\"modalStyle ? 'block' : 'none'\">\n  <!-- Modal content -->\n<div class=\"modal-content\">\n  <div>\n      <div>\n          <div style=\"border: 1px solid grey; max-width: 1050px;\" class=\"fix-width-modal-content\">\n            <div style=\"display: flex; flex-wrap: wrap; align-items: flex-start;\"> \n               <div *ngIf=\"modalBook.bookImages != undefined\">\n                <img class=\"modal-book-view\" src=\"{{modalBook.bookImages.thumbnail}}\"> \n               </div>\n                <div style=\"display: flex; flex-direction: column;\">\n                  <p><span class=\"h6\">Title:</span> {{modalBook.bookTitle}}</p>\n                  <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of modalBook.bookAuthors\"> {{author}}  </span></p> \n                  <p  style=\"max-width: 550px\"><span class=\"h6\">Description: </span> {{ modalBook.bookDescription}}</p>\n                  <p><span class=\"h6\">Book Owner:</span>  {{modalBook.name}} </p>\n                </div>\n            </div>    \n        </div>       \n      </div><!-- close div row -->      \n  </div><!-- close div *ngIf -->\n  <p class=\"btn-move\"><a class=\"green\"><span class=\"button-span-green\" (click)=\"closeModal()\">Close</span></a></p>   \n</div><!-- close Modal content -->\n\n</div><!-- close Modal -->\n"
 
 /***/ }),
 
@@ -64,7 +64,19 @@ var AllBooksComponent = (function () {
         this.bookService = bookService;
         this.results = [];
         this.allBooks = [];
+        this.modalStyle = false; //modal style set to 'display: none' on page load
+        this.modalBook = {};
     }
+    AllBooksComponent.prototype.viewBook = function (index) {
+        console.log(this.allBooks[index]);
+        this.modalStyle = true;
+        this.modalBook = this.allBooks[index];
+        console.log(this.modalBook.bookImages.thumbnail);
+    };
+    AllBooksComponent.prototype.closeModal = function () {
+        this.modalStyle = false;
+        console.log("clicked closeMOdal!!");
+    };
     AllBooksComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.bookService
@@ -74,11 +86,9 @@ var AllBooksComponent = (function () {
             _this.results = result;
             for (var i = 0; i < _this.results.length; i++) {
                 for (var j = 0; j < _this.results[i].books.length; j++) {
-                    console.log(_this.results[i].books[j]);
                     var currentBookObject = _this.results[i].books[j];
-                    console.log(_this.results[i].name);
-                    currentBookObject.name = _this.results[i].name;
-                    _this.allBooks.push(currentBookObject);
+                    currentBookObject.name = _this.results[i].name; //build one object for DOM that contains book and user name
+                    _this.allBooks.push(currentBookObject); //add each book plus user name to allBooks array, which is used to build all books view
                 }
             }
         });
@@ -120,7 +130,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" href=\"#\">Booktraders</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\n          </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">Log Out</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n<div style=\"margin-top: 100px;\" class=\"mobile-fix\">\n\n<router-outlet></router-outlet>\n\n</div><!-- close div -->\n\n  <!-- Site footer -->\n  <div class=\"container\">\n    <footer class=\"footer\">\n      <p>&copy; Company 2017</p>\n    </footer>\n</div>"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" href=\"#\">Booktraders</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/my-trades\" routerLinkActive=\"active\">My Trades</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">Log Out</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n<div style=\"margin-top: 100px;\" class=\"mobile-fix\">\n\n<router-outlet></router-outlet>\n\n</div><!-- close div -->\n\n  <!-- Site footer -->\n  <div class=\"container\">\n    <footer class=\"footer\">\n      <p>&copy; Company 2017</p>\n    </footer>\n</div>"
 
 /***/ }),
 
@@ -173,6 +183,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/page-not-found/page-not-found.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__books_service__ = __webpack_require__("../../../../../src/app/books.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__my_trades_my_trades_component__ = __webpack_require__("../../../../../src/app/my-trades/my-trades.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -193,11 +204,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var appRoutes = [
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_11__home_home_component__["a" /* HomeComponent */] },
     { path: 'all-books', component: __WEBPACK_IMPORTED_MODULE_7__all_books_all_books_component__["a" /* AllBooksComponent */] },
     { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_9__my_profile_my_profile_component__["a" /* MyProfileComponent */] },
     { path: 'my-books', component: __WEBPACK_IMPORTED_MODULE_8__my_books_my_books_component__["a" /* MyBooksComponent */] },
+    { path: 'my-trades', component: __WEBPACK_IMPORTED_MODULE_13__my_trades_my_trades_component__["a" /* MyTradesComponent */] },
     { path: '',
         redirectTo: '/home',
         pathMatch: 'full'
@@ -217,7 +230,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_8__my_books_my_books_component__["a" /* MyBooksComponent */],
             __WEBPACK_IMPORTED_MODULE_9__my_profile_my_profile_component__["a" /* MyProfileComponent */],
             __WEBPACK_IMPORTED_MODULE_10__page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__home_home_component__["a" /* HomeComponent */]
+            __WEBPACK_IMPORTED_MODULE_11__home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__my_trades_my_trades_component__["a" /* MyTradesComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
@@ -345,6 +359,11 @@ var BooksService = (function () {
         })
             .catch(this.handleError);
     };
+    BooksService.prototype.updateUserProfile = function (userInfo) {
+        var body = userInfo;
+        var req = this.http.post('/api/update-user-info', body);
+        req.subscribe(function (getResponse) { return console.log(getResponse); });
+    };
     BooksService.prototype.handleError = function (error) {
         console.error('BooksService::handleError', error);
         return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].throw(error);
@@ -382,7 +401,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = " <!-- Jumbotron -->\n<div class=\"container\">\n  <div class=\"jumbotron text-center\" style=\"background-image: url('https://cdn.pixabay.com/photo/2016/11/18/16/49/books-1835753__340.jpg'); color: white;\">\n      <h1>Booktraders</h1>\n      <p class=\"lead\">A book trading website for book lovers!</p>\n    </div>\n</div>\n<div class=\"container\">\n  <!-- Example row of columns -->\n  <div class=\"row\">\n    <div class=\"col-lg-4\">\n      <h4>My Books</h4>\n      <p>View your library, and new books to your collection using the Google Books API.</p>\n      <p><a routerLink=\"/my-books\" class=\"green\"><span class=\"button-span\">My Library</span></a></p>\n    </div>\n    <div class=\"col-lg-4\">\n      <h4>View Books</h4>\n      <p>View all books other Booktraders users have added.</p>\n      <p><a routerLink=\"/all-books\" class=\"orange\"><span class=\"button-span-orange\">All Books</span></a></p>\n    </div>\n    <div class=\"col-lg-4\">\n      <h4>Trade Books</h4>\n      <p>If you see a book you want to read on the list, you can propose a trade.  You can also approve trades other users request for books in your library.</p>\n      <p><a routerLink=\"/my-books\" class=\"green\"><span class=\"button-span\">Trade Requests</span></a></p>\n    </div>\n  </div>\n</div><!-- close container -->\n\n\n"
+module.exports = " <!-- Jumbotron -->\n<div class=\"container\">\n  <div class=\"jumbotron text-center\" style=\"background-image: url('https://cdn.pixabay.com/photo/2016/11/18/16/49/books-1835753__340.jpg'); color: white;\">\n      <h1>Booktraders</h1>\n      <p class=\"lead\">A book trading website for book lovers!</p>\n    </div>\n</div>\n<div class=\"container\">\n  <!-- Example row of columns -->\n  <div class=\"row\">\n    <div class=\"col-lg-4\">\n      <h4>My Books</h4>\n      <p>View your library, and new books to your collection using the Google Books API.</p>\n      <p><a routerLink=\"/my-books\" class=\"green\"><span class=\"button-span\">My Library</span></a></p>\n    </div>\n    <div class=\"col-lg-4\">\n      <h4>View Books</h4>\n      <p>View all books other Booktraders users have added.</p>\n      <p><a routerLink=\"/all-books\" class=\"orange\"><span class=\"button-span-orange\">All Books</span></a></p>\n    </div>\n    <div class=\"col-lg-4\">\n      <h4>Trade Books</h4>\n      <p>If you see a book you want to read on the list, you can propose a trade.  You can also approve trades other users request for books in your library.</p>\n      <p><a routerLink=\"/my-trades\" class=\"green\"><span class=\"button-span\">Trade Requests</span></a></p>\n    </div>\n  </div>\n</div><!-- close container -->\n\n\n"
 
 /***/ }),
 
@@ -645,33 +664,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MyProfileComponent = (function () {
-    /*
-  
-    edit(value){
-      this.preValue = value;  // Store original value in case the form is cancelled
-      this.editing = true;
-    }
-  
-    */
     function MyProfileComponent(bookService) {
         this.bookService = bookService;
-        this.user = {
-            name: "Dave",
-            city: "Dallas",
-            state: "Texas"
-        };
+        this.user = {};
         this.is_disabled = true;
     }
     MyProfileComponent.prototype.isDisabled = function () {
         return this.is_disabled;
     };
     MyProfileComponent.prototype.editUserInfo = function () {
-        console.log("Test edit");
         this.is_disabled = false;
     };
     MyProfileComponent.prototype.saveEdit = function () {
         this.is_disabled = true;
-        console.log(this.user.city);
+        var userUpdate = {
+            name: this.user.name,
+            state: this.user.state,
+            city: this.user.city
+        };
+        this.bookService.updateUserProfile(userUpdate);
     };
     MyProfileComponent.prototype.cancelEdit = function () {
         this.is_disabled = true;
@@ -683,6 +694,8 @@ var MyProfileComponent = (function () {
             .subscribe(function (results) {
             console.log(results);
             _this.user.name = results["name"];
+            _this.user.city = results["city"];
+            _this.user.state = results["state"];
         });
     };
     return MyProfileComponent;
@@ -698,6 +711,67 @@ MyProfileComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=my-profile.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/my-trades/my-trades.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/my-trades/my-trades.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <div class=\"row flex-column\">\n\n      <h4>My Trade Requests</h4>\n      <p class=\"text-muted\">View and approve Trade Requests from other users on Booktraders.\n      </p>\n  </div>\n</div>\n\n<div class=\"container\">\n\n  <div class=\"row flex-column\">\n     <p>Trade request 1</p>\n     <p>Trade request 2</p>\n     <p>Trade request 3</p>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/my-trades/my-trades.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyTradesComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MyTradesComponent = (function () {
+    function MyTradesComponent() {
+    }
+    MyTradesComponent.prototype.ngOnInit = function () {
+    };
+    return MyTradesComponent;
+}());
+MyTradesComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'app-my-trades',
+        template: __webpack_require__("../../../../../src/app/my-trades/my-trades.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/my-trades/my-trades.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], MyTradesComponent);
+
+//# sourceMappingURL=my-trades.component.js.map
 
 /***/ }),
 
