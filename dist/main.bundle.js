@@ -96,7 +96,7 @@ var AllBooksComponent = (function () {
     return AllBooksComponent;
 }());
 AllBooksComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-all-books',
         template: __webpack_require__("../../../../../src/app/all-books/all-books.component.html"),
         styles: [__webpack_require__("../../../../../src/app/all-books/all-books.component.css")]
@@ -130,7 +130,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" href=\"#\">Booktraders</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/my-trades\" routerLinkActive=\"active\">My Trades</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">Log Out</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n<div style=\"margin-top: 100px;\" class=\"mobile-fix\">\n\n<router-outlet></router-outlet>\n\n</div><!-- close div -->\n\n  <!-- Site footer -->\n  <div class=\"container\">\n    <footer class=\"footer\">\n      <p>&copy; Company 2017</p>\n    </footer>\n</div>"
+module.exports = "<app-login></app-login>\n\n\n<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" href=\"#\">Booktraders</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/my-trades\" routerLinkActive=\"active\">My Trades</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">Log Out</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n\n\n<div style=\"margin-top: 100px;\" class=\"mobile-fix\">\n\n<router-outlet></router-outlet>\n\n</div><!-- close div -->\n\n  <!-- Site footer -->\n  <div class=\"container\">\n    <footer class=\"footer\">\n      <p>&copy; Company 2017</p>\n    </footer>\n</div>"
 
 /***/ }),
 
@@ -154,7 +154,7 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 AppComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-root',
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
@@ -184,6 +184,10 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__books_service__ = __webpack_require__("../../../../../src/app/books.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__my_trades_my_trades_component__ = __webpack_require__("../../../../../src/app/my-trades/my-trades.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__ = __webpack_require__("../../../../ng4-social-login/ng4-social-login.umd.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ng4_social_login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_ng4_social_login__);
+/* unused harmony export provideConfig */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -205,6 +209,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+var CONFIG = new __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["AuthServiceConfig"]([
+    {
+        id: __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["FacebookLoginProvider"].PROVIDER_ID,
+        //   provider: new FacebookLoginProvider('Facebook-App-Id')
+        provider: new __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["FacebookLoginProvider"]('537893046561529')
+    },
+]);
+function provideConfig() {
+    return CONFIG;
+}
 var appRoutes = [
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_11__home_home_component__["a" /* HomeComponent */] },
     { path: 'all-books', component: __WEBPACK_IMPORTED_MODULE_7__all_books_all_books_component__["a" /* AllBooksComponent */] },
@@ -223,7 +239,7 @@ var AppModule = (function () {
     return AppModule;
 }());
 AppModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_7__all_books_all_books_component__["a" /* AllBooksComponent */],
@@ -231,15 +247,21 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_9__my_profile_my_profile_component__["a" /* MyProfileComponent */],
             __WEBPACK_IMPORTED_MODULE_10__page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
             __WEBPACK_IMPORTED_MODULE_11__home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__my_trades_my_trades_component__["a" /* MyTradesComponent */]
+            __WEBPACK_IMPORTED_MODULE_13__my_trades_my_trades_component__["a" /* MyTradesComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__login_login_component__["a" /* LoginComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot(appRoutes),
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* HttpModule */]
+            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["SocialLoginModule"]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_12__books_service__["a" /* BooksService */]],
+        providers: [
+            __WEBPACK_IMPORTED_MODULE_12__books_service__["a" /* BooksService */],
+            { provide: __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["AuthServiceConfig"],
+                useFactory: provideConfig }
+        ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -371,7 +393,7 @@ var BooksService = (function () {
     return BooksService;
 }());
 BooksService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], BooksService);
 
@@ -429,7 +451,7 @@ var HomeComponent = (function () {
     return HomeComponent;
 }());
 HomeComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-home',
         template: __webpack_require__("../../../../../src/app/home/home.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/home.component.css")]
@@ -438,6 +460,83 @@ HomeComponent = __decorate([
 ], HomeComponent);
 
 //# sourceMappingURL=home.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/login/login.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/login/login.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  login works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/login/login.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng4_social_login__ = __webpack_require__("../../../../ng4-social-login/ng4-social-login.umd.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng4_social_login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_ng4_social_login__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var LoginComponent = (function () {
+    function LoginComponent(authService) {
+        this.authService = authService;
+    }
+    LoginComponent.prototype.signInWithFB = function () {
+        this.authService.signIn(__WEBPACK_IMPORTED_MODULE_1_ng4_social_login__["FacebookLoginProvider"].PROVIDER_ID);
+    };
+    LoginComponent.prototype.signOut = function () {
+        this.authService.signOut();
+    };
+    LoginComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.authService.authState.subscribe(function (user) {
+            _this.user = user;
+            _this.loggedIn = (user != null);
+        });
+    };
+    return LoginComponent;
+}());
+LoginComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-login',
+        template: __webpack_require__("../../../../../src/app/login/login.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/login/login.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ng4_social_login__["AuthService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ng4_social_login__["AuthService"]) === "function" && _a || Object])
+], LoginComponent);
+
+var _a;
+//# sourceMappingURL=login.component.js.map
 
 /***/ }),
 
@@ -607,7 +706,7 @@ var MyBooksComponent = (function () {
     return MyBooksComponent;
 }());
 MyBooksComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-my-books',
         template: __webpack_require__("../../../../../src/app/my-books/my-books.component.html"),
         styles: [__webpack_require__("../../../../../src/app/my-books/my-books.component.css")]
@@ -701,7 +800,7 @@ var MyProfileComponent = (function () {
     return MyProfileComponent;
 }());
 MyProfileComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-my-profile',
         template: __webpack_require__("../../../../../src/app/my-profile/my-profile.component.html"),
         styles: [__webpack_require__("../../../../../src/app/my-profile/my-profile.component.css")]
@@ -763,7 +862,7 @@ var MyTradesComponent = (function () {
     return MyTradesComponent;
 }());
 MyTradesComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-my-trades',
         template: __webpack_require__("../../../../../src/app/my-trades/my-trades.component.html"),
         styles: [__webpack_require__("../../../../../src/app/my-trades/my-trades.component.css")]
@@ -824,7 +923,7 @@ var PageNotFoundComponent = (function () {
     return PageNotFoundComponent;
 }());
 PageNotFoundComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-page-not-found',
         template: __webpack_require__("../../../../../src/app/page-not-found/page-not-found.component.html"),
         styles: [__webpack_require__("../../../../../src/app/page-not-found/page-not-found.component.css")]
@@ -867,7 +966,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* enableProdMode */])();
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
 //# sourceMappingURL=main.js.map

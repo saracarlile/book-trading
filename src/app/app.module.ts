@@ -18,6 +18,31 @@ import { BooksService } from './books.service';
 import { MyTradesComponent } from './my-trades/my-trades.component';
 
 
+import { LoginComponent } from './login/login.component';
+import {
+  SocialLoginModule, 
+  AuthServiceConfig,
+  FacebookLoginProvider
+} from 'ng4-social-login';
+
+
+
+const CONFIG = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+ //   provider: new FacebookLoginProvider('Facebook-App-Id')
+    provider: new FacebookLoginProvider('537893046561529')
+  },
+]);
+
+
+export function provideConfig() {
+  return CONFIG;
+}
+
+
+
+
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'all-books',      component: AllBooksComponent },
@@ -40,7 +65,8 @@ const appRoutes: Routes = [
     MyProfileComponent,
     PageNotFoundComponent,
     HomeComponent,
-    MyTradesComponent
+    MyTradesComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
@@ -49,9 +75,14 @@ const appRoutes: Routes = [
     //  { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
-    HttpModule
+    HttpModule,
+    SocialLoginModule
   ],
-  providers: [BooksService],
+  providers: [
+    BooksService,
+    {provide: AuthServiceConfig,
+      useFactory: provideConfig}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
