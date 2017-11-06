@@ -21,8 +21,12 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/profile" routerLinkActive="active">My Profile</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Log Out</a>
+        <div ></div>
+        <li class="nav-item" *ngIf="user == undefined">
+            <a class="nav-link"  (click)="signInWithFB()">Log In</a>
+        </li>
+        <li class="nav-item" *ngIf="user != undefined"> 
+          <a class="nav-link" (click)="signOut()">Log Out</a>
         </li>
       </ul>
     </div>
@@ -36,7 +40,7 @@
     <p>{{ user.name }}</p>
     <p>{{ user.email }}</p>
 </div>
-
+<!--
 <button (click)="signInWithFB()">Sign In with Facebook</button>
 
-<button (click)="signOut()">Sign Out with Facebook</button>
+<button (click)="signOut()">Sign Out with Facebook</button>-->
