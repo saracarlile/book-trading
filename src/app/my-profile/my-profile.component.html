@@ -9,7 +9,7 @@
 
 <div class="container">
 
-    <div class="row flex-column col-6-profile">
+    <div class="row flex-column col-6-profile" *ngIf="user != undefined">
             <label for="basic-url">Name:</label>
             <div class="input-group">
                 <input type="text" class="form-control" aria-describedby="user-name" value="{{user.name}}" disabled >
@@ -31,5 +31,11 @@
             <div *ngIf="is_disabled === false">
                     <a class="blue"><span class="button-span-blue" (click)="saveEdit()">Save Profile Info</span></a>
             </div>
+    </div>
+
+    <div *ngIf="fbUser != undefined">
+        <img src='{{ fbUser.photoUrl }}'>
+          <p>{{ fbUser.name }}</p>
+          <p>{{ fbUser.email }}</p>
     </div>
 </div>

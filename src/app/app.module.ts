@@ -16,9 +16,25 @@ import { HomeComponent } from './home/home.component';
 
 import { BooksService } from './books.service';
 import { MyTradesComponent } from './my-trades/my-trades.component';
-
-
 import { LoginComponent } from './login/login.component';
+
+import {
+  SocialLoginModule, 
+  AuthServiceConfig,
+  FacebookLoginProvider
+} from 'ng4-social-login';
+
+const CONFIG = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    //provider: new FacebookLoginProvider('Facebook-App-Id')
+    provider: new FacebookLoginProvider('1074503412653371')
+  }
+]);
+
+export function provideConfig() {
+  return CONFIG;
+}
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -52,10 +68,15 @@ const appRoutes: Routes = [
     //  { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
-    HttpModule
+    HttpModule,
+    SocialLoginModule
   ],
   providers: [
-    BooksService
+    BooksService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

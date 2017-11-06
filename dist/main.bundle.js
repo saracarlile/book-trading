@@ -130,7 +130,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-login></app-login>\n\n\n<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" href=\"#\">Booktraders</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/my-trades\" routerLinkActive=\"active\">My Trades</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">Log Out</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n\n\n<div style=\"margin-top: 100px;\" class=\"mobile-fix\">\n\n<router-outlet></router-outlet>\n\n</div><!-- close div -->\n\n  <!-- Site footer -->\n  <div class=\"container\">\n    <footer class=\"footer\">\n      <p>&copy; Company 2017</p>\n    </footer>\n</div>"
+module.exports = "\n\n<app-login></app-login>\n\n<div style=\"margin-top: 100px;\" class=\"mobile-fix\">\n\n<router-outlet></router-outlet>\n\n</div><!-- close div -->\n\n  <!-- Site footer -->\n  <div class=\"container\">\n    <footer class=\"footer\">\n      \n      <p>&copy; Company 2017</p>\n    </footer>\n</div>"
 
 /***/ }),
 
@@ -214,9 +214,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var CONFIG = new __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["AuthServiceConfig"]([
     {
         id: __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["FacebookLoginProvider"].PROVIDER_ID,
-        //   provider: new FacebookLoginProvider('Facebook-App-Id')
-        provider: new __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["FacebookLoginProvider"]('537893046561529')
-    },
+        //provider: new FacebookLoginProvider('Facebook-App-Id')
+        provider: new __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["FacebookLoginProvider"]('1074503412653371')
+    }
 ]);
 function provideConfig() {
     return CONFIG;
@@ -259,8 +259,10 @@ AppModule = __decorate([
         ],
         providers: [
             __WEBPACK_IMPORTED_MODULE_12__books_service__["a" /* BooksService */],
-            { provide: __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["AuthServiceConfig"],
-                useFactory: provideConfig }
+            {
+                provide: __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["AuthServiceConfig"],
+                useFactory: provideConfig
+            }
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
     })
@@ -484,7 +486,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  login works!\n</p>\n"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" href=\"#\">Booktraders</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/my-trades\" routerLinkActive=\"active\">My Trades</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">Log Out</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n<p>\n  login works!\n</p>\n<div *ngIf=\"user != undefined\">\n  <img src='{{ user.photoUrl }}'>\n    <p>{{ user.name }}</p>\n    <p>{{ user.email }}</p>\n</div>\n\n<button (click)=\"signInWithFB()\">Sign In with Facebook</button>\n\n<button (click)=\"signOut()\">Sign Out with Facebook</button>"
 
 /***/ }),
 
@@ -740,7 +742,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/my-profile/my-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row flex-column\">\n\n        <h4>My Profile</h4>\n        <p class=\"text-muted\">Fill out your City and Sate in your profile to help facilitate meeting up for book exchanges.\n        </p>\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <div class=\"row flex-column col-6-profile\">\n            <label for=\"basic-url\">Name:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-name\" value=\"{{user.name}}\" disabled >\n            </div>\n            <br>\n            <label for=\"basic-url\">City:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-city\" value=\"{{user.city}}\"  [(ngModel)]=\"user.city\" [disabled]=\"isDisabled()\">\n            </div>\n            <br>\n            <label for=\"basic-url\">State:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-state\" value=\"{{user.state}}\" [(ngModel)]=\"user.state\" [disabled]=\"isDisabled()\" >\n            </div>\n            <br>\n            <div *ngIf=\"is_disabled === true\">\n                <a class=\"orange\"><span class=\"button-span-orange\" (click)=\"editUserInfo()\">Edit Profile Info</span></a>\n            </div>\n            <div *ngIf=\"is_disabled === false\">\n                    <a class=\"blue\"><span class=\"button-span-blue\" (click)=\"saveEdit()\">Save Profile Info</span></a>\n            </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row flex-column\">\n\n        <h4>My Profile</h4>\n        <p class=\"text-muted\">Fill out your City and Sate in your profile to help facilitate meeting up for book exchanges.\n        </p>\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <div class=\"row flex-column col-6-profile\" *ngIf=\"user != undefined\">\n            <label for=\"basic-url\">Name:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-name\" value=\"{{user.name}}\" disabled >\n            </div>\n            <br>\n            <label for=\"basic-url\">City:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-city\" value=\"{{user.city}}\"  [(ngModel)]=\"user.city\" [disabled]=\"isDisabled()\">\n            </div>\n            <br>\n            <label for=\"basic-url\">State:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-state\" value=\"{{user.state}}\" [(ngModel)]=\"user.state\" [disabled]=\"isDisabled()\" >\n            </div>\n            <br>\n            <div *ngIf=\"is_disabled === true\">\n                <a class=\"orange\"><span class=\"button-span-orange\" (click)=\"editUserInfo()\">Edit Profile Info</span></a>\n            </div>\n            <div *ngIf=\"is_disabled === false\">\n                    <a class=\"blue\"><span class=\"button-span-blue\" (click)=\"saveEdit()\">Save Profile Info</span></a>\n            </div>\n    </div>\n\n    <div *ngIf=\"fbUser != undefined\">\n        <img src='{{ fbUser.photoUrl }}'>\n          <p>{{ fbUser.name }}</p>\n          <p>{{ fbUser.email }}</p>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -750,6 +752,8 @@ module.exports = "<div class=\"container\">\n    <div class=\"row flex-column\">
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__books_service__ = __webpack_require__("../../../../../src/app/books.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng4_social_login__ = __webpack_require__("../../../../ng4-social-login/ng4-social-login.umd.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng4_social_login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ng4_social_login__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyProfileComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -762,9 +766,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var MyProfileComponent = (function () {
-    function MyProfileComponent(bookService) {
+    function MyProfileComponent(bookService, authService) {
         this.bookService = bookService;
+        this.authService = authService;
         this.user = {};
         this.is_disabled = true;
     }
@@ -796,6 +802,10 @@ var MyProfileComponent = (function () {
             _this.user.city = results["city"];
             _this.user.state = results["state"];
         });
+        this.authService.authState.subscribe(function (user) {
+            _this.user = user;
+            _this.loggedIn = (user != null);
+        });
     };
     return MyProfileComponent;
 }());
@@ -805,10 +815,10 @@ MyProfileComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/my-profile/my-profile.component.html"),
         styles: [__webpack_require__("../../../../../src/app/my-profile/my-profile.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ng4_social_login__["AuthService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ng4_social_login__["AuthService"]) === "function" && _b || Object])
 ], MyProfileComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=my-profile.component.js.map
 
 /***/ }),

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
 import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
 
+import { AuthService } from 'ng4-social-login';
+import { SocialUser } from 'ng4-social-login';
+
 
 
 
@@ -12,8 +15,11 @@ import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
 })
 export class MyProfileComponent implements OnInit {
 
+  private fbUser: SocialUser;
+  private loggedIn: boolean;
+
   constructor(
-    private bookService: BooksService) { }
+    private bookService: BooksService, private authService: AuthService) { }
 
  
   
@@ -59,8 +65,15 @@ export class MyProfileComponent implements OnInit {
         (<any>this).user.state = results["state"];
       }
     );
+
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
     
   }
+
+  
 
 }
 
