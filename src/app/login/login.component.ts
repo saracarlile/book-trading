@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
 
 import { 
   AuthService,
@@ -17,6 +18,8 @@ export class LoginComponent implements OnInit {
   private user: SocialUser;
   private loggedIn: boolean;
 
+
+
   constructor(private authService: AuthService) { }
 
   signInWithFB(): void {
@@ -28,12 +31,19 @@ export class LoginComponent implements OnInit {
     this.authService.signOut();
   }
   
+  message: string = "logged in!"
+  @Output() messageEvent = new EventEmitter<string>();
+
+  sendMessage() {
+    this.messageEvent.emit(this.message)
+  }
 
   
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
+      console.log(this.user);
     });
   }
 

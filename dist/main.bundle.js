@@ -130,7 +130,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<app-login></app-login>\n\n<div style=\"margin-top: 100px;\" class=\"mobile-fix\">\n\n<router-outlet></router-outlet>\n\n</div><!-- close div -->\n\n  <!-- Site footer -->\n  <div class=\"container\">\n    <footer class=\"footer\">\n      \n      <p>&copy; Company 2017</p>\n    </footer>\n</div>"
+module.exports = "\n\n<app-login (messageEvent)=\"receiveMessage($event)\"></app-login>\n\n<div style=\"margin-top: 100px;\" class=\"mobile-fix\" *ngIf=\"isLoggedIn == true\" >\n\n  <router-outlet></router-outlet>\n\n</div><!-- close div -->\n\n<div style=\"margin-top: 100px;\" class=\"mobile-fix\" *ngIf=\"isLoggedIn == false\" >\n  <div class=\"container\">\n      <div class=\"jumbotron text-center\" style=\"background-image: url('https://cdn.pixabay.com/photo/2016/11/18/16/49/books-1835753__340.jpg'); color: white;\">\n        <h1>Booktraders</h1>\n        <p class=\"lead\">A book trading website for book lovers!</p>\n      </div>\n    <div class=\"d-flex justify-content-center\">\n      <h2>Please sign in with Facebook to use Booktraders.</h2>\n    </div>\n  </div>\n</div><!-- close div -->\n\n\n  <!-- Site footer -->\n <div class=\"container\">\n    <footer class=\"footer\">\n      <p>Message: {{message}}</p>\n      <p>&copy; Company 2017</p>\n    </footer>\n</div>"
 
 /***/ }),
 
@@ -149,8 +149,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'app';
+        this.isLoggedIn = false;
     }
+    AppComponent.prototype.receiveMessage = function ($event) {
+        this.message = $event;
+        if (this.message === 'logged in!') {
+            this.isLoggedIn = true;
+        }
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -486,7 +492,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" href=\"#\">Booktraders</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/my-trades\" routerLinkActive=\"active\">My Trades</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\n        </li>\n        <div ></div>\n        <li class=\"nav-item\" *ngIf=\"user == undefined\">\n            <a class=\"nav-link\"  (click)=\"signInWithFB()\">Log In</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"user != undefined\"> \n          <a class=\"nav-link\" (click)=\"signOut()\">Log Out</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n<p>\n  login works!\n</p>\n<div *ngIf=\"user != undefined\">\n  <img src='{{ user.photoUrl }}'>\n    <p>{{ user.name }}</p>\n    <p>{{ user.email }}</p>\n</div>\n<!--\n<button (click)=\"signInWithFB()\">Sign In with Facebook</button>\n\n<button (click)=\"signOut()\">Sign Out with Facebook</button>-->"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" href=\"#\">Booktraders</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"user != undefined\">\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"user != undefined\">\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"user != undefined\">\n          <a class=\"nav-link\" routerLink=\"/my-trades\" routerLinkActive=\"active\">My Trades</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"user != undefined\">\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\n        </li>\n        <div ></div>\n        <li class=\"nav-item\" *ngIf=\"user == undefined\">\n            <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"user != undefined\"> \n          <a class=\"nav-link\" (click)=\"signOut()\">Log Out</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n<div *ngIf=\"user != undefined\">\n  <img src='{{ user.photoUrl }}'>\n    <p>{{ user.name }}</p>\n    <p>{{ user.email }}</p>\n</div>\n<!--\n<button (click)=\"signInWithFB()\">Sign In with Facebook</button>\n\n<button (click)=\"signOut()\">Sign Out with Facebook</button>-->"
 
 /***/ }),
 
@@ -512,6 +518,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var LoginComponent = (function () {
     function LoginComponent(authService) {
         this.authService = authService;
+        this.message = "logged in!";
+        this.messageEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     LoginComponent.prototype.signInWithFB = function () {
         this.authService.signIn(__WEBPACK_IMPORTED_MODULE_1_ng4_social_login__["FacebookLoginProvider"].PROVIDER_ID);
@@ -519,15 +527,23 @@ var LoginComponent = (function () {
     LoginComponent.prototype.signOut = function () {
         this.authService.signOut();
     };
+    LoginComponent.prototype.sendMessage = function () {
+        this.messageEvent.emit(this.message);
+    };
     LoginComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.authService.authState.subscribe(function (user) {
             _this.user = user;
             _this.loggedIn = (user != null);
+            console.log(_this.user);
         });
     };
     return LoginComponent;
 }());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", Object)
+], LoginComponent.prototype, "messageEvent", void 0);
 LoginComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-login',

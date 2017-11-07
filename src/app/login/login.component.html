@@ -9,21 +9,21 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="user != undefined">
           <a class="nav-link" routerLink="/all-books" routerLinkActive="active">All Books</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="user != undefined">
             <a class="nav-link" routerLink="/my-books" routerLinkActive="active">My Books</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="user != undefined">
           <a class="nav-link" routerLink="/my-trades" routerLinkActive="active">My Trades</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="user != undefined">
           <a class="nav-link" routerLink="/profile" routerLinkActive="active">My Profile</a>
         </li>
         <div ></div>
         <li class="nav-item" *ngIf="user == undefined">
-            <a class="nav-link"  (click)="signInWithFB()">Log In</a>
+            <a class="nav-link"  (click)="signInWithFB(); sendMessage();">Facebook Login</a>
         </li>
         <li class="nav-item" *ngIf="user != undefined"> 
           <a class="nav-link" (click)="signOut()">Log Out</a>
@@ -32,9 +32,7 @@
     </div>
   </div>
 </nav>
-<p>
-  login works!
-</p>
+
 <div *ngIf="user != undefined">
   <img src='{{ user.photoUrl }}'>
     <p>{{ user.name }}</p>
