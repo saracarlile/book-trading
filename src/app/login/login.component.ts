@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { BooksService } from '../books.service';
 
 
 import { 
@@ -17,10 +18,10 @@ export class LoginComponent implements OnInit {
 
   private user: SocialUser;
   private loggedIn: boolean;
+  private userInfo: {};
 
 
-
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private bookService: BooksService) { }
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
@@ -48,6 +49,19 @@ export class LoginComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
       console.log(this.user);
+
+      if(user != null) {
+        this.userInfo = {
+          name: this.user.name,
+          fbId: this.user.id,
+          photoUrl: this.user.photoUrl
+        }
+        
+        this.bookService.userLogin(this.userInfo);
+      }
+
+      
+      
     });
   }
 

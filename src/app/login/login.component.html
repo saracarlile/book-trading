@@ -82,12 +82,3 @@
 
 <!-- if the user is not logged in, the navbar above is displayed, controlled by *ngIf="user == undefined"
     done to improve logging in on mobile -->
-
-
-
-<div *ngIf="user != undefined">
-  <img src='{{ user.photoUrl }}'>
-    <p>{{ user.name }}</p>
-    <p>{{ user.email }}</p>
-</div>
-

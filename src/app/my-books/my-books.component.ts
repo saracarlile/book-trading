@@ -53,13 +53,14 @@ export class MyBooksComponent implements OnInit {
 
   private addToMyBooks(i) {
     let bookInfo = {
+      fbId: this.forkJoinStream[0].fbId,
       userName: this.forkJoinStream[0].name,
       userBooks: this.forkJoinStream[0].books,
       bookId: this.forkJoinStream[1].items[i].id,
       bookTitle: this.forkJoinStream[1].items[i].volumeInfo.title,
       bookAuthors: this.forkJoinStream[1].items[i].volumeInfo.authors,
       bookImages: this.forkJoinStream[1].items[i].volumeInfo.imageLinks,
-      bookDescription: this.forkJoinStream[1].items[i].volumeInfo.description
+      bookDescription: this.forkJoinStream[1].items[i].volumeInfo.description,
     }
    
     let idsOfUserBooks= this.forkJoinStream[0].books.map(function(item) { return item["id"]; });

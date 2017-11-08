@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
 import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
 
-import { AuthService } from 'ng4-social-login';
-import { SocialUser } from 'ng4-social-login';
+
 
 
 
@@ -15,16 +14,12 @@ import { SocialUser } from 'ng4-social-login';
 })
 export class MyProfileComponent implements OnInit {
 
-  private fbUser: SocialUser;
-  private loggedIn: boolean;
 
   constructor(
-    private bookService: BooksService, private authService: AuthService) { }
+    private bookService: BooksService) { }
 
- 
   
-  private user = {};
-
+  private myProfileUser = {};
   private is_disabled = true;
 
   private isDisabled() : boolean{
@@ -39,9 +34,10 @@ export class MyProfileComponent implements OnInit {
     this.is_disabled = true;
 
     let userUpdate = {
-      name: (<any>this).user.name,
-      state: (<any>this).user.state,
-      city: (<any>this).user.city
+      fbId: (<any>this).myProfileUser.fbId,
+      name: (<any>this).myProfileUser.name,
+      state: (<any>this).myProfileUser.state,
+      city: (<any>this).myProfileUser.city
     }
 
     this.bookService.updateUserProfile(userUpdate);
@@ -55,21 +51,17 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit() {
 
-    this.bookService  //get my user info call
+    this.bookService  //get my myProfileUser info call
     .getUserInfo()
     .subscribe(
       (results) => {
         console.log(results);
-        (<any>this).user.name = results["name"];
-        (<any>this).user.city = results["city"];
-        (<any>this).user.state = results["state"];
+        (<any>this).myProfileUser.name = results["name"];
+        (<any>this).myProfileUser.city = results["city"];
+        (<any>this).myProfileUser.state = results["state"];
+        (<any>this).myProfileUser.fbId = results["fbId"];
       }
     );
-
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-    });
     
   }
 

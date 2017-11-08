@@ -106,6 +106,13 @@ export class BooksService {
     req.subscribe(getResponse => console.log(getResponse));
   }
 
+  public userLogin(userInfo) {  //user login
+    const body = userInfo;
+    const req = this.http.post('/api/user-login', body);
+    req.subscribe(getResponse => console.log(getResponse));
+  }
+
+
 
 
   private handleError (error: Response | any) {

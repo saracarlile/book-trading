@@ -25,19 +25,9 @@ router.get('/my-books', (req, res) => {
 });
 
 
-router.get('/add-book', (req, res) => {    //John will be test user
-  User.findOne({'name': 'John'}).exec(function(err, user){  
-    if(!user) { // this code is added for testing ... users need to be created upon login
-      let john = new User({ name: 'John' });
-      john.save(function (err) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log('saved');
-        }
-      });
-    }  // this code has been added for testing...users need to be created upon login
-    console.log(user);
+router.get('/add-book', (req, res) => {    //get list of user books for add book function to ensure book isn't added to library twice 
+  let id = req.body.fbId;
+  User.findOne({'fbId': id}).exec(function(err, user){  
     res.send(user);
   });
 });
@@ -58,42 +48,68 @@ router.post('/add-to-my-books', (req, res) => {    //John will be test user
 
 router.post('/delete-from-my-books', (req, res) => {    //John will be test user
   let user = req.body.userName;
-  console.log(req.body.bookId);
-  console.log(req.body.userName);
+
   User.update({'name': user}, { '$pull': { 'books': {'id': req.body.bookId} }}, { safe: true, multi:true }).exec(function(err, result){
     res.send(result + " OK BOOK REMOVED");
   });
 
 });
 
-router.get('/get-user', (req, res) => {    //John will be test user
-  User.findOne({'name': 'John'}).exec(function(err, user){  
+router.get('/get-user', (req, res) => {    //get user info for My Profile page
+  let id = req.body.fbId;
+  User.findOne({'fbId': id}).exec(function(err, user){  
+    res.send(user);
+  });
+});
+
+router.post('/update-user-info', (req, res) => {    //John will be test user
+  let id = req.body.fbId;
+  let userInfo = {
+    name: req.body.name,
+    fbId: req.body.fbId,
+    city: req.body.city,
+    state: req.body.state
+  }
+  User.findOneAndUpdate({'fbId': id}, { '$set': { 'state': userInfo.state, 'city': userInfo.city} }).exec(function(err, result){
+    res.send(result + " OK UPDATED USER INFO");
+  });
+});
+
+router.post('/user-login', (req, res) => {    //login to booktraders
+  let id = req.body.fbId;
+
+  let userInfo = {
+    name: req.body.name,
+    fbId: req.body.fbId,
+    photoUrl: req.body.photoUrl,
+    city: null,
+    state: null
+  }
+
+  User.findOne({'fbId': id}).exec(function(err, user){  
     if(!user) { // this code is added for testing ... users need to be created upon login
-      let john = new User({ name: 'John' });
-      john.save(function (err) {
+      let person = new User({ 
+        name: userInfo.name,
+        fbId: userInfo.fbId,
+        photoUrl: userInfo.photoUrl,
+        city: null,
+        state: null
+         });
+      person.save(function (err) {
         if (err) {
           console.log(err);
         } else {
           console.log('saved');
         }
       });
-    }  // this code has been added for testing...users need to be created upon login
-    console.log(user);
-    res.send(user);
+    }  
+    if(user){
+      res.send(user);
+    } 
   });
+
 });
 
-router.post('/update-user-info', (req, res) => {    //John will be test user
-  let user = req.body.name;
-  let userInfo = {
-    name: req.body.name,
-    city: req.body.city,
-    state: req.body.state
-  }
-  User.findOneAndUpdate({'name': user}, { '$set': { 'state': userInfo.state, 'city': userInfo.city} }).exec(function(err, result){
-    res.send(result + " OK UPDATED USER INFO");
-  });
-});
 
 
 
