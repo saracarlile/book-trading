@@ -28,14 +28,18 @@ export class LoginComponent implements OnInit {
 
  
   signOut(): void {
+    this.sendMessage();
     this.authService.signOut();
   }
   
-  message: string = "logged in!"
+  message: string = "logged out!";
+
   @Output() messageEvent = new EventEmitter<string>();
 
   sendMessage() {
-    this.messageEvent.emit(this.message)
+    this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
+    console.log(this.message);
+    this.messageEvent.emit(this.message);
   }
 
   

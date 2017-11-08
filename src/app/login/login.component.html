@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" *ngIf="user != undefined">
   <div class="container">
-    <a class="navbar-brand" href="#">Booktraders</a>
+    <a class="navbar-brand" routerLink="/home">Booktraders</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,19 +9,18 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
         </li>
-        <li class="nav-item" *ngIf="user != undefined">
+        <li class="nav-item">
           <a class="nav-link" routerLink="/all-books" routerLinkActive="active">All Books</a>
         </li>
-        <li class="nav-item" *ngIf="user != undefined">
+        <li class="nav-item">
             <a class="nav-link" routerLink="/my-books" routerLinkActive="active">My Books</a>
         </li>
-        <li class="nav-item" *ngIf="user != undefined">
+        <li class="nav-item">
           <a class="nav-link" routerLink="/my-trades" routerLinkActive="active">My Trades</a>
         </li>
-        <li class="nav-item" *ngIf="user != undefined">
+        <li class="nav-item">
           <a class="nav-link" routerLink="/profile" routerLinkActive="active">My Profile</a>
         </li>
-        <div ></div>
         <li class="nav-item" *ngIf="user == undefined">
             <a class="nav-link"  (click)="signInWithFB(); sendMessage();">Facebook Login</a>
         </li>
@@ -33,12 +32,62 @@
   </div>
 </nav>
 
+<!-- if the user is logged in, the navbar above is displayed, controlled by *ngIf="user != undefined" -->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" *ngIf="user == undefined">
+    <div class="container" id="mobile-menu-hide">
+      <a class="navbar-brand" id="navbrand" routerLink="/home">Booktraders</a>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+          </li>
+          <li class="nav-item" *ngIf="user == undefined">
+              <a class="nav-link"  (click)="signInWithFB(); sendMessage();">Facebook Login</a>
+          </li>
+          <li class="nav-item" *ngIf="user != undefined"> 
+            <a class="nav-link" (click)="signOut()">Log Out</a>
+          </li>
+        </ul>
+    </div>
+    <div class="container" id="mobile-menu-show">
+        <ul class="navbar-nav" id="add-margin-left">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+            </li>
+            <li class="nav-item" *ngIf="user == undefined">
+                <a class="nav-link"  (click)="signInWithFB(); sendMessage();">Facebook Login</a>
+            </li>
+            <li class="nav-item" *ngIf="user != undefined"> 
+              <a class="nav-link" (click)="signOut();">Log Out</a>
+            </li>
+          </ul>
+    </div>
+  </nav>
+
+  <div style="margin-top: 100px;" class="mobile-fix" *ngIf="user == undefined  || user == null" >
+      <div class="container">
+          <div class="jumbotron text-center" style="background-image: url('https://cdn.pixabay.com/photo/2016/11/18/16/49/books-1835753__340.jpg'); color: white;">
+            <h1>Booktraders</h1>
+            <p class="lead">A book trading website for book lovers!</p>
+          </div>
+        <div class="d-flex flex-column">
+          <h4>Please sign in with Facebook to use Booktraders.</h4>
+          <p><button class="loginBtn loginBtn--facebook" (click)="signInWithFB(); sendMessage();" >Login with Facebook</button></p>
+        
+        
+        </div>
+      </div>
+    </div><!-- close div -->
+    
+
+<!-- if the user is not logged in, the navbar above is displayed, controlled by *ngIf="user == undefined"
+    done to improve logging in on mobile -->
+
+
+
 <div *ngIf="user != undefined">
   <img src='{{ user.photoUrl }}'>
     <p>{{ user.name }}</p>
     <p>{{ user.email }}</p>
 </div>
-<!--
-<button (click)="signInWithFB()">Sign In with Facebook</button>
 
-<button (click)="signOut()">Sign Out with Facebook</button>-->
