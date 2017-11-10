@@ -195,10 +195,11 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/page-not-found/page-not-found.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__books_service__ = __webpack_require__("../../../../../src/app/books.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__my_trades_my_trades_component__ = __webpack_require__("../../../../../src/app/my-trades/my-trades.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__ = __webpack_require__("../../../../ng4-social-login/ng4-social-login.umd.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ng4_social_login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_ng4_social_login__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__my_trades_my_trades_component__ = __webpack_require__("../../../../../src/app/my-trades/my-trades.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__ = __webpack_require__("../../../../ng4-social-login/ng4-social-login.umd.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_ng4_social_login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_ng4_social_login__);
 /* unused harmony export provideConfig */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -223,11 +224,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CONFIG = new __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["AuthServiceConfig"]([
+
+var CONFIG = new __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["AuthServiceConfig"]([
     {
-        id: __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["FacebookLoginProvider"].PROVIDER_ID,
+        id: __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["FacebookLoginProvider"].PROVIDER_ID,
         //provider: new FacebookLoginProvider('Facebook-App-Id')
-        provider: new __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["FacebookLoginProvider"]('1074503412653371')
+        provider: new __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["FacebookLoginProvider"]('1074503412653371')
     }
 ]);
 function provideConfig() {
@@ -238,7 +240,7 @@ var appRoutes = [
     { path: 'all-books', component: __WEBPACK_IMPORTED_MODULE_7__all_books_all_books_component__["a" /* AllBooksComponent */] },
     { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_9__my_profile_my_profile_component__["a" /* MyProfileComponent */] },
     { path: 'my-books', component: __WEBPACK_IMPORTED_MODULE_8__my_books_my_books_component__["a" /* MyBooksComponent */] },
-    { path: 'my-trades', component: __WEBPACK_IMPORTED_MODULE_13__my_trades_my_trades_component__["a" /* MyTradesComponent */] },
+    { path: 'my-trades', component: __WEBPACK_IMPORTED_MODULE_14__my_trades_my_trades_component__["a" /* MyTradesComponent */] },
     { path: '',
         redirectTo: '/home',
         pathMatch: 'full'
@@ -259,20 +261,21 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_9__my_profile_my_profile_component__["a" /* MyProfileComponent */],
             __WEBPACK_IMPORTED_MODULE_10__page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
             __WEBPACK_IMPORTED_MODULE_11__home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__my_trades_my_trades_component__["a" /* MyTradesComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__login_login_component__["a" /* LoginComponent */]
+            __WEBPACK_IMPORTED_MODULE_14__my_trades_my_trades_component__["a" /* MyTradesComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__login_login_component__["a" /* LoginComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot(appRoutes),
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["SocialLoginModule"]
+            __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["SocialLoginModule"]
         ],
         providers: [
             __WEBPACK_IMPORTED_MODULE_12__books_service__["a" /* BooksService */],
+            __WEBPACK_IMPORTED_MODULE_13__login_service__["a" /* LoginService */],
             {
-                provide: __WEBPACK_IMPORTED_MODULE_15_ng4_social_login__["AuthServiceConfig"],
+                provide: __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["AuthServiceConfig"],
                 useFactory: provideConfig
             }
         ],
@@ -482,6 +485,57 @@ HomeComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/login.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__ = __webpack_require__("../../../../rxjs/BehaviorSubject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var LoginService = (function () {
+    function LoginService(http) {
+        this.http = http;
+        this.messageSource = new __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__["BehaviorSubject"]({ test: "default message" });
+        this.currentMessage = this.messageSource.asObservable();
+    }
+    LoginService.prototype.changeMessage = function (message) {
+        this.messageSource.next(message);
+    };
+    LoginService.prototype.userLogin = function (userInfo) {
+        var _this = this;
+        var body = userInfo;
+        var req = this.http.post('/api/user-login', body);
+        req.subscribe(function (getResponse) {
+            console.log(getResponse);
+            _this.changeMessage(getResponse);
+        });
+    };
+    return LoginService;
+}());
+LoginService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], LoginService);
+
+var _a;
+//# sourceMappingURL=login.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/login/login.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -513,8 +567,9 @@ module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__books_service__ = __webpack_require__("../../../../../src/app/books.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng4_social_login__ = __webpack_require__("../../../../ng4-social-login/ng4-social-login.umd.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng4_social_login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ng4_social_login__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng4_social_login__ = __webpack_require__("../../../../ng4-social-login/ng4-social-login.umd.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng4_social_login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ng4_social_login__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -528,15 +583,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var LoginComponent = (function () {
-    function LoginComponent(authService, bookService) {
+    function LoginComponent(authService, bookService, loginSerivce) {
         this.authService = authService;
         this.bookService = bookService;
+        this.loginSerivce = loginSerivce;
         this.message = "logged out!";
         this.messageEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     LoginComponent.prototype.signInWithFB = function () {
-        this.authService.signIn(__WEBPACK_IMPORTED_MODULE_2_ng4_social_login__["FacebookLoginProvider"].PROVIDER_ID);
+        this.authService.signIn(__WEBPACK_IMPORTED_MODULE_3_ng4_social_login__["FacebookLoginProvider"].PROVIDER_ID);
     };
     LoginComponent.prototype.signOut = function () {
         this.sendMessage();
@@ -559,7 +616,8 @@ var LoginComponent = (function () {
                     fbId: _this.user.id,
                     photoUrl: _this.user.photoUrl
                 };
-                _this.bookService.userLogin(_this.userInfo);
+                //   this.bookService.userLogin(this.userInfo);
+                _this.loginSerivce.userLogin(_this.userInfo);
             }
         });
     };
@@ -575,10 +633,10 @@ LoginComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/login/login.component.html"),
         styles: [__webpack_require__("../../../../../src/app/login/login.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ng4_social_login__["AuthService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ng4_social_login__["AuthService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ng4_social_login__["AuthService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ng4_social_login__["AuthService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _c || Object])
 ], LoginComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=login.component.js.map
 
 /***/ }),
@@ -784,7 +842,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/my-profile/my-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row flex-column\">\n\n        <h4>My Profile</h4>\n        <p class=\"text-muted\">Fill out your City and Sate in your profile to help facilitate meeting up for book exchanges.\n        </p>\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <div class=\"row flex-column col-6-profile\" *ngIf=\"user != undefined\">\n            <label for=\"basic-url\">Name:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-name\" value=\"{{user.name}}\" disabled >\n            </div>\n            <br>\n            <label for=\"basic-url\">City:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-city\" value=\"{{user.city}}\"  [(ngModel)]=\"user.city\" [disabled]=\"isDisabled()\">\n            </div>\n            <br>\n            <label for=\"basic-url\">State:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-state\" value=\"{{user.state}}\" [(ngModel)]=\"user.state\" [disabled]=\"isDisabled()\" >\n            </div>\n            <br>\n            <div *ngIf=\"is_disabled === true\">\n                <a class=\"orange\"><span class=\"button-span-orange\" (click)=\"editUserInfo()\">Edit Profile Info</span></a>\n            </div>\n            <div *ngIf=\"is_disabled === false\">\n                    <a class=\"blue\"><span class=\"button-span-blue\" (click)=\"saveEdit()\">Save Profile Info</span></a>\n            </div>\n    </div>\n\n    <div *ngIf=\"fbUser != undefined\">\n        <img src='{{ fbUser.photoUrl }}'>\n          <p>{{ fbUser.name }}</p>\n          <p>{{ fbUser.email }}</p>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row flex-column\">\n\n        <h4>My Profile</h4>\n        <p class=\"text-muted\">Fill out your City and Sate in your profile to help facilitate meeting up for book exchanges.\n        </p>\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <div class=\"row flex-column col-6-profile\" *ngIf=\"user != undefined\">\n            <label for=\"basic-url\">Name:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-name\" value=\"{{user.name}}\" disabled >\n            </div>\n            <br>\n            <label for=\"basic-url\">City:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-city\" value=\"{{user.city}}\"  [(ngModel)]=\"user.city\" [disabled]=\"isDisabled()\">\n            </div>\n            <br>\n            <label for=\"basic-url\">State:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-state\" value=\"{{user.state}}\" [(ngModel)]=\"user.state\" [disabled]=\"isDisabled()\" >\n            </div>\n            <br>\n            <div *ngIf=\"is_disabled === true\">\n                <a class=\"orange\"><span class=\"button-span-orange\" (click)=\"editUserInfo()\">Edit Profile Info</span></a>\n            </div>\n            <div *ngIf=\"is_disabled === false\">\n                    <a class=\"blue\"><span class=\"button-span-blue\" (click)=\"saveEdit()\">Save Profile Info</span></a>\n            </div>\n    </div>\n    <div class=\"row\">\n        <p><button (click)=\"newMessage()\">Change Message</button></p>\n        <p>{{message }}</p>\n    </div>\n\n    <div *ngIf=\"fbUser != undefined\">\n        <img src='{{ fbUser.photoUrl }}'>\n          <p>{{ fbUser.name }}</p>\n          <p>{{ fbUser.email }}</p>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -794,6 +852,7 @@ module.exports = "<div class=\"container\">\n    <div class=\"row flex-column\">
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__books_service__ = __webpack_require__("../../../../../src/app/books.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyProfileComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -806,9 +865,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var MyProfileComponent = (function () {
-    function MyProfileComponent(bookService) {
+    function MyProfileComponent(bookService, data) {
         this.bookService = bookService;
+        this.data = data;
         this.myProfileUser = {};
         this.is_disabled = true;
     }
@@ -831,6 +892,9 @@ var MyProfileComponent = (function () {
     MyProfileComponent.prototype.cancelEdit = function () {
         this.is_disabled = true;
     };
+    MyProfileComponent.prototype.newMessage = function () {
+        this.data.changeMessage({ test: "Hello from Sibling" });
+    };
     MyProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.bookService //get my myProfileUser info call
@@ -842,6 +906,10 @@ var MyProfileComponent = (function () {
             _this.myProfileUser.state = results["state"];
             _this.myProfileUser.fbId = results["fbId"];
         });
+        this.data.currentMessage.subscribe(function (message) {
+            _this.message = message;
+            console.log(message);
+        });
     };
     return MyProfileComponent;
 }());
@@ -851,10 +919,10 @@ MyProfileComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/my-profile/my-profile.component.html"),
         styles: [__webpack_require__("../../../../../src/app/my-profile/my-profile.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], MyProfileComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=my-profile.component.js.map
 
 /***/ }),

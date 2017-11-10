@@ -32,6 +32,10 @@
                     <a class="blue"><span class="button-span-blue" (click)="saveEdit()">Save Profile Info</span></a>
             </div>
     </div>
+    <div class="row">
+        <p><button (click)="newMessage()">Change Message</button></p>
+        <p>{{message }}</p>
+    </div>
 
     <div *ngIf="fbUser != undefined">
         <img src='{{ fbUser.photoUrl }}'>

@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 
 import { BooksService } from './books.service';
+import { LoginService } from './login.service';
 import { MyTradesComponent } from './my-trades/my-trades.component';
 import { LoginComponent } from './login/login.component';
 
@@ -73,6 +74,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     BooksService,
+    LoginService,
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig

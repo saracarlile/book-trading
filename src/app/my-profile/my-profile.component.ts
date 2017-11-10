@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
+import { LoginService } from '../login.service';
 import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
 
 
@@ -16,9 +17,10 @@ export class MyProfileComponent implements OnInit {
 
 
   constructor(
-    private bookService: BooksService) { }
+    private bookService: BooksService, private data: LoginService) { }
 
-  
+
+  message:object;
   private myProfileUser = {};
   private is_disabled = true;
 
@@ -46,6 +48,10 @@ export class MyProfileComponent implements OnInit {
   private cancelEdit(){
     this.is_disabled = true;
   }
+
+  newMessage() {
+    this.data.changeMessage({test: "Hello from Sibling"});
+  }
    
 
 
@@ -63,8 +69,14 @@ export class MyProfileComponent implements OnInit {
       }
     );
     
+    this.data.currentMessage.subscribe(message => {
+    this.message = message
+    console.log(message);
+    })
+
   }
 
+  
   
 
 }

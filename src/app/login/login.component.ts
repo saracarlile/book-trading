@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BooksService } from '../books.service';
+import { LoginService } from '../login.service';
 
 
 import { 
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
   private userInfo: {};
 
 
-  constructor(private authService: AuthService, private bookService: BooksService) { }
+  constructor(private authService: AuthService, private bookService: BooksService, private loginSerivce : LoginService) { }
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
@@ -57,7 +58,8 @@ export class LoginComponent implements OnInit {
           photoUrl: this.user.photoUrl
         }
         
-        this.bookService.userLogin(this.userInfo);
+     //   this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
+        this.loginSerivce.userLogin(this.userInfo);
       }
 
       
