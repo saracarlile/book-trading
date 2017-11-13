@@ -326,7 +326,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var BooksService = (function () {
     function BooksService(http) {
         this.http = http;
-    } // this will work now without any error
+    }
     BooksService.prototype.getAllBooks = function () {
         return this.http
             .get('/api/all-books')
@@ -389,9 +389,11 @@ var BooksService = (function () {
         })
             .catch(this.handleError);
     };
-    BooksService.prototype.getUserInfo = function () {
+    BooksService.prototype.getUserInfo = function (userInfo) {
+        var body = userInfo;
+        console.log(body.fbId);
         return this.http
-            .get('/api/get-user')
+            .post('/api/get-user', body) //can't figure out how to send params with get request in Angular 4?? so using post
             .map(function (response) {
             var resp = response.json();
             return resp;
@@ -516,13 +518,9 @@ var LoginService = (function () {
         this.messageSource.next(message);
     };
     LoginService.prototype.userLogin = function (userInfo) {
-        var _this = this;
         var body = userInfo;
         var req = this.http.post('/api/user-login', body);
-        req.subscribe(function (getResponse) {
-            console.log(getResponse);
-            _this.changeMessage(getResponse);
-        });
+        req.subscribe(function (getResponse) { return console.log(getResponse); });
     };
     return LoginService;
 }());
@@ -616,8 +614,14 @@ var LoginComponent = (function () {
                     fbId: _this.user.id,
                     photoUrl: _this.user.photoUrl
                 };
-                //   this.bookService.userLogin(this.userInfo);
-                _this.loginSerivce.userLogin(_this.userInfo);
+                var test = {
+                    name: _this.user.name,
+                    fbId: _this.user.id,
+                    photoUrl: _this.user.photoUrl
+                };
+                //   this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
+                _this.loginSerivce.userLogin(test); //saves user to DB if doesn't exist
+                _this.loginSerivce.changeMessage(_this.userInfo); //passes user info to other components
             }
         });
     };
@@ -842,7 +846,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/my-profile/my-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row flex-column\">\n\n        <h4>My Profile</h4>\n        <p class=\"text-muted\">Fill out your City and Sate in your profile to help facilitate meeting up for book exchanges.\n        </p>\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <div class=\"row flex-column col-6-profile\" *ngIf=\"user != undefined\">\n            <label for=\"basic-url\">Name:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-name\" value=\"{{user.name}}\" disabled >\n            </div>\n            <br>\n            <label for=\"basic-url\">City:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-city\" value=\"{{user.city}}\"  [(ngModel)]=\"user.city\" [disabled]=\"isDisabled()\">\n            </div>\n            <br>\n            <label for=\"basic-url\">State:</label>\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-state\" value=\"{{user.state}}\" [(ngModel)]=\"user.state\" [disabled]=\"isDisabled()\" >\n            </div>\n            <br>\n            <div *ngIf=\"is_disabled === true\">\n                <a class=\"orange\"><span class=\"button-span-orange\" (click)=\"editUserInfo()\">Edit Profile Info</span></a>\n            </div>\n            <div *ngIf=\"is_disabled === false\">\n                    <a class=\"blue\"><span class=\"button-span-blue\" (click)=\"saveEdit()\">Save Profile Info</span></a>\n            </div>\n    </div>\n    <div class=\"row\">\n        <p><button (click)=\"newMessage()\">Change Message</button></p>\n        <p>{{message }}</p>\n    </div>\n\n    <div *ngIf=\"fbUser != undefined\">\n        <img src='{{ fbUser.photoUrl }}'>\n          <p>{{ fbUser.name }}</p>\n          <p>{{ fbUser.email }}</p>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\r\n    <div class=\"row flex-column\">\r\n\r\n        <h4>My Profile</h4>\r\n        <p class=\"text-muted\">Fill out your City and Sate in your profile to help facilitate meeting up for book exchanges.\r\n        </p>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n\r\n    <div class=\"row flex-column col-6-profile\" *ngIf=\"user != undefined\">\r\n            <label for=\"basic-url\">Name:</label>\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-name\" value=\"{{user.name}}\" disabled >\r\n            </div>\r\n            <br>\r\n            <label for=\"basic-url\">City:</label>\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-city\" value=\"{{user.city}}\"  [(ngModel)]=\"user.city\" [disabled]=\"isDisabled()\">\r\n            </div>\r\n            <br>\r\n            <label for=\"basic-url\">State:</label>\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" class=\"form-control\" aria-describedby=\"user-state\" value=\"{{user.state}}\" [(ngModel)]=\"user.state\" [disabled]=\"isDisabled()\" >\r\n            </div>\r\n            <br>\r\n            <div *ngIf=\"is_disabled === true\">\r\n                <a class=\"orange\"><span class=\"button-span-orange\" (click)=\"editUserInfo()\">Edit Profile Info</span></a>\r\n            </div>\r\n            <div *ngIf=\"is_disabled === false\">\r\n                    <a class=\"blue\"><span class=\"button-span-blue\" (click)=\"saveEdit()\">Save Profile Info</span></a>\r\n            </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <p><button (click)=\"newMessage()\">Change Message</button></p>\r\n        <p>{{message }}</p>\r\n    </div>\r\n\r\n    <div *ngIf=\"fbUser != undefined\">\r\n        <img src='{{ fbUser.photoUrl }}'>\r\n          <p>{{ fbUser.name }}</p>\r\n          <p>{{ fbUser.email }}</p>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -870,7 +874,12 @@ var MyProfileComponent = (function () {
     function MyProfileComponent(bookService, data) {
         this.bookService = bookService;
         this.data = data;
-        this.myProfileUser = {};
+        this.myProfileUser = {
+            fbId: "",
+            name: "",
+            state: "",
+            city: ""
+        };
         this.is_disabled = true;
     }
     MyProfileComponent.prototype.isDisabled = function () {
@@ -889,28 +898,29 @@ var MyProfileComponent = (function () {
         };
         this.bookService.updateUserProfile(userUpdate);
     };
-    MyProfileComponent.prototype.cancelEdit = function () {
-        this.is_disabled = true;
-    };
-    MyProfileComponent.prototype.newMessage = function () {
-        this.data.changeMessage({ test: "Hello from Sibling" });
-    };
     MyProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.bookService //get my myProfileUser info call
-            .getUserInfo()
-            .subscribe(function (results) {
-            console.log(results);
-            _this.myProfileUser.name = results["name"];
-            _this.myProfileUser.city = results["city"];
-            _this.myProfileUser.state = results["state"];
-            _this.myProfileUser.fbId = results["fbId"];
+        this.data.currentMessage.subscribe(function (user) {
+            _this.loggedInUser = user;
+            console.log(_this.loggedInUser);
+            console.log(_this.loggedInUser.fbId);
+            console.log(_this.loggedInUser.name);
+            var lookup = { 'fbId': _this.loggedInUser.fbId };
+            console.log(lookup.fbId);
+            _this.bookService //get my myProfileUser info call
+                .getUserInfo(lookup)
+                .subscribe(function (results) {
+                console.log(results);
+                console.log(typeof (results));
+                console.log(results.fbId);
+                console.log(results.name);
+                _this.myProfileUser.fbId = results.fbId;
+                _this.myProfileUser.name = results.name;
+                _this.myProfileUser.city = results.city;
+                _this.myProfileUser.state = results.state;
+            });
         });
-        this.data.currentMessage.subscribe(function (message) {
-            _this.message = message;
-            console.log(message);
-        });
-    };
+    }; //end ngOnInit
     return MyProfileComponent;
 }());
 MyProfileComponent = __decorate([

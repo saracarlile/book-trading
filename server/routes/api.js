@@ -55,9 +55,11 @@ router.post('/delete-from-my-books', (req, res) => {    //John will be test user
 
 });
 
-router.get('/get-user', (req, res) => {    //get user info for My Profile page
+router.post('/get-user', (req, res) => {    //get user info for My Profile page
   let id = req.body.fbId;
+  console.log(id);
   User.findOne({'fbId': id}).exec(function(err, user){  
+    console.log(user);
     res.send(user);
   });
 });

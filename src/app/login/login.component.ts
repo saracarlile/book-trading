@@ -57,9 +57,17 @@ export class LoginComponent implements OnInit {
           fbId: this.user.id,
           photoUrl: this.user.photoUrl
         }
+
+        let test = {
+          name: this.user.name,
+          fbId: this.user.id,
+          photoUrl: this.user.photoUrl
+        }
         
      //   this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-        this.loginSerivce.userLogin(this.userInfo);
+        this.loginSerivce.userLogin(test);  //saves user to DB if doesn't exist
+        this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
+        
       }
 
       

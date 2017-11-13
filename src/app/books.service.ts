@@ -16,7 +16,7 @@ import { User } from './user';
 @Injectable()
 export class BooksService {
 
-  constructor(private http: Http) { } // this will work now without any error
+  constructor(private http: Http) { } 
 
   public getAllBooks(): Observable<any[]> {  //get all books for all users
     return this.http
@@ -80,7 +80,7 @@ export class BooksService {
   }
 
 
-  public searchGoogleBooks(url): Observable<any[]> {
+  public searchGoogleBooks(url): Observable<any[]> {  //search google books api
     return this.http
     .get(url)
     .map(response => {
@@ -90,9 +90,11 @@ export class BooksService {
     .catch(this.handleError);
   }
 
-  public getUserInfo(): Observable<any[]> {
+  public getUserInfo(userInfo): Observable<any[]> {
+    const body = userInfo;
+    console.log(body.fbId);
     return this.http
-    .get('/api/get-user')
+    .post('/api/get-user', body)  //can't figure out how to send params with get request in Angular 4?? so using post
     .map(response => {
       const resp = response.json();
       return resp;
