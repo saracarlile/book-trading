@@ -57,9 +57,10 @@ export class BooksService {
   }
 
   
-  public searchForUser(): Observable<any[]> {
+  public searchForUser(userInfo): Observable<any[]> {
+    const body = userInfo;
     return this.http
-    .get('/api/add-book')
+    .post('/api/add-book', body)
     .map(response => {
       const resp = response.json();
       console.log(resp);
@@ -68,9 +69,10 @@ export class BooksService {
     .catch(this.handleError);
   }
 
-  public getMyBooks(): Observable<any[]> {  //get all books in my library
+  public getMyBooks(userInfo): Observable<any[]> {  //get all books in my library
+    const body = userInfo;
     return this.http
-    .get('/api/my-books')
+    .post('/api/my-books', body)
     .map(response => {
       const resp = response.json();
       console.log(resp);

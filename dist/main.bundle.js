@@ -360,9 +360,10 @@ var BooksService = (function () {
         })
             .catch(this.handleError);
     };
-    BooksService.prototype.searchForUser = function () {
+    BooksService.prototype.searchForUser = function (userInfo) {
+        var body = userInfo;
         return this.http
-            .get('/api/add-book')
+            .post('/api/add-book', body)
             .map(function (response) {
             var resp = response.json();
             console.log(resp);
@@ -370,9 +371,10 @@ var BooksService = (function () {
         })
             .catch(this.handleError);
     };
-    BooksService.prototype.getMyBooks = function () {
+    BooksService.prototype.getMyBooks = function (userInfo) {
+        var body = userInfo;
         return this.http
-            .get('/api/my-books')
+            .post('/api/my-books', body)
             .map(function (response) {
             var resp = response.json();
             console.log(resp);
@@ -675,10 +677,11 @@ module.exports = "\n<div class=\"container\" style=\"margin-top: 50px\">\n  <div
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__books_service__ = __webpack_require__("../../../../../src/app/books.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyBooksComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -693,9 +696,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MyBooksComponent = (function () {
-    function MyBooksComponent(bookService) {
+    function MyBooksComponent(bookService, data) {
         this.bookService = bookService;
+        this.data = data;
         this.userinfo = [];
         this.bookSearch = [];
         this.bookInfo = '';
@@ -717,9 +722,9 @@ var MyBooksComponent = (function () {
             return;
         }
         this.encodedSearch = encodeURIComponent(this.search); //search must by URI encoded to send to API
-        var user = this.bookService.searchForUser(); // returns an observable
+        var user = this.bookService.searchForUser({ 'fbId': this.loggedInUser.fbId }); // returns an observable
         var bookResult = this.bookService.searchGoogleBooks('https://www.googleapis.com/books/v1/volumes?q=' + this.encodedSearch); //returns an observable
-        __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].forkJoin([user, bookResult]).subscribe(function (res) {
+        __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].forkJoin([user, bookResult]).subscribe(function (res) {
             _this.forkJoinStream = res;
             console.log(_this.forkJoinStream);
         });
@@ -746,7 +751,7 @@ var MyBooksComponent = (function () {
         this.bookService.addToMyBooks(bookInfo);
         this.modalStyle = false; // close modal 
         this.bookService //get my books call (update with book added)
-            .getMyBooks()
+            .getMyBooks({ 'fbId': this.loggedInUser.fbId })
             .subscribe(function (books) {
             _this.myBooks = books[0];
             console.log(_this.myBooks);
@@ -769,7 +774,7 @@ var MyBooksComponent = (function () {
         };
         this.bookService.deleteFromMyBooks(bookInfo);
         this.bookService //get my books call (update with book deleted)
-            .getMyBooks()
+            .getMyBooks({ 'fbId': this.loggedInUser.fbId })
             .subscribe(function (books) {
             _this.myBooks = books[0];
             console.log(_this.myBooks);
@@ -797,15 +802,19 @@ var MyBooksComponent = (function () {
     };
     MyBooksComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.bookService
-            .getMyBooks()
-            .subscribe(function (books) {
-            if (books.length === 0) {
-                return;
-            }
-            _this.myBooks = books[0];
-            console.log(_this.myBooks);
-            console.log(_this.myBooks.books);
+        this.data.currentMessage.subscribe(function (user) {
+            _this.loggedInUser = user;
+            var lookup = { 'fbId': _this.loggedInUser.fbId };
+            _this.bookService
+                .getMyBooks(lookup)
+                .subscribe(function (books) {
+                if (books.length === 0) {
+                    return;
+                }
+                _this.myBooks = books[0];
+                console.log(_this.myBooks);
+                console.log(_this.myBooks.books);
+            });
         });
     };
     return MyBooksComponent;
@@ -816,10 +825,10 @@ MyBooksComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/my-books/my-books.component.html"),
         styles: [__webpack_require__("../../../../../src/app/my-books/my-books.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], MyBooksComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=my-books.component.js.map
 
 /***/ }),

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
+import { LoginService } from '../login.service';
 import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
 
 
@@ -16,7 +17,7 @@ import { Observable } from 'rxjs/Observable';
 export class MyBooksComponent implements OnInit {
 
   constructor(
-    private bookService: BooksService) { }
+    private bookService: BooksService, private data: LoginService) { }
 
   private myBooks: {};
   private userinfo = [];
@@ -31,6 +32,7 @@ export class MyBooksComponent implements OnInit {
   private showShortDescription = true; //show short description of books by default
   private modalDetailBook = {}; //object to hold book in detail modal view
   private myLibraryUser = '';  //tracks the user for My Library
+  private loggedInUser: object; 
 
 
   private LookupUserInfoAddBook() {  //obtain book search and user info in one combined result
@@ -41,7 +43,7 @@ export class MyBooksComponent implements OnInit {
     }
     this.encodedSearch = encodeURIComponent(this.search);  //search must by URI encoded to send to API
     
-    let user = this.bookService.searchForUser();  // returns an observable
+    let user = this.bookService.searchForUser({'fbId': (<any>this).loggedInUser.fbId});  // returns an observable
     let bookResult = this.bookService.searchGoogleBooks('https://www.googleapis.com/books/v1/volumes?q=' + this.encodedSearch);  //returns an observable
     
     Observable.forkJoin([user, bookResult]).subscribe(res => {
@@ -77,7 +79,7 @@ export class MyBooksComponent implements OnInit {
     this.modalStyle = false; // close modal 
 
     this.bookService  //get my books call (update with book added)
-    .getMyBooks()
+    .getMyBooks( {'fbId': (<any>this).loggedInUser.fbId})
     .subscribe(
       (books) => {
         this.myBooks = books[0];
@@ -106,7 +108,7 @@ export class MyBooksComponent implements OnInit {
     this.bookService.deleteFromMyBooks(bookInfo);
 
     this.bookService  //get my books call (update with book deleted)
-    .getMyBooks()
+    .getMyBooks( {'fbId': (<any>this).loggedInUser.fbId})
     .subscribe(
       (books) => {
         this.myBooks = books[0];
@@ -153,8 +155,12 @@ export class MyBooksComponent implements OnInit {
   
   ngOnInit(): void {
 
-    this.bookService
-      .getMyBooks()
+    this.data.currentMessage.subscribe(user => {
+      this.loggedInUser = user;
+      let lookup = {'fbId': (<any>this).loggedInUser.fbId};
+          
+      this.bookService
+      .getMyBooks(lookup)
       .subscribe(
         (books) => {
           if(books.length === 0){  // if user has no books in library return
@@ -165,7 +171,11 @@ export class MyBooksComponent implements OnInit {
           console.log((<any>this).myBooks.books);
 
         }
-      );
+      );  
+
+    })
+
+    
   }
 
 }

@@ -18,14 +18,17 @@ router.get('/all-books', (req, res) => {
   });
 });
 
-router.get('/my-books', (req, res) => {
-  User.find({'name': 'John'}).exec(function(err,collection){  // John will be test user
+router.post('/my-books', (req, res) => {
+  let id = req.body.fbId;
+  console.log(id);
+  User.find({'fbId': id}).exec(function(err,collection){  // John will be test user
+    console.log(collection);
     res.send(collection);
   });
 });
 
 
-router.get('/add-book', (req, res) => {    //get list of user books for add book function to ensure book isn't added to library twice 
+router.post('/add-book', (req, res) => {    //get list of user books for add book function to ensure book isn't added to library twice 
   let id = req.body.fbId;
   User.findOne({'fbId': id}).exec(function(err, user){  
     res.send(user);
