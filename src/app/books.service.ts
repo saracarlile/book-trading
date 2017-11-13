@@ -92,7 +92,6 @@ export class BooksService {
 
   public getUserInfo(userInfo): Observable<any[]> {
     const body = userInfo;
-    console.log(body.fbId);
     return this.http
     .post('/api/get-user', body)  //can't figure out how to send params with get request in Angular 4?? so using post
     .map(response => {

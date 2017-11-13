@@ -53,11 +53,7 @@ export class MyProfileComponent implements OnInit {
 
     this.data.currentMessage.subscribe(user => {
       this.loggedInUser = user;
-      console.log(this.loggedInUser);
-      console.log((<any>this).loggedInUser.fbId);
-      console.log((<any>this).loggedInUser.name)
       let lookup = {'fbId': (<any>this).loggedInUser.fbId};
-      console.log(lookup.fbId);
     
 
       
@@ -65,10 +61,6 @@ export class MyProfileComponent implements OnInit {
       .getUserInfo(lookup)
       .subscribe(
         (results: any) => {
-          console.log(results);
-          console.log(typeof(results));
-          console.log(results.fbId);
-          console.log(results.name);
           (<any>this).myProfileUser.fbId = results.fbId;
           (<any>this).myProfileUser.name = results.name;
           (<any>this).myProfileUser.city = results.city;
