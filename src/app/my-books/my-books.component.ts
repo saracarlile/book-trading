@@ -48,7 +48,7 @@ export class MyBooksComponent implements OnInit {
     
     Observable.forkJoin([user, bookResult]).subscribe(res => {
       this.forkJoinStream = res;
-      console.log(this.forkJoinStream);
+   //   console.log(this.forkJoinStream);
     });
   }
 
@@ -66,7 +66,7 @@ export class MyBooksComponent implements OnInit {
     }
    
     let idsOfUserBooks= this.forkJoinStream[0].books.map(function(item) { return item["id"]; });
-    console.log(idsOfUserBooks);
+
 
     if(idsOfUserBooks.includes(this.forkJoinStream[1].items[i].id)) {
       this.message = this.forkJoinStream[1].items[i].volumeInfo.title + " is already in your library!";
@@ -83,18 +83,12 @@ export class MyBooksComponent implements OnInit {
     .subscribe(
       (books) => {
         this.myBooks = books[0];
-        console.log(this.myBooks);
-        console.log((<any>this).myBooks.books);
-
       }
     );
   }
 
   private removeFromLibrary() {
     //build an object to send as response body
-
-    console.log("MODALDETAIL " + (<any>this).modalDetailBook.bookId);
-    console.log("MODALDETAIL " + (<any>this).modalDetailBook.bookId);
     let bookInfo = {
       userName: this.myLibraryUser,
       userBooks: (<any>this).modalDetailBook.userBooks,
@@ -112,13 +106,8 @@ export class MyBooksComponent implements OnInit {
     .subscribe(
       (books) => {
         this.myBooks = books[0];
-        console.log(this.myBooks);
-        console.log((<any>this).myBooks.books);
-
       }
     );
-
-
   }
 
     
@@ -145,8 +134,6 @@ export class MyBooksComponent implements OnInit {
 
       this.modalDetailBook = (<any>this).myBooks.books[i];  //username not included in myBooks
       this.myLibraryUser = (<any>this).myBooks.name;
-      console.log(this.modalDetailBook);
-
 
     }
   }
@@ -167,8 +154,6 @@ export class MyBooksComponent implements OnInit {
             return;
           }
           this.myBooks = books[0];
-          console.log(this.myBooks);
-          console.log((<any>this).myBooks.books);
 
         }
       );  

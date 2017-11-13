@@ -742,7 +742,6 @@ var MyBooksComponent = (function () {
             bookDescription: this.forkJoinStream[1].items[i].volumeInfo.description,
         };
         var idsOfUserBooks = this.forkJoinStream[0].books.map(function (item) { return item["id"]; });
-        console.log(idsOfUserBooks);
         if (idsOfUserBooks.includes(this.forkJoinStream[1].items[i].id)) {
             this.message = this.forkJoinStream[1].items[i].volumeInfo.title + " is already in your library!";
             this.modalStyle = false;
@@ -754,15 +753,11 @@ var MyBooksComponent = (function () {
             .getMyBooks({ 'fbId': this.loggedInUser.fbId })
             .subscribe(function (books) {
             _this.myBooks = books[0];
-            console.log(_this.myBooks);
-            console.log(_this.myBooks.books);
         });
     };
     MyBooksComponent.prototype.removeFromLibrary = function () {
-        //build an object to send as response body
         var _this = this;
-        console.log("MODALDETAIL " + this.modalDetailBook.bookId);
-        console.log("MODALDETAIL " + this.modalDetailBook.bookId);
+        //build an object to send as response body
         var bookInfo = {
             userName: this.myLibraryUser,
             userBooks: this.modalDetailBook.userBooks,
@@ -777,8 +772,6 @@ var MyBooksComponent = (function () {
             .getMyBooks({ 'fbId': this.loggedInUser.fbId })
             .subscribe(function (books) {
             _this.myBooks = books[0];
-            console.log(_this.myBooks);
-            console.log(_this.myBooks.books);
         });
     };
     MyBooksComponent.prototype.updatemodalStyle = function () {
@@ -797,7 +790,6 @@ var MyBooksComponent = (function () {
         if (this.modalDetailStyle == true) {
             this.modalDetailBook = this.myBooks.books[i]; //username not included in myBooks
             this.myLibraryUser = this.myBooks.name;
-            console.log(this.modalDetailBook);
         }
     };
     MyBooksComponent.prototype.ngOnInit = function () {
@@ -812,8 +804,6 @@ var MyBooksComponent = (function () {
                     return;
                 }
                 _this.myBooks = books[0];
-                console.log(_this.myBooks);
-                console.log(_this.myBooks.books);
             });
         });
     };
