@@ -20,9 +20,7 @@ router.get('/all-books', (req, res) => {
 
 router.post('/my-books', (req, res) => {
   let id = req.body.fbId;
-  console.log(id);
   User.find({'fbId': id}).exec(function(err,collection){  // John will be test user
-    console.log(collection);
     res.send(collection);
   });
 });
@@ -60,9 +58,7 @@ router.post('/delete-from-my-books', (req, res) => {    //John will be test user
 
 router.post('/get-user', (req, res) => {    //get user info for My Profile page
   let id = req.body.fbId;
-  console.log(id);
   User.findOne({'fbId': id}).exec(function(err, user){  
-    console.log(user);
     res.send(user);
   });
 });

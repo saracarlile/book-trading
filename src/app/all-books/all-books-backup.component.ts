@@ -19,10 +19,9 @@ export class AllBooksComponent implements OnInit {
   private results = <any>[];
   private allBooks = [];
   private modalStyle = false;  //modal style set to 'display: none' on page load
-  private modalBook = {};
+  private modalBook: object;
   private loggedInUser: object;
   private isMyBook: boolean;
-
 
   constructor(
     private bookService: BooksService, private data: LoginService) { }
@@ -32,22 +31,23 @@ export class AllBooksComponent implements OnInit {
      console.log(this.allBooks[index]);
      this.modalStyle = true;
      this.modalBook = this.allBooks[index];
-     console.log((<any>this).modalBook.bookImages.thumbnail);
+     console.log((<any>this).modalBook);
 
-     if((<any>this).modalBook.name == (<any>this).loggedInUser.name){
-      this.isMyBook = true;
-    }
-    else {
-      this.isMyBook = false;
-    }
-
-    console.log(this.isMyBook);
+    if((<any>this).modalBook.name == (<any>this).loggedInUser.name){
+       this.isMyBook = true;
+     }
+     else {
+       this.isMyBook = false;
+     }
    } 
 
    private closeModal() {
     this.modalStyle = false;
-    console.log("clicked closeMOdal!!");
+    this.isMyBook = false;
    }
+
+
+
 
 
   ngOnInit(): void {
@@ -56,6 +56,7 @@ export class AllBooksComponent implements OnInit {
       this.loggedInUser = user;
       console.log(this.loggedInUser);
     })
+
 
   
     this.bookService

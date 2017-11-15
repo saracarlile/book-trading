@@ -44,8 +44,9 @@ module.exports = "<div class=\"container\">\n  <div class=\"row flex-column\">\n
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__books_service__ = __webpack_require__("../../../../../src/app/books.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllBooksComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -59,9 +60,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AllBooksComponent = (function () {
-    function AllBooksComponent(bookService) {
+    function AllBooksComponent(bookService, data) {
         this.bookService = bookService;
+        this.data = data;
         this.results = [];
         this.allBooks = [];
         this.modalStyle = false; //modal style set to 'display: none' on page load
@@ -72,6 +75,13 @@ var AllBooksComponent = (function () {
         this.modalStyle = true;
         this.modalBook = this.allBooks[index];
         console.log(this.modalBook.bookImages.thumbnail);
+        if (this.modalBook.name == this.loggedInUser.name) {
+            this.isMyBook = true;
+        }
+        else {
+            this.isMyBook = false;
+        }
+        console.log(this.isMyBook);
     };
     AllBooksComponent.prototype.closeModal = function () {
         this.modalStyle = false;
@@ -79,6 +89,10 @@ var AllBooksComponent = (function () {
     };
     AllBooksComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.data.currentMessage.subscribe(function (user) {
+            _this.loggedInUser = user;
+            console.log(_this.loggedInUser);
+        });
         this.bookService
             .getAllBooks()
             .subscribe(function (result) {
@@ -101,10 +115,10 @@ AllBooksComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/all-books/all-books.component.html"),
         styles: [__webpack_require__("../../../../../src/app/all-books/all-books.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], AllBooksComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=all-books.component.js.map
 
 /***/ }),
@@ -726,7 +740,7 @@ var MyBooksComponent = (function () {
         var bookResult = this.bookService.searchGoogleBooks('https://www.googleapis.com/books/v1/volumes?q=' + this.encodedSearch); //returns an observable
         __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].forkJoin([user, bookResult]).subscribe(function (res) {
             _this.forkJoinStream = res;
-            console.log(_this.forkJoinStream);
+            //   console.log(this.forkJoinStream);
         });
     };
     MyBooksComponent.prototype.addToMyBooks = function (i) {
