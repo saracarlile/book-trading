@@ -32,7 +32,6 @@ export class AllBooksComponent implements OnInit {
      console.log(this.allBooks[index]);
      this.modalStyle = true;
      this.modalBook = this.allBooks[index];
-     console.log((<any>this).modalBook.bookImages.thumbnail);
 
      if((<any>this).modalBook.name == (<any>this).loggedInUser.name){
       this.isMyBook = true;
@@ -40,9 +39,24 @@ export class AllBooksComponent implements OnInit {
     else {
       this.isMyBook = false;
     }
-
-    console.log(this.isMyBook);
+    
    } 
+
+   private requestTrade() {
+    console.log(this.modalBook);
+    let tradeInfo = {
+      bookID: (<any>this).modalBook.id,
+      bookTitle: (<any>this).modalBook.bookTitle,
+      bookAuthors: (<any>this).modalBook.bookAuthors,
+      bookDescription: (<any>this).modalBook.Description,
+      bookOwner: (<any>this).modalBook.name, 
+      tradeRequester: (<any>this).loggedInUser.name, 
+      fbId: (<any>this).loggedInUser.fbId
+    }
+
+    this.bookService.requestTrade(tradeInfo);
+
+   }
 
    private closeModal() {
     this.modalStyle = false;

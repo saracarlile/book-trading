@@ -52,6 +52,7 @@
         </div>       
       </div><!-- close div row -->      
   </div><!-- close div *ngIf -->
+  <div *ngIf="isMyBook != undefined && isMyBook == false"><p class="btn-move"><a class="green"><span class="button-span-green" (click)="requestTrade()">Request Trade</span></a></p></div>
   <p class="btn-move"><a class="green"><span class="button-span-green" (click)="closeModal()">Close</span></a></p>   
 </div><!-- close Modal content -->
 

@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/all-books/all-books.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row flex-column\">\n\n    <h4>All Books</h4>\n    <p class=\"text-muted\">Review all books on Booktraders. <br> Press the \"View Details\" link to read a book's description and request a trade.</p>\n  </div>\n</div>\n\n<div class=\"container\">\n  \n  <div class=\"row\">\n <div *ngFor=\"let book of allBooks; let i = index;\"  class=\"d-md-inline-flex\">\n      <div style=\"border: 1px solid grey;\">\n        <div class=\"no-stretch\">\n            <div *ngIf=\"book.bookImages != undefined\"  style=\"margin-right: 20px; margin-bottom: 20px;\">\n                <img class=\"img-set-width\" src={{book.bookImages.thumbnail}}>\n            </div> \n        </div>\n        <div class=\"book-details\">\n          <p><span class=\"h6\">Title:</span> {{book.bookTitle}}</p>    \n          <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of book.bookAuthors\"> {{author}} </span></p>\n          <p><span class=\"h6\">Owner:</span> {{book.name}}</p>\n          <p><a class=\"green\"><span class=\"button-span-green\" (click)=\"viewBook(i)\">View Book</span></a></p>\n      </div>\n    </div>\n  </div>  \n\n\n</div><!--close row -->\n\n</div><!--close container -->\n\n\n <!-- The Modal -->\n <div id=\"myModal\" class=\"modal\" [style.display]=\"modalStyle ? 'block' : 'none'\">\n  <!-- Modal content -->\n<div class=\"modal-content\">\n  <div>\n      <div>\n          <div style=\"border: 1px solid grey; max-width: 1050px;\" class=\"fix-width-modal-content\">\n            <div style=\"display: flex; flex-wrap: wrap; align-items: flex-start;\"> \n               <div *ngIf=\"modalBook.bookImages != undefined\">\n                <img class=\"modal-book-view\" src=\"{{modalBook.bookImages.thumbnail}}\"> \n               </div>\n                <div style=\"display: flex; flex-direction: column;\">\n                  <p><span class=\"h6\">Title:</span> {{modalBook.bookTitle}}</p>\n                  <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of modalBook.bookAuthors\"> {{author}}  </span></p> \n                  <p  style=\"max-width: 550px\"><span class=\"h6\">Description: </span> {{ modalBook.bookDescription}}</p>\n                  <p><span class=\"h6\">Book Owner:</span>  {{modalBook.name}} </p>\n                </div>\n            </div>    \n        </div>       \n      </div><!-- close div row -->      \n  </div><!-- close div *ngIf -->\n  <p class=\"btn-move\"><a class=\"green\"><span class=\"button-span-green\" (click)=\"closeModal()\">Close</span></a></p>   \n</div><!-- close Modal content -->\n\n</div><!-- close Modal -->\n"
+module.exports = "<div class=\"container\">\n  <div class=\"row flex-column\">\n\n    <h4>All Books</h4>\n    <p class=\"text-muted\">Review all books on Booktraders. <br> Press the \"View Details\" link to read a book's description and request a trade.</p>\n  </div>\n</div>\n\n<div class=\"container\">\n  \n  <div class=\"row\">\n <div *ngFor=\"let book of allBooks; let i = index;\"  class=\"d-md-inline-flex\">\n      <div style=\"border: 1px solid grey;\">\n        <div class=\"no-stretch\">\n            <div *ngIf=\"book.bookImages != undefined\"  style=\"margin-right: 20px; margin-bottom: 20px;\">\n                <img class=\"img-set-width\" src={{book.bookImages.thumbnail}}>\n            </div> \n        </div>\n        <div class=\"book-details\">\n          <p><span class=\"h6\">Title:</span> {{book.bookTitle}}</p>    \n          <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of book.bookAuthors\"> {{author}} </span></p>\n          <p><span class=\"h6\">Owner:</span> {{book.name}}</p>\n          <p><a class=\"green\"><span class=\"button-span-green\" (click)=\"viewBook(i)\">View Book</span></a></p>\n      </div>\n    </div>\n  </div>  \n\n\n</div><!--close row -->\n\n</div><!--close container -->\n\n\n <!-- The Modal -->\n <div id=\"myModal\" class=\"modal\" [style.display]=\"modalStyle ? 'block' : 'none'\">\n  <!-- Modal content -->\n<div class=\"modal-content\">\n  <div>\n      <div>\n          <div style=\"border: 1px solid grey; max-width: 1050px;\" class=\"fix-width-modal-content\">\n            <div style=\"display: flex; flex-wrap: wrap; align-items: flex-start;\"> \n               <div *ngIf=\"modalBook.bookImages != undefined\">\n                <img class=\"modal-book-view\" src=\"{{modalBook.bookImages.thumbnail}}\"> \n               </div>\n                <div style=\"display: flex; flex-direction: column;\">\n                  <p><span class=\"h6\">Title:</span> {{modalBook.bookTitle}}</p>\n                  <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of modalBook.bookAuthors\"> {{author}}  </span></p> \n                  <p  style=\"max-width: 550px\"><span class=\"h6\">Description: </span> {{ modalBook.bookDescription}}</p>\n                  <p><span class=\"h6\">Book Owner:</span>  {{modalBook.name}} </p>\n                </div>\n            </div>    \n        </div>       \n      </div><!-- close div row -->      \n  </div><!-- close div *ngIf -->\n  <div *ngIf=\"isMyBook != undefined && isMyBook == false\"><p class=\"btn-move\"><a class=\"green\"><span class=\"button-span-green\" (click)=\"requestTrade()\">Request Trade</span></a></p></div>\n  <p class=\"btn-move\"><a class=\"green\"><span class=\"button-span-green\" (click)=\"closeModal()\">Close</span></a></p>   \n</div><!-- close Modal content -->\n\n</div><!-- close Modal -->\n"
 
 /***/ }),
 
@@ -74,14 +74,25 @@ var AllBooksComponent = (function () {
         console.log(this.allBooks[index]);
         this.modalStyle = true;
         this.modalBook = this.allBooks[index];
-        console.log(this.modalBook.bookImages.thumbnail);
         if (this.modalBook.name == this.loggedInUser.name) {
             this.isMyBook = true;
         }
         else {
             this.isMyBook = false;
         }
-        console.log(this.isMyBook);
+    };
+    AllBooksComponent.prototype.requestTrade = function () {
+        console.log(this.modalBook);
+        var tradeInfo = {
+            bookID: this.modalBook.id,
+            bookTitle: this.modalBook.bookTitle,
+            bookAuthors: this.modalBook.bookAuthors,
+            bookDescription: this.modalBook.Description,
+            bookOwner: this.modalBook.name,
+            tradeRequester: this.loggedInUser.name,
+            fbId: this.loggedInUser.fbId
+        };
+        this.bookService.requestTrade(tradeInfo);
     };
     AllBooksComponent.prototype.closeModal = function () {
         this.modalStyle = false;
@@ -423,6 +434,12 @@ var BooksService = (function () {
     BooksService.prototype.userLogin = function (userInfo) {
         var body = userInfo;
         var req = this.http.post('/api/user-login', body);
+        req.subscribe(function (getResponse) { return console.log(getResponse); });
+    };
+    BooksService.prototype.requestTrade = function (tradeInfo) {
+        console.log("did i get here??");
+        var body = tradeInfo;
+        var req = this.http.post('/api/request-trade', body);
         req.subscribe(function (getResponse) { return console.log(getResponse); });
     };
     BooksService.prototype.handleError = function (error) {

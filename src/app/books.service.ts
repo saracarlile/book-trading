@@ -116,6 +116,14 @@ export class BooksService {
   }
 
 
+  public requestTrade(tradeInfo) {  //add book to my library
+    console.log("did i get here??");
+    const body = tradeInfo;
+    const req = this.http.post('/api/request-trade', body);
+    req.subscribe(getResponse => console.log(getResponse));
+  }
+
+
 
 
   private handleError (error: Response | any) {
