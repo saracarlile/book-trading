@@ -42,19 +42,35 @@ export class AllBooksComponent implements OnInit {
     
    } 
 
+   
+
    private requestTrade() {
     console.log(this.modalBook);
     let tradeInfo = {
-      bookID: (<any>this).modalBook.id,
+      bookId: (<any>this).modalBook.id,
       bookTitle: (<any>this).modalBook.bookTitle,
       bookAuthors: (<any>this).modalBook.bookAuthors,
-      bookDescription: (<any>this).modalBook.Description,
+      bookDescription: (<any>this).modalBook.bookDescription,
+      bookImages: (<any>this).modalBook.bookImages,
       bookOwner: (<any>this).modalBook.name, 
       tradeRequester: (<any>this).loggedInUser.name, 
       fbId: (<any>this).loggedInUser.fbId
     }
 
+    
+    this.bookService
+    .checkTrade(tradeInfo)
+    .subscribe(
+    (result) => {
+      console.log(result);
+      }
+    );
+
+  
     this.bookService.requestTrade(tradeInfo);
+
+
+    
 
    }
 

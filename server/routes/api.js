@@ -64,9 +64,34 @@ router.post('/get-user', (req, res) => {    //get user info for My Profile page
 });
 
 
+router.post('/check-trade', (req, res) => {
+
+    let tradeRequest = {
+      id: req.body.bookId, //book id
+      bookTitle: req.body.bookTitle,
+      bookAuthors: req.body.bookAuthors,
+      bookImages: req.body.bookImages,
+      bookDescription: req.body.bookDescription, 
+      bookOwner: req.body.bookOwner,
+      tradeRequester: req.body.tradeRequester,
+      fbId:  req.body.fbId,
+      tradeApproved: false
+    }
+    
+    console.log(tradeRequest.bookOwner);
+  
+    User.find({'fbId': tradeRequest.fbId}).exec(function(err, result){
+      res.send(result);
+    });
+
+
+  
+  });
+
+
 router.post('/request-trade', (req, res) => {
-  //  let id = req.body.fbId;
-    console.log("Did i get here???");
+
+    
     let tradeRequest = {
       id: req.body.bookId,
       bookTitle: req.body.bookTitle,
@@ -82,14 +107,10 @@ router.post('/request-trade', (req, res) => {
     console.log(tradeRequest.bookOwner);
   
     User.findOneAndUpdate({'fbId': tradeRequest.fbId}, { $push: { 'tradesRequested': tradeRequest } }).exec(function(err, result){
-     // res.send(result + " OK TRADE Requested");
       console.log(" OK TRADE Requested");
     });
 
     User.findOneAndUpdate({'name': tradeRequest.bookOwner}, { $push: { 'tradeRequests': tradeRequest } }).exec(function(err, result){
-      // res.send(result + " OK TRADE Requested");
-       console.log(result);
-       console.log(" OK TRADE Request sent");
        res.send("ok");
      });
   

@@ -116,8 +116,24 @@ export class BooksService {
   }
 
 
+
+  public checkTrade(tradeInfo): Observable<any[]> {  //needs to be observable to "return" to  all books component?
+    const body = tradeInfo;
+    return this.http
+    .post('/api/check-trade', body)
+    .map(response => {
+      const resp = response.json();
+      console.log(resp);
+      return response;
+    })
+    .catch(this.handleError);
+  }
+
+
+
+
+
   public requestTrade(tradeInfo) {  //add book to my library
-    console.log("did i get here??");
     const body = tradeInfo;
     const req = this.http.post('/api/request-trade', body);
     req.subscribe(getResponse => console.log(getResponse));
