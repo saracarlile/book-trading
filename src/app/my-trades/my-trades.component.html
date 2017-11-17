@@ -8,10 +8,17 @@
 </div>
 
 <div class="container">
-
-  <div class="row flex-column">
-     <p>Trade request 1</p>
-     <p>Trade request 2</p>
-     <p>Trade request 3</p>
+  <h4>Trade Requests</h4>
+  <div *ngIf="tradeRequests.length > 0" >
+    <div class="row flex-column" *ngFor="let request of tradeRequests; let i = index">
+      <p>{{request.bookTitle}}</p>
+    </div>
   </div>
+
+  <h4>Trades Requested</h4>
+  <div *ngIf="tradesRequested.length > 0">
+    <div class="row flex-column" *ngFor="let requested of tradesRequested; let i = index">
+        <p>{{requested.bookTitle}}</p>
+    </div>
+ </div>
 </div>

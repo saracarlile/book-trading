@@ -1017,7 +1017,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/my-trades/my-trades.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row flex-column\">\n\n      <h4>My Trade Requests</h4>\n      <p class=\"text-muted\">View and approve Trade Requests from other users on Booktraders.\n      </p>\n  </div>\n</div>\n\n<div class=\"container\">\n\n  <div class=\"row flex-column\">\n     <p>Trade request 1</p>\n     <p>Trade request 2</p>\n     <p>Trade request 3</p>\n  </div>\n</div>"
+module.exports = "<div class=\"container\">\n  <div class=\"row flex-column\">\n\n      <h4>My Trade Requests</h4>\n      <p class=\"text-muted\">View and approve Trade Requests from other users on Booktraders.\n      </p>\n  </div>\n</div>\n\n<div class=\"container\">\n  <h4>Trade Requests</h4>\n  <div *ngIf=\"tradeRequests.length > 0\" >\n    <div class=\"row flex-column\" *ngFor=\"let request of tradeRequests; let i = index\">\n      <p>{{request.bookTitle}}</p>\n    </div>\n  </div>\n\n  <h4>Trades Requested</h4>\n  <div *ngIf=\"tradesRequested.length > 0\">\n    <div class=\"row flex-column\" *ngFor=\"let requested of tradesRequested; let i = index\">\n        <p>{{requested.bookTitle}}</p>\n    </div>\n </div>\n</div>"
 
 /***/ }),
 
@@ -1026,6 +1026,10 @@ module.exports = "<div class=\"container\">\n  <div class=\"row flex-column\">\n
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__books_service__ = __webpack_require__("../../../../../src/app/books.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyTradesComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1037,10 +1041,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var MyTradesComponent = (function () {
-    function MyTradesComponent() {
+    function MyTradesComponent(bookService, data) {
+        this.bookService = bookService;
+        this.data = data;
+        this.results = [];
+        this.tradeRequests = [];
+        this.tradesRequested = [];
     }
     MyTradesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.currentMessage.subscribe(function (user) {
+            _this.loggedInUser = user;
+            var lookup = { 'fbId': _this.loggedInUser.fbId };
+            _this.bookService
+                .getMyBooks(lookup) //general use profile lookup
+                .subscribe(function (results) {
+                console.log(results);
+                if (results.length > 0) {
+                    _this.results = results[0];
+                    console.log("trade requests");
+                    _this.tradeRequests = _this.results.tradeRequests;
+                    _this.tradesRequested = _this.results.tradesRequested;
+                }
+            });
+        });
     };
     return MyTradesComponent;
 }());
@@ -1050,9 +1078,10 @@ MyTradesComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/my-trades/my-trades.component.html"),
         styles: [__webpack_require__("../../../../../src/app/my-trades/my-trades.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], MyTradesComponent);
 
+var _a, _b;
 //# sourceMappingURL=my-trades.component.js.map
 
 /***/ }),
