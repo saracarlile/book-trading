@@ -52,6 +52,7 @@
         </div>       
       </div><!-- close div row -->      
   </div><!-- close div *ngIf -->
+  <div style="color: red; margin: 20px 0px;" *ngIf="message != undefined && message != ''">{{message}}</div>
   <div *ngIf="isMyBook != undefined && isMyBook == false"><a class="green"><span class="button-span-green" (click)="requestTrade()">Request Trade</span></a></div><div><a style="margin-top: 20px;" class="green"><span class="button-span-green" (click)="closeModal()">Close</span></a></div>
 
 </div><!-- close Modal content -->

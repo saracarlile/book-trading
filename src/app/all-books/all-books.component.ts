@@ -22,13 +22,15 @@ export class AllBooksComponent implements OnInit {
   private modalBook = {};
   private loggedInUser: object;
   private isMyBook: boolean;
-
+  private tradeResults = {};
+  private message: string;
 
   constructor(
     private bookService: BooksService, private data: LoginService) { }
 
 
    private viewBook(index) {
+     this.message = "";
      console.log(this.allBooks[index]);
      this.modalStyle = true;
      this.modalBook = this.allBooks[index];
@@ -63,11 +65,33 @@ export class AllBooksComponent implements OnInit {
     .subscribe(
     (result) => {
       console.log(result);
+      this.tradeResults = result;
+      this.message = "";
+      
+      let trades = JSON.parse((<any>this).tradeResults._body);
+      console.log(trades)
+      let hasRequested = false;
+      console.log(trades[0].tradesRequested);
+      if (trades[0].tradesRequested.length > 0) {  //if user has requested trades
+        for (let i = 0; i < trades[0].tradesRequested.length; i++) {
+          if (trades[0].tradesRequested[i].id === tradeInfo.bookId) {
+            hasRequested = true;
+          }
+        }
+      }
+      console.log(hasRequested);
+      if( hasRequested == false){
+        this.bookService.requestTrade(tradeInfo);  //if they haven't requested to trade book before, send to trade request
+      }
+      else {
+        this.message = "You've requested this trade before!";
+      }
+
       }
     );
 
   
-    this.bookService.requestTrade(tradeInfo);
+    
 
 
     
