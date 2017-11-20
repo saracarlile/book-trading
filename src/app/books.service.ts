@@ -133,12 +133,17 @@ export class BooksService {
 
 
 
-  public requestTrade(tradeInfo) {  //add book to my library
+  public requestTrade(tradeInfo) {  
     const body = tradeInfo;
     const req = this.http.post('/api/request-trade', body);
     req.subscribe(getResponse => console.log(getResponse));
   }
 
+  public rejectTrade(tradeInfo) {
+    const body = tradeInfo;
+    const req = this.http.post('/api/reject-trade', body);
+    req.subscribe(getResponse => console.log(getResponse));
+  }
 
 
 

@@ -30,19 +30,36 @@ export class MyTradesComponent implements OnInit {
 
   private viewRequested(index){
     console.log(this.tradeRequests[index]);
-    this.modalTradeInfo = this.tradeRequests[index];
+    this.modalTradeInfo = this.tradesRequested[index];
     this.modalStyle = true;
-    if(this.tradeRequests[index].tradePending == true){
+    if(this.tradesRequested[index].tradePending == true){
       this.tradePending = "Trade status is pending. You need to approve/disapprove this trade."
     }
-    if(this.tradeRequests[index].tradePending == false){
-      if(this.tradeRequests[index].tradeApproved == true){
+    if(this.tradesRequested[index].tradePending == false){
+      if(this.tradesRequested[index].tradeApproved == true){
         this.tradePending = "You approved this trade.";
       }
       else{
         this.tradePending = "You did not approve this trade.";
       }
     }
+  }
+
+  private rejectTrade(){
+    let rejectTradeInfo = {
+      id: (<any>this).modalTradeInfo.id,  //bookID
+      fbId: (<any>this).modalTradeInfo.fbId,
+      tradeApproved: false,
+      tradePending: false,
+      tradeRequester: (<any>this).modalTradeInfo.tradeRequester,
+      bookOwner: (<any>this).modalTradeInfo.bookOwner,
+      bookDescription: (<any>this).modalTradeInfo.bookDescription,
+      bookAuthors: (<any>this).modalTradeInfo.bookAuthors,
+      bookTitle: (<any>this).modalTradeInfo.bookTitle
+    }
+
+    this.bookService.rejectTrade(rejectTradeInfo);
+
   }
 
   private closeModal() {

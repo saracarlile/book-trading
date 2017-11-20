@@ -106,8 +106,9 @@ router.post('/request-trade', (req, res) => {
     }
     
     console.log(tradeRequest.bookOwner);
+
   
-    User.findOneAndUpdate({'fbId': tradeRequest.fbId}, { $push: { 'tradesRequested': tradeRequest } }).exec(function(err, result){
+    User.findOneAndUpdate({'fbId': tradeRequest.fbId}, { $push: { 'tradesRequested': tradeRequest} }).exec(function(err, result){
       console.log(" OK TRADE Requested");
     });
 
@@ -116,6 +117,38 @@ router.post('/request-trade', (req, res) => {
      });
   
   });
+
+
+  router.post('/reject-trade', (req, res) => {
+    
+        
+        let tradeRequest = {
+          id: req.body.id,  //bookId
+          bookTitle: req.body.bookTitle,
+          bookAuthors: req.body.bookAuthors,
+          bookImages: req.body.bookImages,
+          bookDescription: req.body.bookDescription, 
+          bookOwner: req.body.bookOwner,
+          tradeRequester: req.body.tradeRequester,
+          fbId:  req.body.fbId,
+          tradeApproved: false,
+          tradePending: true
+        }
+        
+        console.log(tradeRequest.bookOwner);
+
+
+
+      
+        User.update({'fbId': req.body.fbId}, { '$pull': { 'tradesRequested': {'id': req.body.id}}}, { safe: true, multi:true }).exec(function(err, result){
+          console.log(" OK TRADE Rejected");
+        });
+    
+        User.update({'name': req.body.bookOwner}, { '$pull': { 'tradeRequests': {'id': req.body.id} }}, { safe: true, multi:true }).exec(function(err, result){
+           res.send("ok" + result);
+         });
+      
+      });
   
 
 router.post('/update-user-info', (req, res) => {    //John will be test user
