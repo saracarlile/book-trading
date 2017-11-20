@@ -18,6 +18,36 @@ export class MyTradesComponent implements OnInit {
   private results = [];
   private tradeRequests = [];
   private tradesRequested = [];
+  private modalStyle = false;  // set the 'search' modal to not display onload
+  private modalTradeInfo = {};
+  private tradeRequestApproved: string;
+  private tradePending: string;
+
+
+  private viewRequest(index){
+    console.log(this.tradeRequests[index]);
+  }
+
+  private viewRequested(index){
+    console.log(this.tradeRequests[index]);
+    this.modalTradeInfo = this.tradeRequests[index];
+    this.modalStyle = true;
+    if(this.tradeRequests[index].tradePending == true){
+      this.tradePending = "Trade status is pending. You need to approve/disapprove this trade."
+    }
+    if(this.tradeRequests[index].tradePending == false){
+      if(this.tradeRequests[index].tradeApproved == true){
+        this.tradePending = "You approved this trade.";
+      }
+      else{
+        this.tradePending = "You did not approve this trade.";
+      }
+    }
+  }
+
+  private closeModal() {
+    this.modalStyle = false;
+  }
 
 
 

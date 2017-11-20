@@ -56,7 +56,7 @@ export class AllBooksComponent implements OnInit {
       bookImages: (<any>this).modalBook.bookImages,
       bookOwner: (<any>this).modalBook.name, 
       tradeRequester: (<any>this).loggedInUser.name, 
-      fbId: (<any>this).loggedInUser.fbId
+      fbId: (<any>this).loggedInUser.fbId,
     }
 
     

@@ -101,7 +101,8 @@ router.post('/request-trade', (req, res) => {
       bookOwner: req.body.bookOwner,
       tradeRequester: req.body.tradeRequester,
       fbId:  req.body.fbId,
-      tradeApproved: false
+      tradeApproved: false,
+      tradePending: true
     }
     
     console.log(tradeRequest.bookOwner);
