@@ -1091,7 +1091,14 @@ var MyTradesComponent = (function () {
             bookTitle: this.modalTradeInfo.bookTitle,
             bookImages: this.modalTradeInfo.bookImages
         };
-        this.bookService.rejectTrade(rejectTradeInfo);
+        this.bookService.rejectTrade(rejectTradeInfo); // send reject trade info to server
+        this.modalTradeInfo.tradePending = false;
+        this.tradePending = "You did not approve this trade.";
+        for (var i = 0; i < this.tradesRequested.length; i++) {
+            if (this.tradesRequested[i].id == this.modalTradeInfo.id) {
+                this.tradesRequested[i].tradePending = false;
+            }
+        }
     };
     MyTradesComponent.prototype.closeModal = function () {
         this.modalStyle = false;

@@ -59,7 +59,16 @@ export class MyTradesComponent implements OnInit {
       bookImages: (<any>this).modalTradeInfo.bookImages
     }
 
-    this.bookService.rejectTrade(rejectTradeInfo);
+    this.bookService.rejectTrade(rejectTradeInfo);  // send reject trade info to server
+
+    (<any>this).modalTradeInfo.tradePending = false;  
+    this.tradePending = "You did not approve this trade.";
+
+    for(let i = 0; i < this.tradesRequested.length; i++){  //update DOM reject trade info
+      if(this.tradesRequested[i].id == (<any>this).modalTradeInfo.id ) {
+        this.tradesRequested[i].tradePending = false;
+      }
+    }
 
   }
 
