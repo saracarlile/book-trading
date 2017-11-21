@@ -41,7 +41,7 @@
       <div class="modal-content" >
         <div *ngIf="modalTradeInfo != undefined">
             <div class="row flex-column" style="padding: 5px;">
-                <div *ngIf="modalTradeInfo.bookImages != undefined">
+                <div *ngIf="modalTradeInfo.bookImages != undefined  && modalTradeInfo.bookImages.thumbnail != null ">
                     <img src="{{modalTradeInfo.bookImages.thumbnail}}" style="margin-right: 20px; margin-bottom: 20px;"> 
                 </div>  
               <p><span class="h6">Title:</span> {{modalTradeInfo.bookTitle}}</p>

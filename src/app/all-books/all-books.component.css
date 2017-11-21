@@ -100,6 +100,7 @@
 
   .no-stretch {
     width: 140px;
+    align-items: flex-start;    
 }
   
   /* Modal Content/Box */

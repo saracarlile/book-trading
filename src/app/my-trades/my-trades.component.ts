@@ -29,7 +29,7 @@ export class MyTradesComponent implements OnInit {
   }
 
   private viewRequested(index){
-    console.log(this.tradeRequests[index]);
+    console.log(this.tradesRequested[index]);
     this.modalTradeInfo = this.tradesRequested[index];
     this.modalStyle = true;
     if(this.tradesRequested[index].tradePending == true){
@@ -45,7 +45,7 @@ export class MyTradesComponent implements OnInit {
     }
   }
 
-  private rejectTrade(){
+  private rejectTrade(){  //need to add code here to change TradePending to false for this tradesRequested
     let rejectTradeInfo = {
       id: (<any>this).modalTradeInfo.id,  //bookID
       fbId: (<any>this).modalTradeInfo.fbId,
@@ -55,7 +55,8 @@ export class MyTradesComponent implements OnInit {
       bookOwner: (<any>this).modalTradeInfo.bookOwner,
       bookDescription: (<any>this).modalTradeInfo.bookDescription,
       bookAuthors: (<any>this).modalTradeInfo.bookAuthors,
-      bookTitle: (<any>this).modalTradeInfo.bookTitle
+      bookTitle: (<any>this).modalTradeInfo.bookTitle,
+      bookImages: (<any>this).modalTradeInfo.bookImages
     }
 
     this.bookService.rejectTrade(rejectTradeInfo);
