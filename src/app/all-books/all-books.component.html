@@ -20,7 +20,8 @@
           <p><span class="h6">Title:</span> {{book.bookTitle}}</p>    
           <p><span class="h6">Author:</span> <span  *ngFor="let author of book.bookAuthors"> {{author}} </span></p>
           <p><span class="h6">Owner:</span> {{book.name}}</p>
-          <p><a class="green"><span class="button-span-green" (click)="viewBook(i)">View Book</span></a></p>
+          <div><button class="md-raised md-button md-ink-ripple" type="button" (click)="viewBook(i)">View Book</button></div>
+        <!--  <p><a class="green"><span class="button-span-green" (click)="viewBook(i)">View Book</span></a></p> -->
       </div>
     </div>
   </div>  
@@ -53,8 +54,12 @@
       </div><!-- close div row -->      
   </div><!-- close div *ngIf -->
   <div style="color: red; margin: 20px 0px;" *ngIf="message != undefined && message != ''">{{message}}</div>
-  <div *ngIf="isMyBook != undefined && isMyBook == false"><a class="green"><span class="button-span-green" (click)="requestTrade()">Request Trade</span></a></div><div><a style="margin-top: 20px;" class="green"><span class="button-span-green" (click)="closeModal()">Close</span></a></div>
-
+  <div *ngIf="isMyBook != undefined && isMyBook == false">
+    <p><button class="md-raised md-button md-ink-ripple" type="button" (click)="requestTrade()">Request Trade<div class="md-ripple-container"></div></button></p>
+  </div>
+ <!-- <div *ngIf="isMyBook != undefined && isMyBook == false"><a class="green"><span class="button-span-green" (click)="requestTrade()">Request Trade</span></a></div>-->
+  <div style="margin-top: 20px;">
+      <p><button class="md-raised md-button md-ink-ripple" type="button" (click)="closeModal()">Close Modal<div class="md-ripple-container"></div></button></p>
 </div><!-- close Modal content -->
 
 </div><!-- close Modal -->

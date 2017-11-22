@@ -27,12 +27,8 @@ export class MyTradesComponent implements OnInit {
   private isApproved: string;
   
 
-  private viewRequested(index){
-    console.log(this.tradesRequested[index]);
-  }
 
   private viewRequest(index){
-    console.log(this.tradeRequests[index]);
     this.modalTradeInfo = this.tradeRequests[index];
     this.modalStyle = true;
     if(this.tradeRequests[index].tradePending == true){
@@ -107,7 +103,6 @@ export class MyTradesComponent implements OnInit {
 
 
   private viewTradesRequested(index){
-    console.log(this.tradesRequested[index]);
     this.modalTwoInfo = this.tradesRequested[index];
     this.modalTwoStyle = true;
     if(this.tradesRequested[index].tradePending == true){
@@ -159,10 +154,8 @@ export class MyTradesComponent implements OnInit {
       .getMyBooks(lookup) //general use profile lookup
       .subscribe(
         (results) => {
-          console.log(results);
           if(results.length > 0) {
             this.results = results[0];
-            console.log("trade requests");
             this.tradeRequests = (<any>this).results.tradeRequests;
             this.tradesRequested = (<any>this).results.tradesRequested;
           }         

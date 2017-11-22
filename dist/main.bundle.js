@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/all-books/all-books.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row flex-column\">\n\n    <h4>All Books</h4>\n    <p class=\"text-muted\">Review all books on Booktraders. <br> Press the \"View Details\" link to read a book's description and request a trade.</p>\n  </div>\n</div>\n\n<div class=\"container\">\n  \n  <div class=\"row\">\n <div *ngFor=\"let book of allBooks; let i = index;\"  class=\"d-md-inline-flex\">\n      <div style=\"border: 1px solid grey;\">\n        <div class=\"no-stretch\">\n            <div *ngIf=\"book.bookImages != undefined\"  style=\"margin-right: 20px; margin-bottom: 20px;\">\n                <img class=\"img-set-width\" src={{book.bookImages.thumbnail}}>\n            </div> \n        </div>\n        <div class=\"book-details\">\n          <p><span class=\"h6\">Title:</span> {{book.bookTitle}}</p>    \n          <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of book.bookAuthors\"> {{author}} </span></p>\n          <p><span class=\"h6\">Owner:</span> {{book.name}}</p>\n          <p><a class=\"green\"><span class=\"button-span-green\" (click)=\"viewBook(i)\">View Book</span></a></p>\n      </div>\n    </div>\n  </div>  \n\n\n</div><!--close row -->\n\n</div><!--close container -->\n\n\n <!-- The Modal -->\n <div id=\"myModal\" class=\"modal\" [style.display]=\"modalStyle ? 'block' : 'none'\">\n  <!-- Modal content -->\n<div class=\"modal-content\">\n  <div>\n      <div>\n          <div style=\"border: 1px solid grey; max-width: 1050px;\" class=\"fix-width-modal-content\">\n            <div style=\"display: flex; flex-wrap: wrap; align-items: flex-start;\"> \n               <div *ngIf=\"modalBook.bookImages != undefined\">\n                <img class=\"modal-book-view\" src=\"{{modalBook.bookImages.thumbnail}}\"> \n               </div>\n                <div style=\"display: flex; flex-direction: column;\">\n                  <p><span class=\"h6\">Title:</span> {{modalBook.bookTitle}}</p>\n                  <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of modalBook.bookAuthors\"> {{author}}  </span></p> \n                  <p  style=\"max-width: 550px\"><span class=\"h6\">Description: </span> {{ modalBook.bookDescription}}</p>\n                  <p><span class=\"h6\">Book Owner:</span>  {{modalBook.name}} </p>\n                </div>\n            </div>    \n        </div>       \n      </div><!-- close div row -->      \n  </div><!-- close div *ngIf -->\n  <div style=\"color: red; margin: 20px 0px;\" *ngIf=\"message != undefined && message != ''\">{{message}}</div>\n  <div *ngIf=\"isMyBook != undefined && isMyBook == false\"><a class=\"green\"><span class=\"button-span-green\" (click)=\"requestTrade()\">Request Trade</span></a></div><div><a style=\"margin-top: 20px;\" class=\"green\"><span class=\"button-span-green\" (click)=\"closeModal()\">Close</span></a></div>\n\n</div><!-- close Modal content -->\n\n</div><!-- close Modal -->\n"
+module.exports = "<div class=\"container\">\n  <div class=\"row flex-column\">\n\n    <h4>All Books</h4>\n    <p class=\"text-muted\">Review all books on Booktraders. <br> Press the \"View Details\" link to read a book's description and request a trade.</p>\n  </div>\n</div>\n\n<div class=\"container\">\n  \n  <div class=\"row\">\n <div *ngFor=\"let book of allBooks; let i = index;\"  class=\"d-md-inline-flex\">\n      <div style=\"border: 1px solid grey;\">\n        <div class=\"no-stretch\">\n            <div *ngIf=\"book.bookImages != undefined\"  style=\"margin-right: 20px; margin-bottom: 20px;\">\n                <img class=\"img-set-width\" src={{book.bookImages.thumbnail}}>\n            </div> \n        </div>\n        <div class=\"book-details\">\n          <p><span class=\"h6\">Title:</span> {{book.bookTitle}}</p>    \n          <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of book.bookAuthors\"> {{author}} </span></p>\n          <p><span class=\"h6\">Owner:</span> {{book.name}}</p>\n          <div><button class=\"md-raised md-button md-ink-ripple\" type=\"button\" (click)=\"viewBook(i)\">View Book</button></div>\n        <!--  <p><a class=\"green\"><span class=\"button-span-green\" (click)=\"viewBook(i)\">View Book</span></a></p> -->\n      </div>\n    </div>\n  </div>  \n\n\n</div><!--close row -->\n\n</div><!--close container -->\n\n\n <!-- The Modal -->\n <div id=\"myModal\" class=\"modal\" [style.display]=\"modalStyle ? 'block' : 'none'\">\n  <!-- Modal content -->\n<div class=\"modal-content\">\n  <div>\n      <div>\n          <div style=\"border: 1px solid grey; max-width: 1050px;\" class=\"fix-width-modal-content\">\n            <div style=\"display: flex; flex-wrap: wrap; align-items: flex-start;\"> \n               <div *ngIf=\"modalBook.bookImages != undefined\">\n                <img class=\"modal-book-view\" src=\"{{modalBook.bookImages.thumbnail}}\"> \n               </div>\n                <div style=\"display: flex; flex-direction: column;\">\n                  <p><span class=\"h6\">Title:</span> {{modalBook.bookTitle}}</p>\n                  <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of modalBook.bookAuthors\"> {{author}}  </span></p> \n                  <p  style=\"max-width: 550px\"><span class=\"h6\">Description: </span> {{ modalBook.bookDescription}}</p>\n                  <p><span class=\"h6\">Book Owner:</span>  {{modalBook.name}} </p>\n                </div>\n            </div>    \n        </div>       \n      </div><!-- close div row -->      \n  </div><!-- close div *ngIf -->\n  <div style=\"color: red; margin: 20px 0px;\" *ngIf=\"message != undefined && message != ''\">{{message}}</div>\n  <div *ngIf=\"isMyBook != undefined && isMyBook == false\">\n    <p><button class=\"md-raised md-button md-ink-ripple\" type=\"button\" (click)=\"requestTrade()\">Request Trade<div class=\"md-ripple-container\"></div></button></p>\n  </div>\n <!-- <div *ngIf=\"isMyBook != undefined && isMyBook == false\"><a class=\"green\"><span class=\"button-span-green\" (click)=\"requestTrade()\">Request Trade</span></a></div>-->\n  <div style=\"margin-top: 20px;\">\n      <p><button class=\"md-raised md-button md-ink-ripple\" type=\"button\" (click)=\"closeModal()\">Close Modal<div class=\"md-ripple-container\"></div></button></p>\n</div><!-- close Modal content -->\n\n</div><!-- close Modal -->\n"
 
 /***/ }),
 
@@ -73,7 +73,6 @@ var AllBooksComponent = (function () {
     }
     AllBooksComponent.prototype.viewBook = function (index) {
         this.message = "";
-        console.log(this.allBooks[index]);
         this.modalStyle = true;
         this.modalBook = this.allBooks[index];
         if (this.modalBook.name == this.loggedInUser.name) {
@@ -85,7 +84,6 @@ var AllBooksComponent = (function () {
     };
     AllBooksComponent.prototype.requestTrade = function () {
         var _this = this;
-        console.log(this.modalBook);
         var tradeInfo = {
             bookId: this.modalBook.id,
             bookTitle: this.modalBook.bookTitle,
@@ -99,13 +97,10 @@ var AllBooksComponent = (function () {
         this.bookService
             .checkTrade(tradeInfo)
             .subscribe(function (result) {
-            console.log(result);
             _this.tradeResults = result;
             _this.message = "";
             var trades = JSON.parse(_this.tradeResults._body);
-            console.log(trades);
             var hasRequested = false;
-            console.log(trades[0].tradesRequested);
             if (trades[0].tradesRequested.length > 0) {
                 for (var i = 0; i < trades[0].tradesRequested.length; i++) {
                     if (trades[0].tradesRequested[i].id === tradeInfo.bookId) {
@@ -113,7 +108,6 @@ var AllBooksComponent = (function () {
                     }
                 }
             }
-            console.log(hasRequested);
             if (hasRequested == false) {
                 _this.bookService.requestTrade(tradeInfo); //if they haven't requested to trade book before, send to trade request
             }
@@ -124,18 +118,15 @@ var AllBooksComponent = (function () {
     };
     AllBooksComponent.prototype.closeModal = function () {
         this.modalStyle = false;
-        console.log("clicked closeMOdal!!");
     };
     AllBooksComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.data.currentMessage.subscribe(function (user) {
             _this.loggedInUser = user;
-            console.log(_this.loggedInUser);
         });
         this.bookService
             .getAllBooks()
             .subscribe(function (result) {
-            console.log(result);
             _this.results = result;
             for (var i = 0; i < _this.results.length; i++) {
                 for (var j = 0; j < _this.results[i].books.length; j++) {
@@ -212,9 +203,6 @@ var AppComponent = (function () {
         if (this.message === 'logged out!') {
             this.isLoggedIn = false;
         }
-        console.log('receive message event!');
-        console.log(this.message);
-        console.log(this.isLoggedIn);
     };
     return AppComponent;
 }());
@@ -385,7 +373,6 @@ var BooksService = (function () {
             .get('/api/all-books')
             .map(function (response) {
             var resp = response.json();
-            console.log(resp);
             return resp;
         })
             .catch(this.handleError);
@@ -406,7 +393,6 @@ var BooksService = (function () {
             .map(function (response) {
             if (response !== null) {
                 var resp = response.json();
-                console.log(resp);
                 return resp;
             }
             return response; /// this code is added for testing purposes if user doesn't exist
@@ -419,7 +405,6 @@ var BooksService = (function () {
             .post('/api/add-book', body)
             .map(function (response) {
             var resp = response.json();
-            console.log(resp);
             return resp;
         })
             .catch(this.handleError);
@@ -430,7 +415,6 @@ var BooksService = (function () {
             .post('/api/my-books', body)
             .map(function (response) {
             var resp = response.json();
-            console.log(resp);
             return resp;
         })
             .catch(this.handleError);
@@ -470,7 +454,6 @@ var BooksService = (function () {
             .post('/api/check-trade', body)
             .map(function (response) {
             var resp = response.json();
-            console.log(resp);
             return response;
         })
             .catch(this.handleError);
@@ -519,7 +502,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/*button css */\r\n\r\n.green {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    border-radius: 3px;\r\n    display: inline-block;\r\n    padding-right: 10px;\r\n    color: #fff;\r\n    text-decoration: none;\r\n    font-family: \"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif;\r\n    background: #b1cb36;\r\n    \r\n}\r\n\r\n.green:after {\r\n    font-family: FontAwesome;\r\n    content: '\\F061';\r\n    color: white;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n }\r\n\r\n .green:hover {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .green:hover span {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .green:active {\r\n    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n }\r\n\r\n\r\n .button-span {\r\n    color: #b1cb36;\r\n    padding: 10px;\r\n    margin-right: 10px;\r\n    display: inline-block;\r\n    background: #3c4043;; \r\n    letter-spacing: 2px;\r\n    border-radius: 3px 0px 0px 3px;\r\n    font-size: 13px;\r\n }\r\n\r\n\r\n /* orange button css */\r\n\r\n .orange {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    border-radius: 3px;\r\n    display: inline-block;\r\n    padding-right: 10px;\r\n    color: #fff;\r\n    text-decoration: none;\r\n    font-family: \"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif;\r\n    background: #fba93d;\r\n    \r\n}\r\n\r\n.orange:after {\r\n    font-family: FontAwesome;\r\n    content: '\\F061';\r\n    color: white;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n }\r\n\r\n .orange:hover {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .orange:hover span {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .orange:active {\r\n    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n }\r\n\r\n\r\n .button-span-orange {\r\n    color: #fba93d;\r\n    padding: 10px;\r\n    margin-right: 10px;\r\n    display: inline-block;\r\n    background: #3c4043;; \r\n    letter-spacing: 2px;\r\n    border-radius: 3px 0px 0px 3px;\r\n    font-size: 13px;\r\n }", ""]);
+exports.push([module.i, "/*button css */\r\n\r\n.green {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    border-radius: 3px;\r\n    display: inline-block;\r\n    padding-right: 10px;\r\n    color: #fff;\r\n    text-decoration: none;\r\n    font-family: \"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif;\r\n    background: #b1cb36;\r\n    \r\n}\r\n\r\n.green:after {\r\n    font-family: FontAwesome;\r\n    content: '\\F061';\r\n    color: white;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n }\r\n\r\n .green:hover {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .green:hover span {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .green:active {\r\n    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n }\r\n\r\n\r\n .button-span {\r\n    color: #b1cb36;\r\n    padding: 10px;\r\n    margin-right: 10px;\r\n    display: inline-block;\r\n    background: #3c4043;; \r\n    letter-spacing: 2px;\r\n    border-radius: 3px 0px 0px 3px;\r\n    font-size: 13px;\r\n }\r\n\r\n\r\n /* orange button css */\r\n\r\n .orange {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    border-radius: 3px;\r\n    display: inline-block;\r\n    padding-right: 10px;\r\n    color: #fff;\r\n    text-decoration: none;\r\n    font-family: \"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif;\r\n    background: #fba93d;\r\n    \r\n}\r\n\r\n.orange:after {\r\n    font-family: FontAwesome;\r\n    content: '\\F061';\r\n    color: white;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n }\r\n\r\n .orange:hover {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .orange:hover span {\r\n    color: #fff;\r\n    cursor: pointer;\r\n }\r\n\r\n .orange:active {\r\n    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.51);\r\n }\r\n\r\n\r\n .button-span-orange {\r\n    color: #fba93d;\r\n    padding: 10px;\r\n    margin-right: 10px;\r\n    display: inline-block;\r\n    background: #3c4043;; \r\n    letter-spacing: 2px;\r\n    border-radius: 3px 0px 0px 3px;\r\n    font-size: 13px;\r\n }\r\n", ""]);
 
 // exports
 
@@ -532,7 +515,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = " <!-- Jumbotron -->\n<div class=\"container\">\n  <div class=\"jumbotron text-center\" style=\"background-image: url('https://cdn.pixabay.com/photo/2016/11/18/16/49/books-1835753__340.jpg'); color: white;\">\n      <h1>Booktraders</h1>\n      <p class=\"lead\">A book trading website for book lovers!</p>\n    </div>\n</div>\n<div class=\"container\">\n  <!-- Example row of columns -->\n  <div class=\"row\">\n    <div class=\"col-lg-4\">\n      <h4>My Books</h4>\n      <p>View your library, and new books to your collection using the Google Books API.</p>\n      <p><a routerLink=\"/my-books\" class=\"green\"><span class=\"button-span\">My Library</span></a></p>\n    </div>\n    <div class=\"col-lg-4\">\n      <h4>View Books</h4>\n      <p>View all books other Booktraders users have added.</p>\n      <p><a routerLink=\"/all-books\" class=\"orange\"><span class=\"button-span-orange\">All Books</span></a></p>\n    </div>\n    <div class=\"col-lg-4\">\n      <h4>Trade Books</h4>\n      <p>If you see a book you want to read on the list, you can propose a trade.  You can also approve trades other users request for books in your library.</p>\n      <p><a routerLink=\"/my-trades\" class=\"green\"><span class=\"button-span\">Trade Requests</span></a></p>\n    </div>\n  </div>\n</div><!-- close container -->\n\n\n"
+module.exports = " <!-- Jumbotron -->\n<div class=\"container\">\n  <div class=\"jumbotron text-center\" style=\"background-image: url('https://cdn.pixabay.com/photo/2016/11/18/16/49/books-1835753__340.jpg'); color: white;\">\n      <h1>Booktraders</h1>\n      <p class=\"lead\">A book trading website for book lovers!</p>\n    </div>\n</div>\n<div class=\"container\">\n  <!-- Example row of columns -->\n  <div class=\"row\">\n    <div class=\"col-lg-4\">\n      <h4>My Books</h4>\n      <p>View your library, and new books to your collection using the Google Books API.</p>\n     <p><a routerLink=\"/my-books\" class=\"green\"><span class=\"button-span\">My Library</span></a></p> \n      <!-- <p><button class=\"md-raised md-button md-ink-ripple\" type=\"button\" ><span class=\"ng-scope\">My Library</span><div class=\"md-ripple-container\"></div></button></p> -->\n    </div>\n    <div class=\"col-lg-4\">\n      <h4>View Books</h4>\n      <p>View all books other Booktraders users have added.</p>\n      <p><a routerLink=\"/all-books\" class=\"orange\"><span class=\"button-span-orange\">All Books</span></a></p>\n    </div>\n    <div class=\"col-lg-4\">\n      <h4>Trade Books</h4>\n      <p>If you see a book you want to read on the list, you can propose a trade.  You can also approve trades other users request for books in your library.</p>\n      <p><a routerLink=\"/my-trades\" class=\"green\"><span class=\"button-span\">Trade Requests</span></a></p>\n    </div>\n  </div>\n</div><!-- close container -->\n\n\n"
 
 /***/ }),
 
@@ -684,7 +667,6 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.sendMessage = function () {
         this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
-        console.log(this.message);
         this.messageEvent.emit(this.message);
     };
     LoginComponent.prototype.ngOnInit = function () {
@@ -692,7 +674,6 @@ var LoginComponent = (function () {
         this.authService.authState.subscribe(function (user) {
             _this.user = user;
             _this.loggedIn = (user != null);
-            console.log(_this.user);
             if (user != null) {
                 _this.userInfo = {
                     name: _this.user.name,
@@ -1071,11 +1052,7 @@ var MyTradesComponent = (function () {
         this.modalTradeInfo = {};
         this.modalTwoInfo = {};
     }
-    MyTradesComponent.prototype.viewRequested = function (index) {
-        console.log(this.tradesRequested[index]);
-    };
     MyTradesComponent.prototype.viewRequest = function (index) {
-        console.log(this.tradeRequests[index]);
         this.modalTradeInfo = this.tradeRequests[index];
         this.modalStyle = true;
         if (this.tradeRequests[index].tradePending == true) {
@@ -1137,7 +1114,6 @@ var MyTradesComponent = (function () {
         this.modalStyle = false;
     };
     MyTradesComponent.prototype.viewTradesRequested = function (index) {
-        console.log(this.tradesRequested[index]);
         this.modalTwoInfo = this.tradesRequested[index];
         this.modalTwoStyle = true;
         if (this.tradesRequested[index].tradePending == true) {
@@ -1178,10 +1154,8 @@ var MyTradesComponent = (function () {
             _this.bookService
                 .getMyBooks(lookup) //general use profile lookup
                 .subscribe(function (results) {
-                console.log(results);
                 if (results.length > 0) {
                     _this.results = results[0];
-                    console.log("trade requests");
                     _this.tradeRequests = _this.results.tradeRequests;
                     _this.tradesRequested = _this.results.tradesRequested;
                 }

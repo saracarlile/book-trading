@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
 
   sendMessage() {
     this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
-    console.log(this.message);
     this.messageEvent.emit(this.message);
   }
 
@@ -49,7 +48,6 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
-      console.log(this.user);
 
       if(user != null) {
         this.userInfo = {

@@ -31,7 +31,6 @@ export class AllBooksComponent implements OnInit {
 
    private viewBook(index) {
      this.message = "";
-     console.log(this.allBooks[index]);
      this.modalStyle = true;
      this.modalBook = this.allBooks[index];
 
@@ -47,7 +46,7 @@ export class AllBooksComponent implements OnInit {
    
 
    private requestTrade() {
-    console.log(this.modalBook);
+
     let tradeInfo = {
       bookId: (<any>this).modalBook.id,
       bookTitle: (<any>this).modalBook.bookTitle,
@@ -64,14 +63,12 @@ export class AllBooksComponent implements OnInit {
     .checkTrade(tradeInfo)
     .subscribe(
     (result) => {
-      console.log(result);
       this.tradeResults = result;
       this.message = "";
       
       let trades = JSON.parse((<any>this).tradeResults._body);
-      console.log(trades)
       let hasRequested = false;
-      console.log(trades[0].tradesRequested);
+
       if (trades[0].tradesRequested.length > 0) {  //if user has requested trades
         for (let i = 0; i < trades[0].tradesRequested.length; i++) {
           if (trades[0].tradesRequested[i].id === tradeInfo.bookId) {
@@ -79,7 +76,7 @@ export class AllBooksComponent implements OnInit {
           }
         }
       }
-      console.log(hasRequested);
+
       if( hasRequested == false){
         this.bookService.requestTrade(tradeInfo);  //if they haven't requested to trade book before, send to trade request
       }
@@ -88,19 +85,12 @@ export class AllBooksComponent implements OnInit {
       }
 
       }
-    );
-
-  
-    
-
-
-    
+    );  
 
    }
 
    private closeModal() {
     this.modalStyle = false;
-    console.log("clicked closeMOdal!!");
    }
 
 
@@ -108,7 +98,6 @@ export class AllBooksComponent implements OnInit {
 
     this.data.currentMessage.subscribe(user => {
       this.loggedInUser = user;
-      console.log(this.loggedInUser);
     })
 
   
@@ -116,7 +105,6 @@ export class AllBooksComponent implements OnInit {
       .getAllBooks()
       .subscribe(
       (result) => {
-        console.log(result);
       
         this.results = result;
         for(let i = 0; i < this.results.length; i++ ){  

@@ -23,7 +23,6 @@ export class BooksService {
     .get('/api/all-books')
     .map(response => {
       const resp = response.json();
-      console.log(resp);
       return resp;
     })
     .catch(this.handleError);
@@ -48,7 +47,6 @@ export class BooksService {
     .map(response => {
       if(response !== null){  // this code is added for testing purposes if user doesn't exist
         const resp = response.json();
-        console.log(resp);
         return resp;
       }
       return response;  /// this code is added for testing purposes if user doesn't exist
@@ -63,7 +61,6 @@ export class BooksService {
     .post('/api/add-book', body)
     .map(response => {
       const resp = response.json();
-      console.log(resp);
       return resp;
     })
     .catch(this.handleError);
@@ -75,7 +72,6 @@ export class BooksService {
     .post('/api/my-books', body)
     .map(response => {
       const resp = response.json();
-      console.log(resp);
       return resp;
     })
     .catch(this.handleError);
@@ -123,7 +119,6 @@ export class BooksService {
     .post('/api/check-trade', body)
     .map(response => {
       const resp = response.json();
-      console.log(resp);
       return response;
     })
     .catch(this.handleError);
