@@ -33,11 +33,11 @@
                       <p (click)="showFullDescription()" style="cursor: pointer;"  *ngIf="search.volumeInfo.description" class="text-muted">Show/Hide Full Description</p>
                     </div>
                 </div> 
-                <p><a class="green-book" (click)="addToMyBooks(i)"><span class="button-span-green-book">Add to My Books</span></a></p>   
+                <p><button class="md-raised md-button md-ink-ripple" type="button" (click)="addToMyBooks(i)">Add to My Books<div class="md-ripple-container"></div></button></p>
             </div>       
           </div><!-- close div row -->      
       </div><!-- close div *ngIf -->
-       <p style="margin-top: 10px;"> <a class="orange" (click)="updatemodalStyle()"><span class="button-span-orange">Close Window</span></a></p>
+      <p><button class="md-raised md-button md-ink-ripple" type="button" (click)="updatemodalStyle()">Close Window<div class="md-ripple-container"></div></button></p>
     </div><!-- close Modal content -->
     
   </div><!-- close Modal -->
@@ -60,7 +60,7 @@
             <div class="book-details">
               <p><span class="h6">Title:</span> {{book.bookTitle}}</p>
               <p><span class="h6">Author:</span> <span  *ngFor="let author of book.bookAuthors"> {{author}} </span></p>
-              <p><a class="green-book" (click)="modalDetailView(i)"><span class="button-span-green-book">View Book</span></a></p>
+              <div><button class="md-raised md-button md-ink-ripple" type="button" (click)="modalDetailView(i)">View Book</button></div>
             </div>
           </div>
         </div>
@@ -84,10 +84,10 @@
                   <p style="max-width: 550px"><span class="h6">Description: </span> {{ modalDetailBook.bookDescription}}</p>
                 </div>
               </div>                
-            <p style="align-self: flex-end;">
-              <a class="green-close" (click)="modalDetailView();"><span class="button-span-green-close">Close</span></a> 
-              <a class="red" (click)="removeFromLibrary(); modalDetailView();"><span class="button-span-red">Remove from Library</span></a>
-            </p>
+            <div style="align-self: flex-end;">
+              <p><button class="md-raised md-button md-ink-ripple" type="button" (click)="removeFromLibrary(); modalDetailView();">Remove From Library<div class="md-ripple-container"></div></button></p>
+              <p><button class="md-raised md-button md-ink-ripple" type="button" (click)="modalDetailView();">Close<div class="md-ripple-container"></div></button></p>
+            </div>
       </div>
   </div><!-- close Modal content -->
   

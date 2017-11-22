@@ -46,11 +46,11 @@
           <p><span class="h6">Author:</span> <span  *ngFor="let author of modalTradeInfo.bookAuthors"> {{author}}  </span></p>
           <p><span class="h6">Trade Requester:</span> {{modalTradeInfo.tradeRequester}}</p>
           <div *ngIf="tradePending != undefined">
-            <p><span class="h6">Trade Status:</span> {{tradePending}}</p>
+            <p><span class="h6">Trade Status: </span><span style="color:coral">{{tradePending}} </span> </p>
           </div>
-          <button (click)="approveTrade()" style="max-width: 250px">Approve Trade</button>
-          <button (click)="rejectTrade()" style="max-width: 250px">Reject Trade</button>
-          <button (click)="closeModal()" style="max-width: 250px">Close</button>
+          <p><button class="md-raised md-button md-ink-ripple" type="button" (click)="approveTrade()">Approve Trade<div class="md-ripple-container"></div></button></p>
+          <p><button class="md-raised md-button md-ink-ripple" type="button" (click)="rejectTrade()">Reject Trade<div class="md-ripple-container"></div></button></p>
+          <p><button class="md-raised md-button md-ink-ripple" type="button" (click)="closeModal()">Close<div class="md-ripple-container"></div></button></p>
         </div>
    
    </div><!-- close Modal content -->
@@ -70,9 +70,9 @@
               <p><span class="h6">Title:</span> {{modalTwoInfo.bookTitle}}</p>
               <p><span class="h6">Author:</span> <span  *ngFor="let author of modalTwoInfo.bookAuthors"> {{author}}  </span></p>
               <p><span class="h6">Trade Requester:</span> {{modalTwoInfo.tradeRequester}}</p>
-              <p><span class="h6">Trade Status:</span> {{isApproved}}</p>
-              <button (click)="deleteRequest()" style="max-width: 250px">Delete Request</button>
-              <button (click)="closeModalTwo()" style="max-width: 250px">Close</button>
+              <p><span class="h6">Trade Status: </span><span style="color:coral"> {{isApproved}}</span></p>
+              <p><button class="md-raised md-button md-ink-ripple" type="button" (click)="deleteRequest()">Delete Request<div class="md-ripple-container"></div></button></p>
+              <p><button class="md-raised md-button md-ink-ripple" type="button" (click)="closeModalTwo()">Close<div class="md-ripple-container"></div></button></p>
             </div>
     </div><!-- close Modal content -->
     

@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 import 'rxjs/Rx';
 
-
 import { AppComponent } from './app.component';
 import { AllBooksComponent } from './all-books/all-books.component';
 import { MyBooksComponent } from './my-books/my-books.component';
@@ -29,7 +28,7 @@ const CONFIG = new AuthServiceConfig([
   {
     id: FacebookLoginProvider.PROVIDER_ID,
     //provider: new FacebookLoginProvider('Facebook-App-Id')
-    provider: new FacebookLoginProvider('1074503412653371')
+    provider: new FacebookLoginProvider('151769965444680')
   }
 ]);
 
