@@ -19,11 +19,13 @@ export class MyTradesComponent implements OnInit {
   private tradeRequests = [];
   private tradesRequested = [];
   private modalStyle = false;  // set the 'search' modal to not display onload
-  private modealTwoStyle = false;
-  private modalTradeInfo = {};
+  private modalTwoStyle = false;
+  private modalTradeInfo = {};  
+  private modalTwoInfo = {};
   private tradeRequestApproved: string;
   private tradePending: string;
-
+  private isApproved: string;
+  
 
   private viewRequested(index){
     console.log(this.tradesRequested[index]);
@@ -99,14 +101,51 @@ export class MyTradesComponent implements OnInit {
 
   }
 
-
-
   private closeModal() {
     this.modalStyle = false;
   }
 
 
+  private viewTradesRequested(index){
+    console.log(this.tradesRequested[index]);
+    this.modalTwoInfo = this.tradesRequested[index];
+    this.modalTwoStyle = true;
+    if(this.tradesRequested[index].tradePending == true){
+      this.isApproved = "Trade status is pending. The book owner needs to review your request."
+    }
+    if(this.tradeRequests[index].tradePending == false){
+      if(this.tradeRequests[index].tradeApproved == true){
+        this.isApproved = "This trade request was approved.";
+      }
+      else{
+        this.isApproved = "This trade request was not approved.";
+      }
+    }
+  }
 
+  private closeModalTwo() {
+    this.modalTwoStyle = false;
+  }
+
+  private deleteRequest() {
+    let deleteTradeInfo = {
+      id: (<any>this).modalTwoInfo.id,  //bookID
+      tradeRequester: (<any>this).modalTwoInfo.tradeRequester,
+      bookOwner: (<any>this).modalTwoInfo.bookOwner,
+      bookTitle: (<any>this).modalTwoInfo.bookTitle
+    }
+
+    this.bookService.deleteTrade(deleteTradeInfo);  // send reject trade info to server
+
+    for(let i = 0; i < this.tradesRequested.length; i++){  //update DOM reject trade info
+      if(this.tradesRequested[i].id == (<any>this).modalTwoInfo.id ) {
+        this.tradesRequested.splice(i, 1);
+      }
+    }
+
+    this.closeModalTwo();
+
+  }
 
 
 

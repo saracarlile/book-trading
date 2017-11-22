@@ -151,6 +151,12 @@ export class BooksService {
     req.subscribe(getResponse => console.log(getResponse));
   }
 
+  public deleteTrade(tradeInfo) {
+    const body = tradeInfo;
+    const req = this.http.post('/api/delete-trade', body);
+    req.subscribe(getResponse => console.log(getResponse));
+  }
+
 
 
   private handleError (error: Response | any) {

@@ -27,14 +27,14 @@
   <div *ngIf="tradesRequested.length > 0">
     <div class="row flex-column btm-margin" *ngFor="let requested of tradesRequested; let i = index">
       <p><span class="h6">Title:</span>  {{requested.bookTitle}}
-        <a style="color: blue; margin-left: 5px;" (click)="viewRequested(i)">View More</a>
+        <a style="color: blue; margin-left: 5px;" (click)="viewTradesRequested(i)">View More</a>
       </p>
     </div>
   </div>
 </div>
 
   <!-- The Modal -->
-  <div class="modal" [style.display]="modalStyle ? 'block' : 'none'">
+<div class="modal" [style.display]="modalStyle ? 'block' : 'none'">
     <!-- Modal content -->
   <div class="modal-content" >
     <div *ngIf="modalTradeInfo != undefined">
@@ -45,23 +45,35 @@
           <p><span class="h6">Title:</span> {{modalTradeInfo.bookTitle}}</p>
           <p><span class="h6">Author:</span> <span  *ngFor="let author of modalTradeInfo.bookAuthors"> {{author}}  </span></p>
           <p><span class="h6">Trade Requester:</span> {{modalTradeInfo.tradeRequester}}</p>
-          <p><span class="h6">Trade Status:</span> {{tradePending}}</p>
+          <div *ngIf="tradePending != undefined">
+            <p><span class="h6">Trade Status:</span> {{tradePending}}</p>
+          </div>
           <button (click)="approveTrade()" style="max-width: 250px">Approve Trade</button>
           <button (click)="rejectTrade()" style="max-width: 250px">Reject Trade</button>
           <button (click)="closeModal()" style="max-width: 250px">Close</button>
         </div>
    
-  </div><!-- close Modal content -->
-  
+   </div><!-- close Modal content -->
+  </div>
 </div><!-- close Modal -->
 
 
     <!-- The Modal -->
-    <div class="modal-two" [style.display]="modalTwoStyle ? 'block' : 'none'">
+  <div class="modal-2" [style.display]="modalTwoStyle ? 'block' : 'none'">
       <!-- Modal content -->
-    <div class="modal-content" >
-
-     
+    <div class="modal-content-2" >
+        <div *ngIf="modalTwoInfo != undefined">
+            <div class="row flex-column" style="padding: 5px;">
+                <div *ngIf="modalTwoInfo.bookImages != undefined  && modalTwoInfo.bookImages.thumbnail != null ">
+                    <img src="{{modalTwoInfo.bookImages.thumbnail}}" style="margin-right: 20px; margin-bottom: 20px;"> 
+                </div>  
+              <p><span class="h6">Title:</span> {{modalTwoInfo.bookTitle}}</p>
+              <p><span class="h6">Author:</span> <span  *ngFor="let author of modalTwoInfo.bookAuthors"> {{author}}  </span></p>
+              <p><span class="h6">Trade Requester:</span> {{modalTwoInfo.tradeRequester}}</p>
+              <p><span class="h6">Trade Status:</span> {{isApproved}}</p>
+              <button (click)="deleteRequest()" style="max-width: 250px">Delete Request</button>
+              <button (click)="closeModalTwo()" style="max-width: 250px">Close</button>
+            </div>
     </div><!-- close Modal content -->
     
   </div><!-- close Modal -->

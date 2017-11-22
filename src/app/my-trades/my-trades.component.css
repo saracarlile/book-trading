@@ -31,16 +31,9 @@
       width: 80%; /* Could be more or less, depending on screen size */
   }
 
-  .modal-content-box {
-    background-color: #ffffff;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid grey;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
   
 /* The Modal Two (background) */
-.modal-two {
+.modal-2 {
     /*   display: none; Hidden by default */
       position: fixed; /* Stay in place */
       z-index: 1; /* Sit on top */
@@ -53,12 +46,9 @@
       background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
 
-  .no-stretch {
-    width: 140px;
-}
   
   /* Modal Content/Box */
-  .modal-content {
+  .modal-content-2 {
       background-color: #ffffff;
       margin: 15% auto; /* 15% from the top and centered */
       padding: 20px;
@@ -66,11 +56,5 @@
       width: 80%; /* Could be more or less, depending on screen size */
   }
 
-  .modal-content-box {
-    background-color: #ffffff;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid grey;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
+
   
