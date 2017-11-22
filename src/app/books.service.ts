@@ -145,6 +145,12 @@ export class BooksService {
     req.subscribe(getResponse => console.log(getResponse));
   }
 
+  public approveTrade(tradeInfo) {
+    const body = tradeInfo;
+    const req = this.http.post('/api/approve-trade', body);
+    req.subscribe(getResponse => console.log(getResponse));
+  }
+
 
 
   private handleError (error: Response | any) {

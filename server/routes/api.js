@@ -131,35 +131,82 @@ router.post('/request-trade', (req, res) => {
           bookOwner: req.body.bookOwner,
           tradeRequester: req.body.tradeRequester,
           bookImages: req.body.bookImages,
-          fbId:  req.body.fbId,
           tradeApproved: false,
           tradePending: false
         }
 
-        User.update({'fbId': req.body.fbId}, { '$pull': { 'tradesRequested': {'id': req.body.id}}}, { safe: true, multi:true }).exec(function(err, result){
+
+        let tradesRequested = {
+          id: req.body.id,  //bookId
+          bookTitle: req.body.bookTitle,
+          bookAuthors: req.body.bookAuthors,
+          bookImages: req.body.bookImages,
+          bookDescription: req.body.bookDescription, 
+          bookOwner: req.body.bookOwner,
+          tradeRequester: req.body.tradeRequester,
+          bookImages: req.body.bookImages,
+          tradeApproved: false,
+          tradePending: false
+        }
+
+        User.update({'name': req.body.bookOwner}, { '$pull': { 'tradeRequests': {'id': req.body.id}}}, { safe: true, multi:true }).exec(function(err, result){
           console.log(" OK TRADE Rejected");
           if(result){
-            User.findOneAndUpdate({'fbId': req.body.fbId}, { '$push': { 'tradesRequested': tradeRequest} }).exec(function(err, result){
+            User.findOneAndUpdate({'name': req.body.bookOwner}, { '$push': { 'tradeRequests': tradeRequest} }).exec(function(err, result){
               console.log(" OK TRADE added");
             });
           }
         });
     
-        User.update({'name': req.body.bookOwner}, { '$pull': { 'tradeRequests': {'id': req.body.id} }}, { safe: true, multi:true }).exec(function(err, result){
+        User.update({'name': req.body.tradeRequester}, { '$pull': { 'tradesRequested': {'id': req.body.id} }}, { safe: true, multi:true }).exec(function(err, result){
           console.log("ok trade rejected");
           if(result){
-            User.findOneAndUpdate({'name': req.body.bookOwner}, { '$push': { 'tradeRequests': tradeRequest } }).exec(function(err, result){
+            User.findOneAndUpdate({'name': req.body.tradeRequester}, { '$push': { 'tradesRequested': tradeRequest } }).exec(function(err, result){
               res.send("ok " + result);
             });
           }
          });
-
-        
-    
-        
-
       
       });
+
+  router.post('/approve-trade', (req, res) => {
+    
+        
+        let tradeRequest = {
+          id: req.body.id,  //bookId
+          bookTitle: req.body.bookTitle,
+          bookAuthors: req.body.bookAuthors,
+          bookImages: req.body.bookImages,
+          bookDescription: req.body.bookDescription, 
+          bookOwner: req.body.bookOwner,
+          tradeRequester: req.body.tradeRequester,
+          bookImages: req.body.bookImages,
+          tradeApproved: true,
+          tradePending: false
+        }
+
+
+
+        User.update({'name': req.body.bookOwner}, { '$pull': { 'tradeRequests': {'id': req.body.id}}}, { safe: true, multi:true }).exec(function(err, result){
+          console.log("tradeRequest removed");
+          if(result){
+            User.findOneAndUpdate({'name': req.body.bookOwner}, { '$push': { 'tradeRequests': tradeRequest} }).exec(function(err, result){
+              console.log("tradeRequest added")
+            });
+          }
+        });
+    
+        User.update({'name': req.body.tradeRequester}, { '$pull': { 'tradesRequested': {'id': req.body.id} }}, { safe: true, multi:true }).exec(function(err, result){
+          console.log("tradesRequested removed");
+          if(result){
+            User.findOneAndUpdate({'name': req.body.tradeRequester}, { '$push': { 'tradesRequested': tradeRequest } }).exec(function(err, result){
+              res.send("tradesRequested added");
+            });
+          }
+          });
+      });
+      
+          
   
 
 router.post('/update-user-info', (req, res) => {    //John will be test user

@@ -183,7 +183,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<app-login (messageEvent)=\"receiveMessage($event)\"></app-login>\n\n<div style=\"margin-top: 100px;\" class=\"mobile-fix\" *ngIf=\"isLoggedIn == true\" >\n\n  <router-outlet></router-outlet>\n\n</div><!-- close div -->\n\n\n  <!-- Site footer -->\n <div class=\"container\">\n    <footer class=\"footer\">\n      <p>&copy; Carlile 2017</p>\n    </footer>\n</div>"
+module.exports = "\n\n<app-login (messageEvent)=\"receiveMessage($event)\"></app-login>\n\n<div style=\"margin-top: 100px;\" class=\"mobile-fix\" *ngIf=\"isLoggedIn == true\" >\n\n  <router-outlet></router-outlet>\n\n</div><!-- close div -->\n\n"
 
 /***/ }),
 
@@ -483,6 +483,11 @@ var BooksService = (function () {
     BooksService.prototype.rejectTrade = function (tradeInfo) {
         var body = tradeInfo;
         var req = this.http.post('/api/reject-trade', body);
+        req.subscribe(function (getResponse) { return console.log(getResponse); });
+    };
+    BooksService.prototype.approveTrade = function (tradeInfo) {
+        var body = tradeInfo;
+        var req = this.http.post('/api/approve-trade', body);
         req.subscribe(function (getResponse) { return console.log(getResponse); });
     };
     BooksService.prototype.handleError = function (error) {
@@ -1009,7 +1014,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".btm-margin {\r\n    margin-bottom: 20px;\r\n}\r\n\r\n\r\n\r\n/* The Modal (background) */\r\n.modal {\r\n    /*   display: none; Hidden by default */\r\n      position: fixed; /* Stay in place */\r\n      z-index: 1; /* Sit on top */\r\n      left: 0;\r\n      top: 0;\r\n      width: 100%; /* Full width */\r\n      height: 100%; /* Full height */\r\n      overflow: auto; /* Enable scroll if needed */\r\n      background-color: rgb(0,0,0); /* Fallback color */\r\n      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n  }\r\n\r\n  .no-stretch {\r\n    width: 140px;\r\n}\r\n  \r\n  /* Modal Content/Box */\r\n  .modal-content {\r\n      background-color: #ffffff;\r\n      margin: 15% auto; /* 15% from the top and centered */\r\n      padding: 20px;\r\n      border: 1px solid grey;\r\n      width: 80%; /* Could be more or less, depending on screen size */\r\n  }\r\n\r\n  .modal-content-box {\r\n    background-color: #ffffff;\r\n    margin: 15% auto; /* 15% from the top and centered */\r\n    padding: 20px;\r\n    border: 1px solid grey;\r\n    width: 80%; /* Could be more or less, depending on screen size */\r\n}\r\n  ", ""]);
+exports.push([module.i, ".btm-margin {\r\n    margin-bottom: 20px;\r\n}\r\n\r\n\r\n\r\n/* The Modal (background) */\r\n.modal {\r\n    /*   display: none; Hidden by default */\r\n      position: fixed; /* Stay in place */\r\n      z-index: 1; /* Sit on top */\r\n      left: 0;\r\n      top: 0;\r\n      width: 100%; /* Full width */\r\n      height: 100%; /* Full height */\r\n      overflow: auto; /* Enable scroll if needed */\r\n      background-color: rgb(0,0,0); /* Fallback color */\r\n      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n  }\r\n\r\n  .no-stretch {\r\n    width: 140px;\r\n}\r\n  \r\n  /* Modal Content/Box */\r\n  .modal-content {\r\n      background-color: #ffffff;\r\n      margin: 15% auto; /* 15% from the top and centered */\r\n      padding: 20px;\r\n      border: 1px solid grey;\r\n      width: 80%; /* Could be more or less, depending on screen size */\r\n  }\r\n\r\n  .modal-content-box {\r\n    background-color: #ffffff;\r\n    margin: 15% auto; /* 15% from the top and centered */\r\n    padding: 20px;\r\n    border: 1px solid grey;\r\n    width: 80%; /* Could be more or less, depending on screen size */\r\n}\r\n  \r\n/* The Modal Two (background) */\r\n.modal-two {\r\n    /*   display: none; Hidden by default */\r\n      position: fixed; /* Stay in place */\r\n      z-index: 1; /* Sit on top */\r\n      left: 0;\r\n      top: 0;\r\n      width: 100%; /* Full width */\r\n      height: 100%; /* Full height */\r\n      overflow: auto; /* Enable scroll if needed */\r\n      background-color: rgb(0,0,0); /* Fallback color */\r\n      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n  }\r\n\r\n  .no-stretch {\r\n    width: 140px;\r\n}\r\n  \r\n  /* Modal Content/Box */\r\n  .modal-content {\r\n      background-color: #ffffff;\r\n      margin: 15% auto; /* 15% from the top and centered */\r\n      padding: 20px;\r\n      border: 1px solid grey;\r\n      width: 80%; /* Could be more or less, depending on screen size */\r\n  }\r\n\r\n  .modal-content-box {\r\n    background-color: #ffffff;\r\n    margin: 15% auto; /* 15% from the top and centered */\r\n    padding: 20px;\r\n    border: 1px solid grey;\r\n    width: 80%; /* Could be more or less, depending on screen size */\r\n}\r\n  ", ""]);
 
 // exports
 
@@ -1022,7 +1027,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/my-trades/my-trades.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row flex-column btm-margin\">\n    <h4>My Trade Requests</h4>\n    <p class=\"text-muted\">View and approve Trade Requests from other users on Booktraders.\n    </p>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row btm-margin\">\n    <div *ngIf=\"tradeRequests.length > 0\">\n      <h4>Trade Requests</h4>\n    </div>\n  </div>\n  <div *ngIf=\"tradeRequests.length > 0\">\n    <div class=\"row flex-column btm-margin\" *ngFor=\"let request of tradeRequests; let i = index\">\n      <p><span class=\"h6\">Title:</span>  {{request.bookTitle}}\n        <a style=\"color: blue; margin-left: 5px;\" (click)=\"viewRequest(i)\">View More</a>\n      </p>\n    </div>\n  </div>\n  <div class=\"row btm-margin\">\n    <div *ngIf=\"tradesRequested.length > 0\">\n      <h4>Trades Requested</h4>\n    </div>\n  </div>\n  <div *ngIf=\"tradesRequested.length > 0\">\n    <div class=\"row flex-column btm-margin\" *ngFor=\"let requested of tradesRequested; let i = index\">\n      <p><span class=\"h6\">Title:</span>  {{requested.bookTitle}}\n        <a style=\"color: blue; margin-left: 5px;\" (click)=\"viewRequested(i)\">View More</a>\n      </p>\n    </div>\n  </div>\n</div>\n\n\n\n    <!-- The Modal -->\n    <div id=\"myModal\" class=\"modal\" [style.display]=\"modalStyle ? 'block' : 'none'\">\n        <!-- Modal content -->\n      <div class=\"modal-content\" >\n        <div *ngIf=\"modalTradeInfo != undefined\">\n            <div class=\"row flex-column\" style=\"padding: 5px;\">\n                <div *ngIf=\"modalTradeInfo.bookImages != undefined  && modalTradeInfo.bookImages.thumbnail != null \">\n                    <img src=\"{{modalTradeInfo.bookImages.thumbnail}}\" style=\"margin-right: 20px; margin-bottom: 20px;\"> \n                </div>  \n              <p><span class=\"h6\">Title:</span> {{modalTradeInfo.bookTitle}}</p>\n              <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of modalTradeInfo.bookAuthors\"> {{author}}  </span></p>\n              <p><span class=\"h6\">Trade Requester:</span> {{modalTradeInfo.tradeRequester}}</p>\n              <p><span class=\"h6\">Trade Status:</span> {{tradePending}}</p>\n              <button (click)=\"approveTrade()\" style=\"max-width: 250px\">Approve Trade</button>\n              <button (click)=\"rejectTrade()\" style=\"max-width: 250px\">Reject Trade</button>\n              <button (click)=\"closeModal()\" style=\"max-width: 250px\">Close</button>\n            </div>\n       \n      </div><!-- close Modal content -->\n      \n    </div><!-- close Modal -->\n    "
+module.exports = "<div class=\"container\">\n  <div class=\"row flex-column btm-margin\">\n    <h4>My Trade Requests</h4>\n    <p class=\"text-muted\">View and approve Trade Requests from other users on Booktraders.\n    </p>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row btm-margin\">\n    <div *ngIf=\"tradeRequests.length > 0\">\n      <h4>Trade Requests</h4>\n    </div>\n  </div>\n  <div *ngIf=\"tradeRequests.length > 0\">\n    <div class=\"row flex-column btm-margin\" *ngFor=\"let request of tradeRequests; let i = index\">\n      <p><span class=\"h6\">Title:</span>  {{request.bookTitle}}\n        <a style=\"color: blue; margin-left: 5px;\" (click)=\"viewRequest(i)\">View More</a>\n      </p>\n    </div>\n  </div>\n  <div class=\"row btm-margin\">\n    <div *ngIf=\"tradesRequested.length > 0\">\n      <h4>Trades Requested</h4>\n    </div>\n  </div>\n  <div *ngIf=\"tradesRequested.length > 0\">\n    <div class=\"row flex-column btm-margin\" *ngFor=\"let requested of tradesRequested; let i = index\">\n      <p><span class=\"h6\">Title:</span>  {{requested.bookTitle}}\n        <a style=\"color: blue; margin-left: 5px;\" (click)=\"viewRequested(i)\">View More</a>\n      </p>\n    </div>\n  </div>\n</div>\n\n  <!-- The Modal -->\n  <div class=\"modal\" [style.display]=\"modalStyle ? 'block' : 'none'\">\n    <!-- Modal content -->\n  <div class=\"modal-content\" >\n    <div *ngIf=\"modalTradeInfo != undefined\">\n        <div class=\"row flex-column\" style=\"padding: 5px;\">\n            <div *ngIf=\"modalTradeInfo.bookImages != undefined  && modalTradeInfo.bookImages.thumbnail != null \">\n                <img src=\"{{modalTradeInfo.bookImages.thumbnail}}\" style=\"margin-right: 20px; margin-bottom: 20px;\"> \n            </div>  \n          <p><span class=\"h6\">Title:</span> {{modalTradeInfo.bookTitle}}</p>\n          <p><span class=\"h6\">Author:</span> <span  *ngFor=\"let author of modalTradeInfo.bookAuthors\"> {{author}}  </span></p>\n          <p><span class=\"h6\">Trade Requester:</span> {{modalTradeInfo.tradeRequester}}</p>\n          <p><span class=\"h6\">Trade Status:</span> {{tradePending}}</p>\n          <button (click)=\"approveTrade()\" style=\"max-width: 250px\">Approve Trade</button>\n          <button (click)=\"rejectTrade()\" style=\"max-width: 250px\">Reject Trade</button>\n          <button (click)=\"closeModal()\" style=\"max-width: 250px\">Close</button>\n        </div>\n   \n  </div><!-- close Modal content -->\n  \n</div><!-- close Modal -->\n\n\n    <!-- The Modal -->\n    <div class=\"modal-two\" [style.display]=\"modalTwoStyle ? 'block' : 'none'\">\n      <!-- Modal content -->\n    <div class=\"modal-content\" >\n\n     \n    </div><!-- close Modal content -->\n    \n  </div><!-- close Modal -->\n\n\n  "
 
 /***/ }),
 
@@ -1057,20 +1062,21 @@ var MyTradesComponent = (function () {
         this.tradeRequests = [];
         this.tradesRequested = [];
         this.modalStyle = false; // set the 'search' modal to not display onload
+        this.modealTwoStyle = false;
         this.modalTradeInfo = {};
     }
-    MyTradesComponent.prototype.viewRequest = function (index) {
-        console.log(this.tradeRequests[index]);
-    };
     MyTradesComponent.prototype.viewRequested = function (index) {
         console.log(this.tradesRequested[index]);
-        this.modalTradeInfo = this.tradesRequested[index];
+    };
+    MyTradesComponent.prototype.viewRequest = function (index) {
+        console.log(this.tradeRequests[index]);
+        this.modalTradeInfo = this.tradeRequests[index];
         this.modalStyle = true;
-        if (this.tradesRequested[index].tradePending == true) {
+        if (this.tradeRequests[index].tradePending == true) {
             this.tradePending = "Trade status is pending. You need to approve/disapprove this trade.";
         }
-        if (this.tradesRequested[index].tradePending == false) {
-            if (this.tradesRequested[index].tradeApproved == true) {
+        if (this.tradeRequests[index].tradePending == false) {
+            if (this.tradeRequests[index].tradeApproved == true) {
                 this.tradePending = "You approved this trade.";
             }
             else {
@@ -1081,7 +1087,6 @@ var MyTradesComponent = (function () {
     MyTradesComponent.prototype.rejectTrade = function () {
         var rejectTradeInfo = {
             id: this.modalTradeInfo.id,
-            fbId: this.modalTradeInfo.fbId,
             tradeApproved: false,
             tradePending: false,
             tradeRequester: this.modalTradeInfo.tradeRequester,
@@ -1094,9 +1099,31 @@ var MyTradesComponent = (function () {
         this.bookService.rejectTrade(rejectTradeInfo); // send reject trade info to server
         this.modalTradeInfo.tradePending = false;
         this.tradePending = "You did not approve this trade.";
-        for (var i = 0; i < this.tradesRequested.length; i++) {
-            if (this.tradesRequested[i].id == this.modalTradeInfo.id) {
-                this.tradesRequested[i].tradePending = false;
+        for (var i = 0; i < this.tradeRequests.length; i++) {
+            if (this.tradeRequests[i].id == this.modalTradeInfo.id) {
+                this.tradeRequests[i].tradePending = false;
+            }
+        }
+    };
+    MyTradesComponent.prototype.approveTrade = function () {
+        var approveTradeInfo = {
+            id: this.modalTradeInfo.id,
+            tradeApproved: true,
+            tradePending: false,
+            tradeRequester: this.modalTradeInfo.tradeRequester,
+            bookOwner: this.modalTradeInfo.bookOwner,
+            bookDescription: this.modalTradeInfo.bookDescription,
+            bookAuthors: this.modalTradeInfo.bookAuthors,
+            bookTitle: this.modalTradeInfo.bookTitle,
+            bookImages: this.modalTradeInfo.bookImages
+        };
+        this.bookService.approveTrade(approveTradeInfo); // send approve trade info to server
+        this.modalTradeInfo.tradePending = false;
+        this.tradePending = "You approved this trade.";
+        for (var i = 0; i < this.tradeRequests.length; i++) {
+            if (this.tradeRequests[i].id == this.modalTradeInfo.id) {
+                this.tradeRequests[i].tradePending = false;
+                this.tradeRequests[i].tradeApproved = true;
             }
         }
     };
