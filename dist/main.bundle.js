@@ -270,7 +270,8 @@ var CONFIG = new __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["AuthServiceCon
     {
         id: __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["FacebookLoginProvider"].PROVIDER_ID,
         //provider: new FacebookLoginProvider('Facebook-App-Id')
-        provider: new __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["FacebookLoginProvider"]('151769965444680')
+        // provider: new FacebookLoginProvider('151769965444680')
+        provider: new __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["FacebookLoginProvider"]('1074503412653371')
     }
 ]);
 function provideConfig() {
