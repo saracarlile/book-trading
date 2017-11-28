@@ -1001,7 +1001,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".btm-margin {\r\n    margin-bottom: 20px;\r\n}\r\n\r\n\r\n\r\n/* The Modal (background) */\r\n.modal {\r\n    /*   display: none; Hidden by default */\r\n      position: fixed; /* Stay in place */\r\n      z-index: 1; /* Sit on top */\r\n      left: 0;\r\n      top: 0;\r\n      width: 100%; /* Full width */\r\n      height: 100%; /* Full height */\r\n      overflow: auto; /* Enable scroll if needed */\r\n      background-color: rgb(0,0,0); /* Fallback color */\r\n      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n  }\r\n\r\n  .no-stretch {\r\n    width: 140px;\r\n}\r\n  \r\n  /* Modal Content/Box */\r\n  .modal-content {\r\n      background-color: #ffffff;\r\n      margin: 15% auto; /* 15% from the top and centered */\r\n      padding: 20px;\r\n      border: 1px solid grey;\r\n      width: 80%; /* Could be more or less, depending on screen size */\r\n  }\r\n\r\n  \r\n/* The Modal Two (background) */\r\n.modal-2 {\r\n    /*   display: none; Hidden by default */\r\n      position: fixed; /* Stay in place */\r\n      z-index: 1; /* Sit on top */\r\n      left: 0;\r\n      top: 0;\r\n      width: 100%; /* Full width */\r\n      height: 100%; /* Full height */\r\n      overflow: auto; /* Enable scroll if needed */\r\n      background-color: rgb(0,0,0); /* Fallback color */\r\n      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n  }\r\n\r\n  \r\n  /* Modal Content/Box */\r\n  .modal-content-2 {\r\n      background-color: #ffffff;\r\n      margin: 15% auto; /* 15% from the top and centered */\r\n      padding: 20px;\r\n      border: 1px solid grey;\r\n      width: 80%; /* Could be more or less, depending on screen size */\r\n  }\r\n\r\n\r\n  ", ""]);
+exports.push([module.i, ".btm-margin {\r\n    margin-bottom: 20px;\r\n}\r\n\r\n\r\n\r\n/* The Modal (background) */\r\n.modal {\r\n    /*   display: none; Hidden by default */\r\n      position: fixed; /* Stay in place */\r\n      z-index: 1; /* Sit on top */\r\n      left: 0;\r\n      top: 0;\r\n      width: 100%; /* Full width */\r\n      height: 100%; /* Full height */\r\n      overflow: auto; /* Enable scroll if needed */\r\n      background-color: rgb(0,0,0); /* Fallback color */\r\n      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n  }\r\n\r\n  .no-stretch {\r\n    width: 140px;\r\n}\r\n  \r\n  /* Modal Content/Box */\r\n  .modal-content {\r\n      background-color: #ffffff;\r\n      margin: 15% auto; /* 15% from the top and centered */\r\n      padding: 20px;\r\n      border: 1px solid grey;\r\n      width: 80%; /* Could be more or less, depending on screen size */\r\n  }\r\n\r\n  \r\n/* The Modal Two (background) */\r\n.modal-2 {\r\n    /*   display: none; Hidden by default */\r\n      position: fixed; /* Stay in place */\r\n      z-index: 1; /* Sit on top */\r\n      left: 0;\r\n      top: 0;\r\n      width: 100%; /* Full width */\r\n      height: 100%; /* Full height */\r\n      overflow: auto; /* Enable scroll if needed */\r\n      background-color: rgb(0,0,0); /* Fallback color */\r\n      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n  }\r\n\r\n  \r\n  /* Modal Content/Box */\r\n  .modal-content-2 {\r\n      background-color: #ffffff;\r\n      margin: 15% auto; /* 15% from the top and centered */\r\n      padding: 20px;\r\n      border: 1px solid grey;\r\n      width: 80%; /* Could be more or less, depending on screen size */\r\n  }\r\n\r\n\r\n  a {\r\n      cursor: pointer;\r\n  }", ""]);
 
 // exports
 
@@ -1052,6 +1052,7 @@ var MyTradesComponent = (function () {
         this.modalTwoStyle = false;
         this.modalTradeInfo = {};
         this.modalTwoInfo = {};
+        this.tradePending = "This trade is pending.";
     }
     MyTradesComponent.prototype.viewRequest = function (index) {
         this.modalTradeInfo = this.tradeRequests[index];
@@ -1119,15 +1120,19 @@ var MyTradesComponent = (function () {
         this.modalTwoStyle = true;
         if (this.tradesRequested[index].tradePending == true) {
             this.isApproved = "Trade status is pending. The book owner needs to review your request.";
+            this.tradePending = "The book owner still needs to review your trade";
         }
         if (this.tradeRequests[index].tradePending == false) {
             if (this.tradeRequests[index].tradeApproved == true) {
                 this.isApproved = "This trade request was approved.";
+                this.tradePending = "The book owner has reviewed this trade";
             }
             else {
                 this.isApproved = "This trade request was not approved.";
+                this.tradePending = "The book owner has reviewed this trade";
             }
         }
+        console.log(this.tradePending + " TRADE PENDING");
     };
     MyTradesComponent.prototype.closeModalTwo = function () {
         this.modalTwoStyle = false;

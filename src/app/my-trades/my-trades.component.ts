@@ -23,7 +23,7 @@ export class MyTradesComponent implements OnInit {
   private modalTradeInfo = {};  
   private modalTwoInfo = {};
   private tradeRequestApproved: string;
-  private tradePending: string;
+  private tradePending = "This trade is pending.";
   private isApproved: string;
   
 
@@ -103,19 +103,28 @@ export class MyTradesComponent implements OnInit {
 
 
   private viewTradesRequested(index){
+    
+    
+
     this.modalTwoInfo = this.tradesRequested[index];
     this.modalTwoStyle = true;
     if(this.tradesRequested[index].tradePending == true){
-      this.isApproved = "Trade status is pending. The book owner needs to review your request."
+      this.isApproved = "Trade status is pending. The book owner needs to review your request.";
+      this.tradePending = "The book owner still needs to review your trade";
+      
     }
     if(this.tradeRequests[index].tradePending == false){
       if(this.tradeRequests[index].tradeApproved == true){
         this.isApproved = "This trade request was approved.";
+        this.tradePending = "The book owner has reviewed this trade";
       }
       else{
         this.isApproved = "This trade request was not approved.";
+        this.tradePending = "The book owner has reviewed this trade";
       }
     }
+
+    console.log(this.tradePending + " TRADE PENDING");
   }
 
   private closeModalTwo() {
