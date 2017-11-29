@@ -45,9 +45,11 @@ export class LoginComponent implements OnInit {
     // ** ADD CODE TO NEXT STEP HERE **
 
     FB.Event.subscribe('auth.statusChange', (response => {
+                  console.log(response);
       
                   if (response.status === 'connected') {
                       // use the response variable to get any information about the user and to see the tokens about the users session
+                      console.log("connected!!");
                       console.log(response);
                   }
       
