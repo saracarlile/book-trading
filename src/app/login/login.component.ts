@@ -3,12 +3,8 @@ import { BooksService } from '../books.service';
 import { LoginService } from '../login.service';
 
 
-import { 
-  AuthService,
-  FacebookLoginProvider
-} from 'ng4-social-login';
-
-import { SocialUser } from 'ng4-social-login';
+declare var window: any;
+declare var FB: any;
 
 @Component({
   selector: 'app-login',
@@ -17,23 +13,48 @@ import { SocialUser } from 'ng4-social-login';
 })
 export class LoginComponent implements OnInit {
 
-  private user: SocialUser;
+
   private loggedIn: boolean;
   private userInfo: {};
 
 
-  constructor(private authService: AuthService, private bookService: BooksService, private loginSerivce : LoginService) { }
+  constructor(private bookService: BooksService, private loginSerivce : LoginService) {
+    
+    // This function initializes the FB variable 
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = '//connect.facebook.net/en_US/sdk.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    
+    
+        window.fbAsyncInit = () => {
+            console.log("1773684832675608")
+    
+            FB.init({
+                appId            : '1773684832675608',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v2.10'
+            });
+            FB.AppEvents.logPageView();
+            // This is where we do most of our code dealing with the FB variable like adding an observer to check when the user signs in
+    
+    // ** ADD CODE TO NEXT STEP HERE **
 
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
+    FB.Event.subscribe('auth.statusChange', (response => {
+      
+                  if (response.status === 'connected') {
+                      // use the response variable to get any information about the user and to see the tokens about the users session
+                  }
+      
+              }));
+        };
+      }
 
- 
-  signOut(): void {
-    this.sendMessage();
-    this.authService.signOut();
-  }
-  
+
   message: string = "logged out!";
 
   @Output() messageEvent = new EventEmitter<string>();
@@ -45,6 +66,15 @@ export class LoginComponent implements OnInit {
 
   
   ngOnInit() {
+
+    if (window.FB) {
+      window.FB.XFBML.parse();
+  }
+
+
+
+
+    /*
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
@@ -62,15 +92,16 @@ export class LoginComponent implements OnInit {
           photoUrl: this.user.photoUrl
         }
         
-     //   this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
+       this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
         this.loginSerivce.userLogin(test);  //saves user to DB if doesn't exist
         this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
         
       }
 
       
-      
     });
+
+      */
   }
 
 }
