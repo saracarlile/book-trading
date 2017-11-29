@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
       
                   if (response.status === 'connected') {
                       // use the response variable to get any information about the user and to see the tokens about the users session
+                      console.log(response);
                   }
       
               }));
