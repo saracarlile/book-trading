@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(private bookService: BooksService, private loginSerivce : LoginService,  private http: Http) {
 
     //https://samkirkiles.svbtle.com/angular-4-facebook-login-integration
+    //https://developers.facebook.com/docs/graph-api/reference/user
 
 
     
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
     
     // ** ADD CODE TO NEXT STEP HERE **
 
-    FB.Event.subscribe('auth.statusChange', (response => {
+    FB.Event.subscribe('auth.statusChange', (response => {  //observable to check if the user signs in
                   console.log(response);
       
                   if (response.status === 'connected') {
@@ -62,6 +63,7 @@ export class LoginComponent implements OnInit {
               }));
         };
       }
+
 
 
   message: string = "logged out!";
