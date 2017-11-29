@@ -1,6 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import 'rxjs/Rx';
 import { BooksService } from '../books.service';
 import { LoginService } from '../login.service';
+
+import { Headers, Http, Response } from '@angular/http';
 
 
 declare var window: any;
@@ -18,7 +21,11 @@ export class LoginComponent implements OnInit {
   private userInfo: {};
 
 
-  constructor(private bookService: BooksService, private loginSerivce : LoginService) {
+  constructor(private bookService: BooksService, private loginSerivce : LoginService,  private http: Http) {
+
+    //https://samkirkiles.svbtle.com/angular-4-facebook-login-integration
+
+
     
     // This function initializes the FB variable 
         (function(d, s, id){
@@ -31,7 +38,6 @@ export class LoginComponent implements OnInit {
     
     
         window.fbAsyncInit = () => {
-            console.log("1773684832675608")
     
             FB.init({
                 appId            : '1773684832675608',
