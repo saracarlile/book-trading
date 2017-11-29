@@ -140,7 +140,7 @@ var AllBooksComponent = (function () {
     return AllBooksComponent;
 }());
 AllBooksComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'app-all-books',
         template: __webpack_require__("../../../../../src/app/all-books/all-books.component.html"),
         styles: [__webpack_require__("../../../../../src/app/all-books/all-books.component.css")]
@@ -207,7 +207,7 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 AppComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'app-root',
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
@@ -239,9 +239,6 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__my_trades_my_trades_component__ = __webpack_require__("../../../../../src/app/my-trades/my-trades.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__ = __webpack_require__("../../../../ng4-social-login/ng4-social-login.umd.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_ng4_social_login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_ng4_social_login__);
-/* unused harmony export provideConfig */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -265,18 +262,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var CONFIG = new __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["AuthServiceConfig"]([
-    {
-        id: __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["FacebookLoginProvider"].PROVIDER_ID,
-        //provider: new FacebookLoginProvider('Facebook-App-Id')
-        // provider: new FacebookLoginProvider('151769965444680')
-        provider: new __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["FacebookLoginProvider"]('1074503412653371')
-    }
-]);
-function provideConfig() {
-    return CONFIG;
-}
 var appRoutes = [
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_11__home_home_component__["a" /* HomeComponent */] },
     { path: 'all-books', component: __WEBPACK_IMPORTED_MODULE_7__all_books_all_books_component__["a" /* AllBooksComponent */] },
@@ -295,7 +280,7 @@ var AppModule = (function () {
     return AppModule;
 }());
 AppModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_7__all_books_all_books_component__["a" /* AllBooksComponent */],
@@ -310,16 +295,11 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot(appRoutes),
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["SocialLoginModule"]
+            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* HttpModule */]
         ],
         providers: [
             __WEBPACK_IMPORTED_MODULE_12__books_service__["a" /* BooksService */],
-            __WEBPACK_IMPORTED_MODULE_13__login_service__["a" /* LoginService */],
-            {
-                provide: __WEBPACK_IMPORTED_MODULE_16_ng4_social_login__["AuthServiceConfig"],
-                useFactory: provideConfig
-            }
+            __WEBPACK_IMPORTED_MODULE_13__login_service__["a" /* LoginService */]
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
     })
@@ -486,7 +466,7 @@ var BooksService = (function () {
     return BooksService;
 }());
 BooksService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], BooksService);
 
@@ -544,7 +524,7 @@ var HomeComponent = (function () {
     return HomeComponent;
 }());
 HomeComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'app-home',
         template: __webpack_require__("../../../../../src/app/home/home.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/home.component.css")]
@@ -594,7 +574,7 @@ var LoginService = (function () {
     return LoginService;
 }());
 LoginService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], LoginService);
 
@@ -624,7 +604,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\" *ngIf=\"user != undefined\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" routerLink=\"/home\">Booktraders</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/my-trades\" routerLinkActive=\"active\">My Trades</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"user == undefined\">\n            <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"user != undefined\"> \n          <a class=\"nav-link\" (click)=\"signOut()\">Log Out</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n<!-- if the user is logged in, the navbar above is displayed, controlled by *ngIf=\"user != undefined\" -->\n\n<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\" *ngIf=\"user == undefined\">\n    <div class=\"container\" id=\"mobile-menu-hide\">\n      <a class=\"navbar-brand\" id=\"navbrand\" routerLink=\"/home\">Booktraders</a>\n        <ul class=\"navbar-nav ml-auto\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n          </li>\n          <li class=\"nav-item\" *ngIf=\"user == undefined\">\n              <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\n          </li>\n          <li class=\"nav-item\" *ngIf=\"user != undefined\"> \n            <a class=\"nav-link\" (click)=\"signOut()\">Log Out</a>\n          </li>\n        </ul>\n    </div>\n    <div class=\"container\" id=\"mobile-menu-show\">\n        <ul class=\"navbar-nav\" id=\"add-margin-left\">\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n            </li>\n            <li class=\"nav-item\" *ngIf=\"user == undefined\">\n                <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\n            </li>\n            <li class=\"nav-item\" *ngIf=\"user != undefined\"> \n              <a class=\"nav-link\" (click)=\"signOut();\">Log Out</a>\n            </li>\n          </ul>\n    </div>\n  </nav>\n\n  <div style=\"margin-top: 100px;\" class=\"mobile-fix\" *ngIf=\"user == undefined  || user == null\" >\n      <div class=\"container\">\n          <div class=\"jumbotron text-center\" style=\"background-image: url('https://cdn.pixabay.com/photo/2016/11/18/16/49/books-1835753__340.jpg'); color: white;\">\n            <h1>Booktraders</h1>\n            <p class=\"lead\">A book trading website for book lovers!</p>\n          </div>\n        <div class=\"d-flex flex-column\">\n          <h4>Please sign in with Facebook to use Booktraders.</h4>\n          <p><button class=\"loginBtn loginBtn--facebook\" (click)=\"signInWithFB(); sendMessage();\" >Login with Facebook</button></p>\n        \n        \n        </div>\n      </div>\n    </div><!-- close div -->\n    \n\n<!-- if the user is not logged in, the navbar above is displayed, controlled by *ngIf=\"user == undefined\"\n    done to improve logging in on mobile -->\n"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\" *ngIf=\"user != undefined\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" routerLink=\"/home\">Booktraders</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/my-trades\" routerLinkActive=\"active\">My Trades</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"user == undefined\">\n            <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"user != undefined\"> \n          <a class=\"nav-link\" (click)=\"signOut()\">Log Out</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n<!-- if the user is logged in, the navbar above is displayed, controlled by *ngIf=\"user != undefined\" -->\n\n<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\" *ngIf=\"user == undefined\">\n    <div class=\"container\" id=\"mobile-menu-hide\">\n      <a class=\"navbar-brand\" id=\"navbrand\" routerLink=\"/home\">Booktraders</a>\n        <ul class=\"navbar-nav ml-auto\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n          </li>\n          <li class=\"nav-item\" *ngIf=\"user == undefined\">\n              <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\n          </li>\n          <li class=\"nav-item\" *ngIf=\"user != undefined\"> \n            <a class=\"nav-link\" (click)=\"signOut()\">Log Out</a>\n          </li>\n        </ul>\n    </div>\n    <div class=\"container\" id=\"mobile-menu-show\">\n        <ul class=\"navbar-nav\" id=\"add-margin-left\">\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n            </li>\n            <li class=\"nav-item\" *ngIf=\"user == undefined\">\n                <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\n            </li>\n            <li class=\"nav-item\" *ngIf=\"user != undefined\"> \n              <a class=\"nav-link\" (click)=\"signOut();\">Log Out</a>\n            </li>\n          </ul>\n    </div>\n  </nav>\n\n  <div style=\"margin-top: 100px;\" class=\"mobile-fix\" *ngIf=\"user == undefined  || user == null\" >\n      <div class=\"container\">\n          <div class=\"jumbotron text-center\" style=\"background-image: url('https://cdn.pixabay.com/photo/2016/11/18/16/49/books-1835753__340.jpg'); color: white;\">\n            <h1>Booktraders</h1>\n            <p class=\"lead\">A book trading website for book lovers!</p>\n          </div>\n        <div class=\"d-flex flex-column\">\n          <h4>Please sign in with Facebook to use Booktraders.</h4>\n        <!--  <button class=\"loginBtn loginBtn--facebook\" (click)=\"signInWithFB(); sendMessage();\" >Login with Facebook</button></p>-->\n          <div class=\"fb-login-button\" data-width=\"142\" data-max-rows=\"1\" data-size=\"large\" data-button-type=\"continue_with\" data-show-faces=\"false\" data-auto-logout-link=\"false\" data-use-continue-as=\"false\">Log in with Facebook</div>\n        \n        \n        </div>\n      </div>\n    </div><!-- close div -->\n    \n\n<!-- if the user is not logged in, the navbar above is displayed, controlled by *ngIf=\"user == undefined\"\n    done to improve logging in on mobile -->\n"
 
 /***/ }),
 
@@ -635,8 +615,6 @@ module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__books_service__ = __webpack_require__("../../../../../src/app/books.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng4_social_login__ = __webpack_require__("../../../../ng4-social-login/ng4-social-login.umd.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng4_social_login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ng4_social_login__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -650,64 +628,94 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var LoginComponent = (function () {
-    function LoginComponent(authService, bookService, loginSerivce) {
-        this.authService = authService;
+    function LoginComponent(bookService, loginSerivce) {
         this.bookService = bookService;
         this.loginSerivce = loginSerivce;
         this.message = "logged out!";
-        this.messageEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.messageEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]();
+        // This function initializes the FB variable 
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = '//connect.facebook.net/en_US/sdk.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        window.fbAsyncInit = function () {
+            console.log("1773684832675608");
+            FB.init({
+                appId: '1773684832675608',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.10'
+            });
+            FB.AppEvents.logPageView();
+            // This is where we do most of our code dealing with the FB variable like adding an observer to check when the user signs in
+            // ** ADD CODE TO NEXT STEP HERE **
+            FB.Event.subscribe('auth.statusChange', (function (response) {
+                if (response.status === 'connected') {
+                    // use the response variable to get any information about the user and to see the tokens about the users session
+                }
+            }));
+        };
     }
-    LoginComponent.prototype.signInWithFB = function () {
-        this.authService.signIn(__WEBPACK_IMPORTED_MODULE_3_ng4_social_login__["FacebookLoginProvider"].PROVIDER_ID);
-    };
-    LoginComponent.prototype.signOut = function () {
-        this.sendMessage();
-        this.authService.signOut();
-    };
     LoginComponent.prototype.sendMessage = function () {
         this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
         this.messageEvent.emit(this.message);
     };
     LoginComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.authService.authState.subscribe(function (user) {
-            _this.user = user;
-            _this.loggedIn = (user != null);
-            if (user != null) {
-                _this.userInfo = {
-                    name: _this.user.name,
-                    fbId: _this.user.id,
-                    photoUrl: _this.user.photoUrl
-                };
-                var test = {
-                    name: _this.user.name,
-                    fbId: _this.user.id,
-                    photoUrl: _this.user.photoUrl
-                };
-                //   this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-                _this.loginSerivce.userLogin(test); //saves user to DB if doesn't exist
-                _this.loginSerivce.changeMessage(_this.userInfo); //passes user info to other components
+        if (window.FB) {
+            window.FB.XFBML.parse();
+        }
+        /*
+        this.authService.authState.subscribe((user) => {
+          this.user = user;
+          this.loggedIn = (user != null);
+    
+          if(user != null) {
+            this.userInfo = {
+              name: this.user.name,
+              fbId: this.user.id,
+              photoUrl: this.user.photoUrl
             }
+    
+            let test = {
+              name: this.user.name,
+              fbId: this.user.id,
+              photoUrl: this.user.photoUrl
+            }
+            
+           this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
+            this.loginSerivce.userLogin(test);  //saves user to DB if doesn't exist
+            this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
+            
+          }
+    
+          
         });
+    
+          */
     };
     return LoginComponent;
 }());
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Output */])(),
     __metadata("design:type", Object)
 ], LoginComponent.prototype, "messageEvent", void 0);
 LoginComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'app-login',
         template: __webpack_require__("../../../../../src/app/login/login.component.html"),
         styles: [__webpack_require__("../../../../../src/app/login/login.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ng4_social_login__["AuthService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ng4_social_login__["AuthService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], LoginComponent);
 
-var _a, _b, _c;
+var _a, _b;
 //# sourceMappingURL=login.component.js.map
 
 /***/ }),
@@ -876,7 +884,7 @@ var MyBooksComponent = (function () {
     return MyBooksComponent;
 }());
 MyBooksComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'app-my-books',
         template: __webpack_require__("../../../../../src/app/my-books/my-books.component.html"),
         styles: [__webpack_require__("../../../../../src/app/my-books/my-books.component.css")]
@@ -980,7 +988,7 @@ var MyProfileComponent = (function () {
     return MyProfileComponent;
 }());
 MyProfileComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'app-my-profile',
         template: __webpack_require__("../../../../../src/app/my-profile/my-profile.component.html"),
         styles: [__webpack_require__("../../../../../src/app/my-profile/my-profile.component.css")]
@@ -1171,7 +1179,7 @@ var MyTradesComponent = (function () {
     return MyTradesComponent;
 }());
 MyTradesComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'app-my-trades',
         template: __webpack_require__("../../../../../src/app/my-trades/my-trades.component.html"),
         styles: [__webpack_require__("../../../../../src/app/my-trades/my-trades.component.css")]
@@ -1233,7 +1241,7 @@ var PageNotFoundComponent = (function () {
     return PageNotFoundComponent;
 }());
 PageNotFoundComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'app-page-not-found',
         template: __webpack_require__("../../../../../src/app/page-not-found/page-not-found.component.html"),
         styles: [__webpack_require__("../../../../../src/app/page-not-found/page-not-found.component.css")]
@@ -1276,7 +1284,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* enableProdMode */])();
 }
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
 //# sourceMappingURL=main.js.map
