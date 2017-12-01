@@ -670,14 +670,13 @@ var LoginComponent = (function () {
                     FB.api(res.authResponse.userID, 'GET', {}, function (response) {
                         console.log(response.name);
                         this.loggedIn = true;
-                        this.userInfo = {
+                        var userInfo = {
                             name: response.name,
                             fbId: res.authResponse.userID
                             //   photoUrl: this.user.photoUrl
                         };
-                        console.log(this.userInfo);
-                        this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-                        this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
+                        console.log(userInfo);
+                        this.senduser(userInfo);
                         // this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
                         //this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
                     });
@@ -685,6 +684,10 @@ var LoginComponent = (function () {
             }));
         };
     }
+    LoginComponent.prototype.senduser = function (info) {
+        this.bookService.userLogin(info); //move log in from bookService to loginService
+        this.loginSerivce.changeMessage(info); //passes user info to other compone
+    };
     LoginComponent.prototype.sendMessage = function () {
         this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
         this.messageEvent.emit(this.message);

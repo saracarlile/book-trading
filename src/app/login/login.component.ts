@@ -21,7 +21,10 @@ export class LoginComponent implements OnInit {
   private userInfo: {};
   private user: string;
   private fbID: any;
-  
+  senduser(info){
+    this.bookService.userLogin(info); //move log in from bookService to loginService
+    this.loginSerivce.changeMessage(info); //passes user info to other compone
+  }
 
 
 
@@ -70,15 +73,15 @@ export class LoginComponent implements OnInit {
                             console.log(response.name);
                             this.loggedIn = true;
                       
-                              this.userInfo = {
+                            let userInfo = {
                                 name: response.name,
                                 fbId: res.authResponse.userID
                              //   photoUrl: this.user.photoUrl
                               }
 
-                                console.log(this.userInfo);
-                                this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-                                this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
+                            console.log(userInfo);
+                            
+                            this.senduser(userInfo)
                               
 
                             // this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
@@ -107,39 +110,8 @@ export class LoginComponent implements OnInit {
 
     if (window.FB) {
       window.FB.XFBML.parse();
-  }
+    }
 
-
-
-
-    /*
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-
-      if(user != null) {
-        this.userInfo = {
-          name: this.user.name,
-          fbId: this.user.id,
-          photoUrl: this.user.photoUrl
-        }
-
-        let test = {
-          name: this.user.name,
-          fbId: this.user.id,
-          photoUrl: this.user.photoUrl
-        }
-        
-       this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-        this.loginSerivce.userLogin(test);  //saves user to DB if doesn't exist
-        this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
-        
-      }
-
-      
-    });
-
-      */
   }
 
 }
