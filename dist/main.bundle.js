@@ -676,18 +676,13 @@ var LoginComponent = (function () {
                             //   photoUrl: this.user.photoUrl
                         };
                         console.log(userInfo);
-                        this.senduser(userInfo);
-                        // this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-                        //this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
+                        this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
+                        this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
                     });
                 }
             }));
         };
     }
-    LoginComponent.prototype.senduser = function (info) {
-        this.bookService.userLogin(info); //move log in from bookService to loginService
-        this.loginSerivce.changeMessage(info); //passes user info to other compone
-    };
     LoginComponent.prototype.sendMessage = function () {
         this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
         this.messageEvent.emit(this.message);
@@ -696,34 +691,6 @@ var LoginComponent = (function () {
         if (window.FB) {
             window.FB.XFBML.parse();
         }
-        /*
-        this.authService.authState.subscribe((user) => {
-          this.user = user;
-          this.loggedIn = (user != null);
-    
-          if(user != null) {
-            this.userInfo = {
-              name: this.user.name,
-              fbId: this.user.id,
-              photoUrl: this.user.photoUrl
-            }
-    
-            let test = {
-              name: this.user.name,
-              fbId: this.user.id,
-              photoUrl: this.user.photoUrl
-            }
-            
-           this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-            this.loginSerivce.userLogin(test);  //saves user to DB if doesn't exist
-            this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
-            
-          }
-    
-          
-        });
-    
-          */
     };
     return LoginComponent;
 }());

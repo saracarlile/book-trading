@@ -21,10 +21,7 @@ export class LoginComponent implements OnInit {
   private userInfo: {};
   private user: string;
   private fbID: any;
-  senduser(info){
-    this.bookService.userLogin(info); //move log in from bookService to loginService
-    this.loginSerivce.changeMessage(info); //passes user info to other compone
-  }
+
 
 
 
@@ -80,12 +77,10 @@ export class LoginComponent implements OnInit {
                               }
 
                             console.log(userInfo);
-                            
-                            this.senduser(userInfo)
-                              
+                          
 
-                            // this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-                            //this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
+                             this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
+                             this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
                               
                             }
                       );
