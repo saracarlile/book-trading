@@ -59,17 +59,19 @@ export class LoginComponent implements OnInit {
                       console.log("connected!!");
                       console.log(response);
                       console.log(response.authResponse.userID);
+                      
+                      FB.api(
+                        response.authResponse.userID,
+                        'GET',
+                        {},
+                        function(response) {
+                            // Insert your code here
+                            console.log(response);
+                        }
+                      );
                   }
 
-                  FB.api(
-                    response.authResponse.userID,
-                    'GET',
-                    {},
-                    function(response) {
-                        // Insert your code here
-                        console.log(response);
-                    }
-                  );
+                  
       
               }));
         };
