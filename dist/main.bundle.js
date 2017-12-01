@@ -637,6 +637,7 @@ var LoginComponent = (function () {
     function LoginComponent(bookService, loginSerivce, http) {
         //https://samkirkiles.svbtle.com/angular-4-facebook-login-integration
         //https://developers.facebook.com/docs/graph-api/reference/user
+        var _this = this;
         this.bookService = bookService;
         this.loginSerivce = loginSerivce;
         this.http = http;
@@ -669,15 +670,15 @@ var LoginComponent = (function () {
                     console.log("connected!!");
                     FB.api(res.authResponse.userID, 'GET', {}, function (response) {
                         console.log(response.name);
-                        this.loggedIn = true;
+                        _this.loggedIn = true;
                         var userInfo = {
                             name: response.name,
                             fbId: res.authResponse.userID
                             //   photoUrl: this.user.photoUrl
                         };
                         console.log(userInfo);
-                        this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-                        this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
+                        _this.bookService.userLogin(_this.userInfo); //move log in from bookService to loginService
+                        _this.loginSerivce.changeMessage(_this.userInfo); //passes user info to other components
                     });
                 }
             }));

@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
                         res.authResponse.userID,
                         'GET',
                         {},
-                        function(response) {
+                        (response) => {
                           
                             console.log(response.name);
                             this.loggedIn = true;
@@ -77,8 +77,8 @@ export class LoginComponent implements OnInit {
                               }
 
                             console.log(userInfo);
-                          
-
+                              
+                            
                              this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
                              this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
                               
