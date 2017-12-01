@@ -58,7 +58,18 @@ export class LoginComponent implements OnInit {
                       // use the response variable to get any information about the user and to see the tokens about the users session
                       console.log("connected!!");
                       console.log(response);
+                      console.log(response.authResponse.userID);
                   }
+
+                  FB.api(
+                    response.authResponse.userID,
+                    'GET',
+                    {},
+                    function(response) {
+                        // Insert your code here
+                        console.log(response);
+                    }
+                  );
       
               }));
         };
