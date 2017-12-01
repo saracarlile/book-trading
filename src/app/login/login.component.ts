@@ -26,9 +26,6 @@ export class LoginComponent implements OnInit {
     //https://samkirkiles.svbtle.com/angular-4-facebook-login-integration
     //https://developers.facebook.com/docs/graph-api/reference/user
 
-    //https://stackoverflow.com/questions/21947406/git-push-heroku-master-says-everything-up-to-date-but-the-app-is-not-current
-
-    //test comment
     
     // This function initializes the FB variable 
         (function(d, s, id){
