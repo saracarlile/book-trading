@@ -679,7 +679,9 @@ var LoginComponent = (function () {
                             fbId: this.fbID
                             //   photoUrl: this.user.photoUrl
                         };
-                        this.sendUser();
+                        console.log(this.userInfo);
+                        this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
+                        this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
                         // this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
                         //this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
                     });
@@ -687,11 +689,6 @@ var LoginComponent = (function () {
             }));
         };
     }
-    LoginComponent.prototype.sendUser = function () {
-        console.log(this.userInfo);
-        this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-        this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
-    };
     LoginComponent.prototype.sendMessage = function () {
         this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
         this.messageEvent.emit(this.message);

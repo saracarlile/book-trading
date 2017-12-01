@@ -77,7 +77,12 @@ export class LoginComponent implements OnInit {
                                 fbId: this.fbID
                              //   photoUrl: this.user.photoUrl
                               }
-                             this.sendUser();    
+
+                                console.log(this.userInfo);
+                                this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
+                                this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
+                              
+
                             // this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
                             //this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
                               
@@ -88,11 +93,7 @@ export class LoginComponent implements OnInit {
         };
       }
 
-  sendUser(){
-    console.log(this.userInfo);
-    this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-    this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
-  }
+
 
   message: string = "logged out!";
 
