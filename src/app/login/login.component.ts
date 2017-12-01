@@ -54,27 +54,25 @@ export class LoginComponent implements OnInit {
     
     // ** ADD CODE TO NEXT STEP HERE **
 
-    FB.Event.subscribe('auth.statusChange', (response => {  //observable to check if the user signs in
+    FB.Event.subscribe('auth.statusChange', (res => {  //observable to check if the user signs in
                 
-                  if (response.status === 'connected') {
+                  if (res.status === 'connected') {
                       // use the response variable to get any information about the user and to see the tokens about the users session
                       console.log("connected!!"); 
-                      this.fbID = response.authResponse.userID;
+  
                       
                       FB.api(
-                        response.authResponse.userID,
+                        res.authResponse.userID,
                         'GET',
                         {},
                         function(response) {
                           
-                            this.user = response.name;
-                            console.log(this.user);
                             console.log(response.name);
                             this.loggedIn = true;
                       
                               this.userInfo = {
-                                name: this.user.name,
-                                fbId: this.fbID
+                                name: response.name,
+                                fbId: res.authResponse.userID
                              //   photoUrl: this.user.photoUrl
                               }
 

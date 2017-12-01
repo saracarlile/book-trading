@@ -637,7 +637,6 @@ var LoginComponent = (function () {
     function LoginComponent(bookService, loginSerivce, http) {
         //https://samkirkiles.svbtle.com/angular-4-facebook-login-integration
         //https://developers.facebook.com/docs/graph-api/reference/user
-        var _this = this;
         this.bookService = bookService;
         this.loginSerivce = loginSerivce;
         this.http = http;
@@ -664,19 +663,16 @@ var LoginComponent = (function () {
             FB.AppEvents.logPageView();
             // This is where we do most of our code dealing with the FB variable like adding an observer to check when the user signs in
             // ** ADD CODE TO NEXT STEP HERE **
-            FB.Event.subscribe('auth.statusChange', (function (response) {
-                if (response.status === 'connected') {
+            FB.Event.subscribe('auth.statusChange', (function (res) {
+                if (res.status === 'connected') {
                     // use the response variable to get any information about the user and to see the tokens about the users session
                     console.log("connected!!");
-                    _this.fbID = response.authResponse.userID;
-                    FB.api(response.authResponse.userID, 'GET', {}, function (response) {
-                        this.user = response.name;
-                        console.log(this.user);
+                    FB.api(res.authResponse.userID, 'GET', {}, function (response) {
                         console.log(response.name);
                         this.loggedIn = true;
                         this.userInfo = {
-                            name: this.user.name,
-                            fbId: this.fbID
+                            name: response.name,
+                            fbId: res.authResponse.userID
                             //   photoUrl: this.user.photoUrl
                         };
                         console.log(this.userInfo);
