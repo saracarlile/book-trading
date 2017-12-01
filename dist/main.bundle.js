@@ -666,16 +666,17 @@ var LoginComponent = (function () {
             FB.Event.subscribe('auth.statusChange', (function (response) {
                 console.log(response);
                 console.log(response.authResponse.userID);
-                FB.api(response.authResponse.userID, 'GET', {}, function (response) {
-                    // Insert your code here
-                    console.log("did i get in here?!");
-                    console.log(response);
-                });
                 if (response.status === 'connected') {
                     // use the response variable to get any information about the user and to see the tokens about the users session
                     console.log("connected!!");
                     console.log(response);
                     console.log(response.authResponse.userID);
+                    FB.api(response.authResponse.userID, 'GET', {}, function (response) {
+                        // Insert your code here
+                        console.log("did i get in here?!");
+                        console.log(response);
+                        console.log(response.name);
+                    });
                 }
             }));
         };
