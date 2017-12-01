@@ -66,9 +66,10 @@ export class LoginComponent implements OnInit {
                         function(response) {
                           
                             this.user = response.name;
-                            this.loggedIn = (this.user != null);
+                            console.log(this.user);
+                            console.log(response.name);
+                            this.loggedIn = true;
                       
-                            if(this.user != null) {
                               this.userInfo = {
                                 name: this.user.name,
                                 fbId: this.fbID
@@ -79,8 +80,6 @@ export class LoginComponent implements OnInit {
                               this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
                               
                             }
-                      
-                        }
                       );
                     }
               }));

@@ -671,16 +671,16 @@ var LoginComponent = (function () {
                     _this.fbID = response.authResponse.userID;
                     FB.api(response.authResponse.userID, 'GET', {}, function (response) {
                         this.user = response.name;
-                        this.loggedIn = (this.user != null);
-                        if (this.user != null) {
-                            this.userInfo = {
-                                name: this.user.name,
-                                fbId: this.fbID
-                                //   photoUrl: this.user.photoUrl
-                            };
-                            this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-                            this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
-                        }
+                        console.log(this.user);
+                        console.log(response.name);
+                        this.loggedIn = true;
+                        this.userInfo = {
+                            name: this.user.name,
+                            fbId: this.fbID
+                            //   photoUrl: this.user.photoUrl
+                        };
+                        this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
+                        this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
                     });
                 }
             }));
