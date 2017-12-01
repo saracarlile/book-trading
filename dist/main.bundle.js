@@ -637,6 +637,7 @@ var LoginComponent = (function () {
     function LoginComponent(bookService, loginSerivce, http) {
         //https://samkirkiles.svbtle.com/angular-4-facebook-login-integration
         //https://developers.facebook.com/docs/graph-api/reference/user
+        var _this = this;
         this.bookService = bookService;
         this.loginSerivce = loginSerivce;
         this.http = http;
@@ -664,18 +665,22 @@ var LoginComponent = (function () {
             // This is where we do most of our code dealing with the FB variable like adding an observer to check when the user signs in
             // ** ADD CODE TO NEXT STEP HERE **
             FB.Event.subscribe('auth.statusChange', (function (response) {
-                console.log(response);
-                console.log(response.authResponse.userID);
                 if (response.status === 'connected') {
                     // use the response variable to get any information about the user and to see the tokens about the users session
                     console.log("connected!!");
-                    console.log(response);
-                    console.log(response.authResponse.userID);
+                    _this.fbID = response.authResponse.userID;
                     FB.api(response.authResponse.userID, 'GET', {}, function (response) {
-                        // Insert your code here
-                        console.log("did i get in here?!");
-                        console.log(response);
-                        console.log(response.name);
+                        this.user = response.name;
+                        this.loggedIn = (this.user != null);
+                        if (this.user != null) {
+                            this.userInfo = {
+                                name: this.user.name,
+                                fbId: this.fbID
+                                //   photoUrl: this.user.photoUrl
+                            };
+                            this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
+                            this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
+                        }
                     });
                 }
             }));
