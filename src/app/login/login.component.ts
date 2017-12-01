@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     //https://samkirkiles.svbtle.com/angular-4-facebook-login-integration
     //https://developers.facebook.com/docs/graph-api/reference/user
 
-
+    //test comment
     
     // This function initializes the FB variable 
         (function(d, s, id){
