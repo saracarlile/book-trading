@@ -230,20 +230,15 @@ router.post('/update-user-info', (req, res) => {
 router.post('/user-login', (req, res) => {    //login to booktraders
   let id = req.body.fbId;
 
-  let userInfo = {
-    name: req.body.name,
-    fbId: req.body.fbId,
-    photoUrl: req.body.photoUrl,
-    city: null,
-    state: null
-  }
+  console.log(req.body.fbId);
+  console.log(req.body.name);
+
 
   User.findOne({ 'fbId': id }).exec(function (err, user) {
-    if (!user) { // this code is added for testing ... users need to be created upon login
+    if (!user) { // if no user found ... user reated upon login
       let person = new User({
-        name: userInfo.name,
-        fbId: userInfo.fbId,
-        photoUrl: userInfo.photoUrl,
+        name: req.body.name,
+        fbId: req.body.fbId,
         city: null,
         state: null
       });
@@ -252,6 +247,7 @@ router.post('/user-login', (req, res) => {    //login to booktraders
           console.log(err);
         } else {
           console.log('saved');
+          res.send('saved');
         }
       });
     }
