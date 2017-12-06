@@ -79,8 +79,8 @@ export class LoginComponent implements OnInit {
                             console.log(userInfo);
                               
                             
-                             this.bookService.userLogin(this.userInfo); //move log in from bookService to loginService
-                             this.loginSerivce.changeMessage(this.userInfo); //passes user info to other components
+                             this.bookService.userLogin(userInfo); //move log in from bookService to loginService
+                             this.loginSerivce.changeMessage(userInfo); //passes user info to other components
                              this.message = 'logged in!' 
                               
                             }

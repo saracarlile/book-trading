@@ -678,8 +678,8 @@ var LoginComponent = (function () {
                             //   photoUrl: this.user.photoUrl
                         };
                         console.log(userInfo);
-                        _this.bookService.userLogin(_this.userInfo); //move log in from bookService to loginService
-                        _this.loginSerivce.changeMessage(_this.userInfo); //passes user info to other components
+                        _this.bookService.userLogin(userInfo); //move log in from bookService to loginService
+                        _this.loginSerivce.changeMessage(userInfo); //passes user info to other components
                         _this.message = 'logged in!';
                     });
                 }
