@@ -3,6 +3,8 @@ import 'rxjs/Rx';
 import { BooksService } from '../books.service';
 import { LoginService } from '../login.service';
 
+import { ChangeDetectorRef } from '@angular/core';
+
 import { Headers, Http, Response } from '@angular/http';
 
 
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(private bookService: BooksService, private loginSerivce : LoginService,  private http: Http) {
+  constructor(private bookService: BooksService, private loginSerivce : LoginService,  private http: Http, private ref: ChangeDetectorRef) {
 
     //https://samkirkiles.svbtle.com/angular-4-facebook-login-integration
     //https://developers.facebook.com/docs/graph-api/reference/user
@@ -89,6 +91,12 @@ export class LoginComponent implements OnInit {
                     }
               }));
         };
+
+        ref.detach();
+        setInterval(() => {
+          this.ref.detectChanges();
+        }, 5000);
+
       }
 
 
@@ -107,6 +115,8 @@ export class LoginComponent implements OnInit {
     }
 
     console.log(this.isLoggedIn + "this.isLoggedIn login component!");
+ 
+
   }
 
   signOut(): void {
