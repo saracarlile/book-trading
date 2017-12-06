@@ -197,6 +197,7 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.receiveMessage = function ($event) {
         this.message = $event;
+        console.log('app component!');
         if (this.message === 'logged in!') {
             this.isLoggedIn = true;
         }
@@ -681,14 +682,17 @@ var LoginComponent = (function () {
                         _this.bookService.userLogin(userInfo); //move log in from bookService to loginService
                         _this.loginSerivce.changeMessage(userInfo); //passes user info to other component
                         _this.sendMessage();
+                        console.log(_this.message);
                     });
                 }
             }));
         };
     }
     LoginComponent.prototype.sendMessage = function () {
+        console.log("send message!");
         this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
         this.messageEvent.emit(this.message);
+        console.log(this.message);
     };
     LoginComponent.prototype.signOut = function () {
         this.sendMessage();

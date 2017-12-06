@@ -15,6 +15,7 @@ export class AppComponent {
 
   receiveMessage($event) {
     this.message = $event;
+    console.log('app component!');
     if (this.message === 'logged in!') {
       this.isLoggedIn = true;
     }
