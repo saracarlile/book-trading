@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import 'rxjs/Rx';
 import { BooksService } from '../books.service';
 import { LoginService } from '../login.service';
+import {Router} from '@angular/router';
 
 import { Headers, Http, Response } from '@angular/http';
 
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(private bookService: BooksService, private loginSerivce : LoginService,  private http: Http) {
+
+  constructor(private bookService: BooksService, private loginSerivce : LoginService,  private http: Http, private router:Router) {
 
     //https://samkirkiles.svbtle.com/angular-4-facebook-login-integration
     //https://developers.facebook.com/docs/graph-api/reference/user
@@ -90,6 +92,7 @@ export class LoginComponent implements OnInit {
               }));
         };
 
+       
 
       }
 
@@ -109,8 +112,8 @@ export class LoginComponent implements OnInit {
     }
 
     console.log(this.isLoggedIn + " this.isLoggedIn login component!");
- 
-
+    
+    this.router.navigate(['/all-books']);   
   }
 
   signOut(): void {

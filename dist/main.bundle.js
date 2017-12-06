@@ -620,7 +620,8 @@ module.exports = "<!--<nav class=\"navbar navbar-expand-md navbar-dark bg-dark f
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__books_service__ = __webpack_require__("../../../../../src/app/books.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -636,14 +637,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var LoginComponent = (function () {
-    function LoginComponent(bookService, loginSerivce, http) {
+    function LoginComponent(bookService, loginSerivce, http, router) {
         //https://samkirkiles.svbtle.com/angular-4-facebook-login-integration
         //https://developers.facebook.com/docs/graph-api/reference/user
         var _this = this;
         this.bookService = bookService;
         this.loginSerivce = loginSerivce;
         this.http = http;
+        this.router = router;
         this.message = "logged out!";
         this.isLoggedIn = false;
         this.messageEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]();
@@ -651,14 +654,14 @@ var LoginComponent = (function () {
             console.log("send message!");
             _this.message == 'logged out!' ? _this.message = 'logged in!' : _this.message = 'logged out!';
             _this.messageEvent.emit(_this.message);
-            console.log(_this.message);
             if (_this.message === 'logged out!') {
                 _this.isLoggedIn = false;
             }
             if (_this.message === 'logged in!') {
                 _this.isLoggedIn = true;
             }
-            console.log(_this.isLoggedIn + "this.isLoggedIn login component!");
+            console.log(_this.isLoggedIn + " this.isLoggedIn login component!");
+            _this.router.navigate(['/all-books']);
         };
         // This function initializes the FB variable 
         (function (d, s, id) {
@@ -720,10 +723,10 @@ LoginComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/login/login.component.html"),
         styles: [__webpack_require__("../../../../../src/app/login/login.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__books_service__["a" /* BooksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__books_service__["a" /* BooksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* Http */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], LoginComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=login.component.js.map
 
 /***/ }),
