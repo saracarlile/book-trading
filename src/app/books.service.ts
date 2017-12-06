@@ -107,6 +107,7 @@ export class BooksService {
 
   public userLogin(userInfo) {  //user login
     const body = userInfo;
+    console.log(body);
     const req = this.http.post('/api/user-login', body);
     req.subscribe(getResponse => console.log(getResponse));
   }
