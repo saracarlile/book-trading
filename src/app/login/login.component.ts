@@ -17,11 +17,12 @@ declare var FB: any;
 export class LoginComponent implements OnInit {
 
 
-  private loggedIn: boolean;
+
   private userInfo: {};
   private user: string;
   private fbID: any;
   message: string = "logged out!";
+  public isLoggedIn = false;
 
 
 
@@ -68,9 +69,7 @@ export class LoginComponent implements OnInit {
                         {},
                         (response) => {
                           
-                            console.log(response.name);
-                            this.loggedIn = true;
-                      
+               
                             let userInfo = {
                                 name: response.name,
                                 fbId: res.authResponse.userID
@@ -100,6 +99,14 @@ export class LoginComponent implements OnInit {
     this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
     this.messageEvent.emit(this.message);
     console.log(this.message);
+    if(this.message === 'logged out!'){
+      this.isLoggedIn = false
+    }
+    if(this.message === 'logged in!'){
+      this.isLoggedIn = true;
+    }
+
+    console.log(this.isLoggedIn + "this.isLoggedIn login component!");
   }
 
   signOut(): void {

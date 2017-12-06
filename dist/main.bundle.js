@@ -193,17 +193,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var AppComponent = (function () {
     function AppComponent() {
-        this.isLoggedIn = false;
+        this.LoggedIn = false;
     }
     AppComponent.prototype.receiveMessage = function ($event) {
         this.message = $event;
-        console.log('app component!');
+        console.log('app component! ' + this.message);
         if (this.message === 'logged in!') {
-            this.isLoggedIn = true;
+            this.LoggedIn = true;
         }
         if (this.message === 'logged out!') {
-            this.isLoggedIn = false;
+            this.LoggedIn = false;
         }
+        console.log(this.LoggedIn + ' this.LoggedIn app component');
     };
     return AppComponent;
 }());
@@ -606,7 +607,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\" *ngIf=\"message == 'logged in!'\">\r\n  <div class=\"container\">\r\n    <a class=\"navbar-brand\" routerLink=\"/home\">Booktraders</a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" routerLink=\"/my-trades\" routerLinkActive=\"active\">My Trades</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\r\n        </li>\r\n        <li class=\"nav-item\" *ngIf=\"message == 'logged out!'\">\r\n            <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\r\n        </li>\r\n        <li class=\"nav-item\" *ngIf=\"message == 'logged in!'\"> \r\n          <a class=\"nav-link\" (click)=\"signOut()\">Log Out</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>\r\n\r\n<!-- if the user is logged in, the navbar above is displayed, controlled by *ngIf=\"user != undefined\" -->\r\n\r\n<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\" *ngIf=\"message == 'logged out!'\">\r\n    <div class=\"container\" id=\"mobile-menu-hide\">\r\n      <a class=\"navbar-brand\" id=\"navbrand\" routerLink=\"/home\">Booktraders</a>\r\n        <ul class=\"navbar-nav ml-auto\">\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"message == 'logged out!'\">\r\n              <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"message == 'logged in!'\"> \r\n            <a class=\"nav-link\" (click)=\"signOut()\">Log Out</a>\r\n          </li>\r\n        </ul>\r\n    </div>\r\n    <div class=\"container\" id=\"mobile-menu-show\">\r\n        <ul class=\"navbar-nav\" id=\"add-margin-left\">\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\r\n            </li>\r\n            <li class=\"nav-item\" *ngIf=\"message == 'logged out!'\">\r\n                <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\r\n            </li>\r\n            <li class=\"nav-item\" *ngIf=\"message == 'logged in!'\"> \r\n              <a class=\"nav-link\" (click)=\"signOut();\">Log Out</a>\r\n            </li>\r\n          </ul>\r\n    </div>\r\n  </nav>\r\n\r\n  <div style=\"margin-top: 100px;\" class=\"mobile-fix\" *ngIf=\"message == 'logged out!'\" >\r\n      <div class=\"container\">\r\n          <div class=\"jumbotron text-center\" style=\"background-image: url('https://cdn.pixabay.com/photo/2016/11/18/16/49/books-1835753__340.jpg'); color: white;\">\r\n            <h1>Booktraders</h1>\r\n            <p class=\"lead\">A book trading website for book lovers!</p>\r\n          </div>\r\n        <div class=\"d-flex flex-column\">\r\n          <h4>Please sign in with Facebook to use Booktraders.</h4>\r\n        <!--  <button class=\"loginBtn loginBtn--facebook\" (click)=\"signInWithFB(); sendMessage();\" >Login with Facebook</button></p>-->\r\n          <div class=\"fb-login-button\" data-width=\"142\" data-max-rows=\"1\" data-size=\"large\" data-button-type=\"continue_with\" data-show-faces=\"false\" data-auto-logout-link=\"false\" data-use-continue-as=\"false\"></div>\r\n        \r\n        \r\n        </div>\r\n      </div>\r\n    </div><!-- close div -->\r\n    \r\n\r\n<!-- if the user is not logged in, the navbar above is displayed, controlled by *ngIf=\"loggedIn == undefined  || loggedIn == false\"\r\n    done to improve logging in on mobile -->\r\n"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\" *ngIf=\"isLoggedIn\">\r\n  <div class=\"container\">\r\n    <a class=\"navbar-brand\" routerLink=\"/home\">Booktraders</a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" routerLink=\"/all-books\" routerLinkActive=\"active\">All Books</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n            <a class=\"nav-link\" routerLink=\"/my-books\" routerLinkActive=\"active\">My Books</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" routerLink=\"/my-trades\" routerLinkActive=\"active\">My Trades</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" routerLink=\"/profile\" routerLinkActive=\"active\">My Profile</a>\r\n        </li>\r\n        <li class=\"nav-item\" *ngIf=\"!isLoggedIn\">\r\n            <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\r\n        </li>\r\n        <li class=\"nav-item\" *ngIf=\"isLoggedIn\"> \r\n          <a class=\"nav-link\" (click)=\"signOut()\">Log Out</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>\r\n\r\n<!-- if the user is logged in, the navbar above is displayed, controlled by *ngIf=\"user != undefined\" -->\r\n\r\n<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\" *ngIf=\"!isLoggedIn\">\r\n    <div class=\"container\" id=\"mobile-menu-hide\">\r\n      <a class=\"navbar-brand\" id=\"navbrand\" routerLink=\"/home\">Booktraders</a>\r\n        <ul class=\"navbar-nav ml-auto\">\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"!isLoggedIn\">\r\n              <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"isLoggedIn\"> \r\n            <a class=\"nav-link\" (click)=\"signOut()\">Log Out</a>\r\n          </li>\r\n        </ul>\r\n    </div>\r\n    <div class=\"container\" id=\"mobile-menu-show\">\r\n        <ul class=\"navbar-nav\" id=\"add-margin-left\">\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\r\n            </li>\r\n            <li class=\"nav-item\" *ngIf=\"!isLoggedIn\">\r\n                <a class=\"nav-link\"  (click)=\"signInWithFB(); sendMessage();\">Facebook Login</a>\r\n            </li>\r\n            <li class=\"nav-item\" *ngIf=\"isLoggedIn\"> \r\n              <a class=\"nav-link\" (click)=\"signOut();\">Log Out</a>\r\n            </li>\r\n          </ul>\r\n    </div>\r\n  </nav>\r\n\r\n  <div style=\"margin-top: 100px;\" class=\"mobile-fix\" *ngIf=\"!isLoggedIn\" >\r\n      <div class=\"container\">\r\n          <div class=\"jumbotron text-center\" style=\"background-image: url('https://cdn.pixabay.com/photo/2016/11/18/16/49/books-1835753__340.jpg'); color: white;\">\r\n            <h1>Booktraders</h1>\r\n            <p class=\"lead\">A book trading website for book lovers!</p>\r\n          </div>\r\n        <div class=\"d-flex flex-column\">\r\n          <h4>Please sign in with Facebook to use Booktraders.</h4>\r\n        <!--  <button class=\"loginBtn loginBtn--facebook\" (click)=\"signInWithFB(); sendMessage();\" >Login with Facebook</button></p>-->\r\n          <div class=\"fb-login-button\" data-width=\"142\" data-max-rows=\"1\" data-size=\"large\" data-button-type=\"continue_with\" data-show-faces=\"false\" data-auto-logout-link=\"false\" data-use-continue-as=\"false\"></div>\r\n        \r\n        \r\n        </div>\r\n      </div>\r\n    </div><!-- close div -->\r\n    \r\n\r\n<!-- if the user is not logged in, the navbar above is displayed, controlled by *ngIf=\"loggedIn == undefined  || loggedIn == false\"\r\n    done to improve logging in on mobile -->\r\n"
 
 /***/ }),
 
@@ -644,12 +645,20 @@ var LoginComponent = (function () {
         this.loginSerivce = loginSerivce;
         this.http = http;
         this.message = "logged out!";
+        this.isLoggedIn = false;
         this.messageEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]();
         this.sendMessage = function () {
             console.log("send message!");
             _this.message == 'logged out!' ? _this.message = 'logged in!' : _this.message = 'logged out!';
             _this.messageEvent.emit(_this.message);
             console.log(_this.message);
+            if (_this.message === 'logged out!') {
+                _this.isLoggedIn = false;
+            }
+            if (_this.message === 'logged in!') {
+                _this.isLoggedIn = true;
+            }
+            console.log(_this.isLoggedIn + "this.isLoggedIn login component!");
         };
         // This function initializes the FB variable 
         (function (d, s, id) {
@@ -677,8 +686,6 @@ var LoginComponent = (function () {
                     // use the response variable to get any information about the user and to see the tokens about the users session
                     console.log("connected!!");
                     FB.api(res.authResponse.userID, 'GET', {}, function (response) {
-                        console.log(response.name);
-                        _this.loggedIn = true;
                         var userInfo = {
                             name: response.name,
                             fbId: res.authResponse.userID

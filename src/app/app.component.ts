@@ -11,19 +11,19 @@ export class AppComponent {
 
 
   message:string;
-  private isLoggedIn = false;
+  public LoggedIn = false;
 
   receiveMessage($event) {
     this.message = $event;
-    console.log('app component!');
+    console.log('app component! ' + this.message);
     if (this.message === 'logged in!') {
-      this.isLoggedIn = true;
+      this.LoggedIn = true;
     }
     if (this.message === 'logged out!') {
-      this.isLoggedIn = false;
+      this.LoggedIn = false;
     }
 
-    
+    console.log(this.LoggedIn + ' this.LoggedIn app component');
  
   }
 
