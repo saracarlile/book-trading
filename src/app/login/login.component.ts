@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
                              this.bookService.userLogin(userInfo); //move log in from bookService to loginService
                              this.loginSerivce.changeMessage(userInfo); //passes user info to other component
                              this.sendMessage();
-                             console.log(this.message);
+
                               
                             }
                       );
@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
 
   @Output() messageEvent = new EventEmitter<string>();
 
-  sendMessage() {
+  sendMessage = () => {
     console.log("send message!");
     this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
     this.messageEvent.emit(this.message);

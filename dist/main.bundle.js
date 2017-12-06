@@ -645,6 +645,12 @@ var LoginComponent = (function () {
         this.http = http;
         this.message = "logged out!";
         this.messageEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]();
+        this.sendMessage = function () {
+            console.log("send message!");
+            _this.message == 'logged out!' ? _this.message = 'logged in!' : _this.message = 'logged out!';
+            _this.messageEvent.emit(_this.message);
+            console.log(_this.message);
+        };
         // This function initializes the FB variable 
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -682,18 +688,11 @@ var LoginComponent = (function () {
                         _this.bookService.userLogin(userInfo); //move log in from bookService to loginService
                         _this.loginSerivce.changeMessage(userInfo); //passes user info to other component
                         _this.sendMessage();
-                        console.log(_this.message);
                     });
                 }
             }));
         };
     }
-    LoginComponent.prototype.sendMessage = function () {
-        console.log("send message!");
-        this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
-        this.messageEvent.emit(this.message);
-        console.log(this.message);
-    };
     LoginComponent.prototype.signOut = function () {
         this.sendMessage();
     };
