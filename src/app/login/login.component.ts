@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   private userInfo: {};
   private user: string;
   private fbID: any;
+  message: string = "logged out!";
 
 
 
@@ -80,8 +81,8 @@ export class LoginComponent implements OnInit {
                               
                             
                              this.bookService.userLogin(userInfo); //move log in from bookService to loginService
-                             this.loginSerivce.changeMessage(userInfo); //passes user info to other components
-                             this.message = 'logged in!' 
+                             this.loginSerivce.changeMessage(userInfo); //passes user info to other component
+                             this.sendMessage();
                               
                             }
                       );
@@ -90,9 +91,6 @@ export class LoginComponent implements OnInit {
         };
       }
 
-
-
-  message: string = "logged out!";
 
   @Output() messageEvent = new EventEmitter<string>();
 
