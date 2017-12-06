@@ -426,6 +426,7 @@ var BooksService = (function () {
     };
     BooksService.prototype.userLogin = function (userInfo) {
         var body = userInfo;
+        console.log(body);
         var req = this.http.post('/api/user-login', body);
         req.subscribe(function (getResponse) { return console.log(getResponse); });
     };
