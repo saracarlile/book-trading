@@ -113,15 +113,15 @@ export class MyTradesComponent implements OnInit {
       return;
       
     }
-    if(this.tradeRequests[index].tradePending == false){
-      if(this.tradeRequests[index].tradeApproved == true){
+    if(this.tradesRequested[index].tradePending == false){
+      if(this.tradesRequested[index].tradeApproved == true){
         this.isApproved = "This trade request was approved.";
         this.tradePending = "The book owner has reviewed this trade";
         return;
       }
     }
-    if(this.tradeRequests[index].tradePending == false){
-      if(this.tradeRequests[index].tradeApproved == false){
+    if(this.tradesRequested[index].tradePending == false){
+      if(this.tradesRequested[index].tradeApproved == false){
         this.isApproved = "This trade request was not approved.";
         this.tradePending = "The book owner has reviewed this trade";
         return;
