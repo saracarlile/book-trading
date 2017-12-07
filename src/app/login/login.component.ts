@@ -86,9 +86,18 @@ export class LoginComponent implements OnInit {
                              this.bookService.userLogin(userInfo); //move log in from bookService to loginService
                              this.loginSerivce.changeMessage(userInfo); //passes user info to other component
 
-                             var objiframe=$('#test').find('iframe');
+                             //jquery works!
+                            /* var objiframe=$('#test').find('iframe');
                              var test = $(objiframe).contents().find("._5h0o");
-                             test.text('You have logged in');
+                             test.text('You have logged in');  *///use jquery to add 'hidden' button then simulate click event????
+
+                             $("#btn").trigger("click");
+
+                             /*
+                             Option 1: $("#link").trigger("click")
+
+                             Option 2: $("#link").click()
+                            */
                              
 
                               
