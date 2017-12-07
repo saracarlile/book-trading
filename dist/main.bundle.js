@@ -723,7 +723,6 @@ var LoginComponent = (function () {
             window.FB.XFBML.parse();
         }
         var global = this.renderer.listen('document', 'click', function (evt) {
-            console.log('Clicking the document', evt);
         });
         //global(); 
     };

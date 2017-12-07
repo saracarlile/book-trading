@@ -53,7 +53,16 @@ router.post('/delete-from-my-books', (req, res) => {    //John will be test user
   User.update({ 'name': user }, { '$pull': { 'books': { 'id': req.body.bookId } } }, { safe: true, multi: true }).exec(function (err, result) {
     res.send(result + " OK BOOK REMOVED");
   });
+/* new code to remove book from trade requests */
+  User.update({}, { '$pull': { 'tradeRequests': { 'id': req.body.bookId } } }, { safe: true, multi: true }).exec(function (err, result) {
+    console.log("tradeRequest removed");
+  });
 
+  User.update({}, { '$pull': { 'tradesRequested': { 'id': req.body.bookId } } }, { safe: true, multi: true }).exec(function (err, result) {
+    console.log("tradesRequested removed");
+  });
+
+  /* new code to remove book from trade requests */
 });
 
 router.post('/get-user', (req, res) => {    //get user info for My Profile page

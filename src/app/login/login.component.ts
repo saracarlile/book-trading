@@ -150,7 +150,6 @@ export class LoginComponent implements OnInit {
     }
 
     let global = this.renderer.listen('document', 'click', (evt) => {
-      console.log('Clicking the document', evt);
       
     })
     //global(); 
