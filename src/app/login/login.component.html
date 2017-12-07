@@ -22,9 +22,6 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/profile" routerLinkActive="active">My Profile</a>
         </li>
-        <li class="nav-item" *ngIf="!isLoggedIn">
-            <a class="nav-link"  (click)="sendMessage();">Facebook Login</a>
-        </li>
         <li class="nav-item" *ngIf="isLoggedIn"> 
           <a class="nav-link" (click)="signOut()">Log Out</a>
         </li>
@@ -33,7 +30,7 @@
   </div>
 </nav>
 
-<!-- if the user is logged in, the navbar above is displayed, controlled by *ngIf="user != undefined" -->
+<!-- if the user is logged in, the navbar above is displayed, controlled by isLoggedIn -->
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" *ngIf="!isLoggedIn">
     <div class="container" id="mobile-menu-hide">
@@ -41,9 +38,6 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
-          </li>
-          <li class="nav-item" *ngIf="!isLoggedIn">
-              <a class="nav-link"  (click)="signInWithFB(); sendMessage();">Facebook Login</a>
           </li>
           <li class="nav-item" *ngIf="isLoggedIn"> 
             <a class="nav-link" (click)="signOut()">Log Out</a>
@@ -55,15 +49,14 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
             </li>
-            <li class="nav-item" *ngIf="!isLoggedIn">
-                <a class="nav-link"  (click)="signInWithFB(); sendMessage();">Facebook Login</a>
-            </li>
             <li class="nav-item" *ngIf="isLoggedIn"> 
               <a class="nav-link" (click)="signOut();">Log Out</a>
             </li>
           </ul>
     </div>
   </nav> 
+
+  <!-- if the user is not logged in, the navbar above is displayed, controlled by isLoggedIn -->
 
   <div style="margin-top: 100px;" class="mobile-fix" *ngIf="!isLoggedIn" >
       <div class="container">
@@ -81,5 +74,3 @@
     </div><!-- close div -->
     
 
-<!-- if the user is not logged in, the navbar above is displayed, controlled by *ngIf="loggedIn == undefined  || loggedIn == false"
-    done to improve logging in on mobile -->
