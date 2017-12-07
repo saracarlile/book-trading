@@ -1153,21 +1153,15 @@ var MyTradesComponent = (function () {
     MyTradesComponent.prototype.viewTradesRequested = function (index) {
         this.modalTwoInfo = this.tradesRequested[index];
         this.modalTwoStyle = true;
-        console.log(this.tradesRequested[index].tradePending + " test tradingPending check");
-        console.log(this.tradesRequested[index]);
         if (this.tradesRequested[index].tradePending == true) {
             this.isApproved = "Trade status is pending. The book owner needs to review your request.";
             this.tradePending = "The book owner still needs to review your trade";
-            console.log('did i get in here??');
-            console.log(this.isApproved + " " + this.tradePending);
             return;
         }
         if (this.tradeRequests[index].tradePending == false) {
             if (this.tradeRequests[index].tradeApproved == true) {
                 this.isApproved = "This trade request was approved.";
                 this.tradePending = "The book owner has reviewed this trade";
-                console.log('did i get in here??');
-                console.log(this.isApproved + " " + this.tradePending);
                 return;
             }
         }
@@ -1175,12 +1169,9 @@ var MyTradesComponent = (function () {
             if (this.tradeRequests[index].tradeApproved == false) {
                 this.isApproved = "This trade request was not approved.";
                 this.tradePending = "The book owner has reviewed this trade";
-                console.log('did i get in here??');
-                console.log(this.isApproved + " " + this.tradePending);
                 return;
             }
         }
-        console.log(this.tradePending + " TRADE PENDING");
     };
     MyTradesComponent.prototype.closeModalTwo = function () {
         this.modalTwoStyle = false;
