@@ -108,6 +108,8 @@ export class MyTradesComponent implements OnInit {
 
     this.modalTwoInfo = this.tradesRequested[index];
     this.modalTwoStyle = true;
+    console.log(this.tradesRequested[index].tradePending + " test tradingPending check")
+    console.log(this.tradesRequested[index]);
     if(this.tradesRequested[index].tradePending == true){
       this.isApproved = "Trade status is pending. The book owner needs to review your request.";
       this.tradePending = "The book owner still needs to review your trade";
