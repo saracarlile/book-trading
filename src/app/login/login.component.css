@@ -112,7 +112,12 @@
     background-image: linear-gradient(#5B7BD5, #4864B1);
   }
   
-
+  #btn {
+        background: transparent;
+        border: none !important;
+        font-size:0;
+        max-width: 3px;
+    }
 
 
 @media only screen and (max-width: 500px) {
