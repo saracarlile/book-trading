@@ -197,14 +197,12 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.receiveMessage = function ($event) {
         this.message = $event;
-        console.log('app component! ' + this.message);
         if (this.message === 'logged in!') {
             this.LoggedIn = true;
         }
         if (this.message === 'logged out!') {
             this.LoggedIn = false;
         }
-        console.log(this.LoggedIn + ' this.LoggedIn app component');
     };
     return AppComponent;
 }());
@@ -649,7 +647,6 @@ var LoginComponent = (function () {
         this.isLoggedIn = false;
         this.messageEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]();
         this.sendMessage = function () {
-            console.log("send message!");
             _this.message == 'logged out!' ? _this.message = 'logged in!' : _this.message = 'logged out!';
             _this.messageEvent.emit(_this.message);
             if (_this.message === 'logged out!') {
@@ -658,7 +655,6 @@ var LoginComponent = (function () {
             if (_this.message === 'logged in!') {
                 _this.isLoggedIn = true;
             }
-            console.log(_this.isLoggedIn + " this.isLoggedIn login component!");
         };
         // This function initializes the FB variable 
         (function (d, s, id) {
@@ -684,14 +680,12 @@ var LoginComponent = (function () {
             FB.Event.subscribe('auth.statusChange', (function (res) {
                 if (res.status === 'connected') {
                     // use the response variable to get any information about the user and to see the tokens about the users session
-                    console.log("connected!!");
                     FB.api(res.authResponse.userID, 'GET', {}, function (response) {
                         var userInfo = {
                             name: response.name,
                             fbId: res.authResponse.userID
                             //   photoUrl: this.user.photoUrl
                         };
-                        console.log(userInfo);
                         _this.isLoggedIn = true;
                         _this.bookService.userLogin(userInfo); //move log in from bookService to loginService
                         _this.loginSerivce.changeMessage(userInfo); //passes user info to other component

@@ -15,7 +15,7 @@ export class AppComponent {
 
   receiveMessage($event) {
     this.message = $event;
-    console.log('app component! ' + this.message);
+
     if (this.message === 'logged in!') {
       this.LoggedIn = true;
     }
@@ -23,8 +23,6 @@ export class AppComponent {
       this.LoggedIn = false;
     }
 
-    console.log(this.LoggedIn + ' this.LoggedIn app component');
- 
   }
 
 

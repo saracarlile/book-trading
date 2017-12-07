@@ -64,9 +64,7 @@ export class LoginComponent implements OnInit {
                 
                   if (res.status === 'connected') {
                       // use the response variable to get any information about the user and to see the tokens about the users session
-                      console.log("connected!!"); 
-  
-                      
+                
                       FB.api(
                         res.authResponse.userID,
                         'GET',
@@ -80,7 +78,6 @@ export class LoginComponent implements OnInit {
                              //   photoUrl: this.user.photoUrl
                               }
 
-                            console.log(userInfo);
                               
                              this.isLoggedIn = true;
                              this.bookService.userLogin(userInfo); //move log in from bookService to loginService
@@ -115,7 +112,7 @@ export class LoginComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
 
   sendMessage = () => {
-    console.log("send message!");
+
     this.message == 'logged out!' ? this.message = 'logged in!' : this.message = 'logged out!';
     this.messageEvent.emit(this.message);
 
@@ -126,7 +123,6 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
     }
 
-    console.log(this.isLoggedIn + " this.isLoggedIn login component!");
     
  
   }
