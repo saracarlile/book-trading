@@ -825,6 +825,16 @@ var MyBooksComponent = (function () {
     };
     MyBooksComponent.prototype.addToMyBooks = function (i) {
         var _this = this;
+        if (this.forkJoinStream[1].items[i].volumeInfo.imageLinks != undefined) {
+            var thumbnail = this.forkJoinStream[1].items[i].volumeInfo.imageLinks.thumbnail;
+            var https = thumbnail.replace("http:", "https:");
+            var smallThumbnail = this.forkJoinStream[1].items[i].volumeInfo.imageLinkssmallThumbnail;
+            var https2 = thumbnail.replace("http:", "https:");
+            var fixedLinks = {
+                thumbnail: https,
+                smallThumbnail: https2
+            };
+        }
         var bookInfo = {
             fbId: this.forkJoinStream[0].fbId,
             userName: this.forkJoinStream[0].name,
@@ -832,7 +842,8 @@ var MyBooksComponent = (function () {
             bookId: this.forkJoinStream[1].items[i].id,
             bookTitle: this.forkJoinStream[1].items[i].volumeInfo.title,
             bookAuthors: this.forkJoinStream[1].items[i].volumeInfo.authors,
-            bookImages: this.forkJoinStream[1].items[i].volumeInfo.imageLinks,
+            // bookImages: this.forkJoinStream[1].items[i].volumeInfo.imageLinks,
+            bookImages: fixedLinks,
             bookDescription: this.forkJoinStream[1].items[i].volumeInfo.description,
         };
         var idsOfUserBooks = this.forkJoinStream[0].books.map(function (item) { return item["id"]; });
@@ -850,8 +861,8 @@ var MyBooksComponent = (function () {
         });
     };
     MyBooksComponent.prototype.removeFromLibrary = function () {
-        var _this = this;
         //build an object to send as response body
+        var _this = this;
         var bookInfo = {
             userName: this.myLibraryUser,
             userBooks: this.modalDetailBook.userBooks,

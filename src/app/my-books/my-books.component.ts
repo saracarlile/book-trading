@@ -54,6 +54,17 @@ export class MyBooksComponent implements OnInit {
 
 
   private addToMyBooks(i) {
+    if(this.forkJoinStream[1].items[i].volumeInfo.imageLinks != undefined){
+      let thumbnail = this.forkJoinStream[1].items[i].volumeInfo.imageLinks.thumbnail;
+      let https =  thumbnail.replace("http:", "https:");
+      let smallThumbnail = this.forkJoinStream[1].items[i].volumeInfo.imageLinkssmallThumbnail;
+      let https2 =  thumbnail.replace("http:", "https:");
+      var fixedLinks = {
+        thumbnail: https,
+        smallThumbnail: https2
+      }
+    }
+
     let bookInfo = {
       fbId: this.forkJoinStream[0].fbId,
       userName: this.forkJoinStream[0].name,
@@ -61,7 +72,8 @@ export class MyBooksComponent implements OnInit {
       bookId: this.forkJoinStream[1].items[i].id,
       bookTitle: this.forkJoinStream[1].items[i].volumeInfo.title,
       bookAuthors: this.forkJoinStream[1].items[i].volumeInfo.authors,
-      bookImages: this.forkJoinStream[1].items[i].volumeInfo.imageLinks,
+     // bookImages: this.forkJoinStream[1].items[i].volumeInfo.imageLinks,
+      bookImages: fixedLinks,
       bookDescription: this.forkJoinStream[1].items[i].volumeInfo.description,
     }
    
@@ -89,6 +101,7 @@ export class MyBooksComponent implements OnInit {
 
   private removeFromLibrary() {
     //build an object to send as response body
+
     let bookInfo = {
       userName: this.myLibraryUser,
       userBooks: (<any>this).modalDetailBook.userBooks,
