@@ -9,6 +9,8 @@ import { Headers, Http, Response } from '@angular/http';
 
 declare var window: any;
 declare var FB: any;
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
   selector: 'app-login',
@@ -80,10 +82,14 @@ export class LoginComponent implements OnInit {
 
                             console.log(userInfo);
                               
-                            
+                             this.isLoggedIn = true;
                              this.bookService.userLogin(userInfo); //move log in from bookService to loginService
                              this.loginSerivce.changeMessage(userInfo); //passes user info to other component
-           
+
+                             var objiframe=$('#test').find('iframe');
+                             var test = $(objiframe).contents().find("._5h0o");
+                             test.text('You have logged in');
+                             
 
                               
                             }
@@ -119,6 +125,8 @@ export class LoginComponent implements OnInit {
   signOut(): void {
     this.sendMessage();
   }
+
+  
 
   
   ngOnInit() {
