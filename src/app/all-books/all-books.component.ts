@@ -79,6 +79,7 @@ export class AllBooksComponent implements OnInit {
 
       if( hasRequested == false){
         this.bookService.requestTrade(tradeInfo);  //if they haven't requested to trade book before, send to trade request
+        this.message = "You've requested to trade this book!";
       }
       else {
         this.message = "You've requested this trade before!";

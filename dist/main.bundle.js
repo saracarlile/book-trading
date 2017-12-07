@@ -110,6 +110,7 @@ var AllBooksComponent = (function () {
             }
             if (hasRequested == false) {
                 _this.bookService.requestTrade(tradeInfo); //if they haven't requested to trade book before, send to trade request
+                _this.message = "You've requested to trade this book!";
             }
             else {
                 _this.message = "You've requested this trade before!";
