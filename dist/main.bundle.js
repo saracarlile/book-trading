@@ -712,6 +712,10 @@ var LoginComponent = (function () {
     }
     LoginComponent.prototype.signOut = function () {
         this.sendMessage();
+        FB.logout(function (response) {
+            // user is now logged out
+            console.log(response);
+        });
     };
     LoginComponent.prototype.ngOnInit = function () {
         if (window.FB) {

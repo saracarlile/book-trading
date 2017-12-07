@@ -133,6 +133,10 @@ export class LoginComponent implements OnInit {
 
   signOut(): void {
     this.sendMessage();
+    FB.logout(function(response) {
+      // user is now logged out
+      console.log(response);
+    });
   }
 
   
