@@ -137,6 +137,7 @@ export class LoginComponent implements OnInit {
       // user is now logged out
       console.log(response);
     });
+    window.location.reload(); //hopefully adds FB button back with page reload
   }
 
   

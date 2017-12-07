@@ -716,6 +716,7 @@ var LoginComponent = (function () {
             // user is now logged out
             console.log(response);
         });
+        window.location.reload(); //hopefully adds FB button back with page reload
     };
     LoginComponent.prototype.ngOnInit = function () {
         if (window.FB) {
