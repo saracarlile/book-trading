@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Renderer2 } from '@angular/core';
 import 'rxjs/Rx';
 import { BooksService } from '../books.service';
 import { LoginService } from '../login.service';
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(private bookService: BooksService, private loginSerivce : LoginService,  private http: Http, private router:Router) {
+  constructor(private bookService: BooksService, private loginSerivce : LoginService,  private http: Http, private renderer: Renderer2) {
 
     //https://samkirkiles.svbtle.com/angular-4-facebook-login-integration
     //https://developers.facebook.com/docs/graph-api/reference/user
@@ -113,7 +113,7 @@ export class LoginComponent implements OnInit {
 
     console.log(this.isLoggedIn + " this.isLoggedIn login component!");
     
-    this.router.navigate(['/all-books']);   
+ 
   }
 
   signOut(): void {
@@ -126,6 +126,12 @@ export class LoginComponent implements OnInit {
     if (window.FB) {
       window.FB.XFBML.parse();
     }
+
+    let global = this.renderer.listen('document', 'click', (evt) => {
+      console.log('Clicking the document', evt);
+      
+    })
+    //global(); 
 
   }
 
